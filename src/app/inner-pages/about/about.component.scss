@@ -1,0 +1,278 @@
+.font-22 {
+  font-size: 22px;
+}
+.font-35 {
+  font-size: 35px;
+}
+.font-50 {
+  font-size: 50px;
+}
+.aboutBan {
+  .container-fluid {
+    background-image: url("../../../assets/images/about_us/banner/about_banner.jpg");
+    background-repeat: no-repeat;
+    min-height: 400px;
+    background-size: cover;
+    padding: 91px 0 110px 0;
+    @media screen and (max-width: 610px) {
+      padding: 10px 0 30px 0;
+    }
+    @media screen and (max-width: 1500px) {
+      .container {
+        max-width: 1250px;
+      }
+    }
+    .banner {
+      h3 {
+        font-size: 3rem;
+        line-height: 4rem;
+        padding: 3.5rem 0 2rem 0;
+        @media screen and (max-width: 860px) {
+          font-size: 2.5rem;
+          line-height: 3.5rem;
+        }
+        @media screen and (max-width: 575px) {
+          font-size: 2rem;
+          line-height: 2.5rem;
+          padding: 2.5rem 0 2rem 0;
+        }
+      }
+      p {
+        line-height: 1.9rem;
+        .ks-break {
+          @media screen and (max-width: 350px) {
+            word-break: break-all;
+          }
+        }
+      }
+    }
+  }
+}
+
+.about-images {
+  background-color: #f6f5f3;
+  padding-bottom: 4rem;
+  @media screen and (max-width: 768px) {
+    padding-bottom: 3rem;
+  }
+  @media screen and (max-width: 575px) {
+    padding-bottom: 2rem;
+  }
+  @media screen and (max-width: 2000px) {
+    .container {
+      max-width: 1250px;
+    }
+  }
+  .abtLeft {
+    .grad-blue {
+      background: linear-gradient(115.24deg, #3dd4ff 1.58%, #007eff 69.64%),
+        #c4c4c4;
+      box-shadow: 0px 10px 25px rgb(0 0 0 / 25%);
+    }
+    @media screen and (min-width: 1200px) {
+      .image-lg-absolute {
+        position: absolute !important;
+        z-index: 1;
+        top: 10%;
+      }
+    }
+    .abtLeftBg {
+      left: 0 !important;
+      padding: 66px;
+      border-radius: 10px;
+      @media screen and (max-width: 575px) {
+        padding: 40px;
+      }
+      h2 {
+        font-size: 35px;
+        @media screen and (max-width: 575px) {
+          font-size: 25px;
+        }
+      }
+      p {
+        line-height: 24px;
+        padding: 20px 0 0 0 !important;
+      }
+    }
+    .ks-justify-position {
+      justify-content: end;
+      img {
+        border-radius: 10px;
+        @media screen and (max-width: 1199px) {
+          margin-top: 20px;
+        }
+      }
+      @media screen and (max-width: 1200px) {
+        justify-content: center;
+      }
+    }
+  }
+}
+
+.ks-services {
+  background-color: #f6f5f3;
+  @media screen and (max-width: 1500px) {
+    .container {
+      max-width: 1250px;
+    }
+  }
+  .servicesNw {
+    padding: 52px 125px 90px 125px;
+    box-shadow: 0px 10px 25px rgb(0 0 0 / 10%);
+    border-radius: 25px;
+    margin-top: -3rem;
+    background-color: #fff;
+    @media screen and (max-width: 768px) {
+      padding: 40px 50px 70px 50px;
+    }
+    @media screen and (max-width: 575px) {
+      padding: 30px 25px 55px 25px;
+    }
+    h3 {
+      font-size: 50px;
+      line-height: 83px !important;
+      color: #47494a !important;
+      @media screen and (max-width: 991px) {
+        font-size: 42px;
+        line-height: 70px !important;
+      }
+      @media screen and (max-width: 768px) {
+        font-size: 32px;
+        line-height: 40px !important;
+      }
+    }
+    .service-p {
+      padding-left: 85px;
+      padding-right: 85px;
+      @media screen and (max-width: 991px) {
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+      @media screen and (max-width: 768px) {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      .ks-para1 {
+        padding: 35px 0 0 0 !important;
+        line-height: 30px !important;
+        color: #7d7e7e !important;
+      }
+      .ks-para2 {
+        line-height: 33px !important;
+        color: #47494a !important;
+        padding: 15px 0 20px 0 !important;
+      }
+    }
+    .ks-boxes {
+      .col-lg-3 {
+        margin-top: 28px;
+        .ks-length {
+          height: 180px;
+          border-radius: 8px;
+          color: #fff;
+          padding: 20px 0 25px 0;
+          transition: all 0.5s ease;
+        }
+        .services-gr-1 {
+          background: linear-gradient(to bottom, #19d0b6, #0dbca3 100%);
+        }
+        .services-gr-2 {
+          background: linear-gradient(to bottom, #514ad5, #3e37cd 100%);
+        }
+        .services-gr-3 {
+          background: linear-gradient(to bottom, #fd6589, #e84a5f 100%);
+        }
+        .services-gr-4 {
+          background: linear-gradient(to bottom, #f28620, #fa601f 100%);
+        }
+        p {
+          line-height: 24px !important;
+          padding: 18px 0 0 0 !important;
+        }
+      }
+    }
+  }
+}
+
+.indExp {
+  @media screen and (max-width: 1500px) {
+    .container {
+      max-width: 1250px;
+    }
+  }
+  .indExpTop {
+    padding-top: 64px;
+    padding-bottom: 48px;
+    @media screen and (max-width: 768px) {
+      padding-top: 55px;
+      padding-bottom: 40px;
+    }
+    @media screen and (max-width: 575px) {
+      padding-top: 50px;
+      padding-bottom: 38px;
+    }
+    h3 {
+      font-size: 50px;
+      line-height: 66px;
+      text-align: center;
+      color: #47494a !important;
+      @media screen and (max-width: 1500px) {
+        font-size: 42px;
+      }
+      @media screen and (max-width: 991px) {
+        font-size: 32px;
+        line-height: 1.3;
+      }
+    }
+    p {
+      padding: 20px 0 0 0 !important;
+      line-height: 28px !important;
+      text-align: center;
+    }
+  }
+  .indExpBtm {
+    padding-bottom: 70px;
+    .ks-subhead {
+      line-height: 24px !important;
+    }
+    .ks-dividing-line::after {
+      content: "";
+      height: 60px;
+      width: 1px;
+      background: #ebe8e8;
+      position: absolute;
+      top: 45px;
+      left: 5px;
+      @media screen and (max-width: 992px) {
+        display: none;
+      }
+    }
+    .number-count {
+      .count,
+      .ks-plus {
+        font-size: 90px !important;
+        line-height: 149px !important;
+        @media screen and (max-width: 1500px) {
+          font-size: 70px !important;
+          line-height: 130px !important;
+        }
+        @media screen and (max-width: 575px) {
+          font-size: 55px !important;
+          line-height: 120px !important;
+        }
+      }
+      .o-grad {
+        color: #fa621f;
+      }
+      .g-sky {
+        color: #07e2cc;
+      }
+      .g-blue {
+        color: #0f4498;
+      }
+      .g-pink {
+        color: #e64a5e;
+      }
+    }
+  }
+}

@@ -1,0 +1,219 @@
+<div *ngIf="isLoadingBool" class="loading-indicator">
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<main class="main-section ks-bg-grey-col">
+    <div class="ks-content">
+        <section class="contact-page">
+            <div class="ks-blue-gradient-bg">
+                <div class="container my-lg-5">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-md-6">
+                            <div class="contact-form-lft">
+                                <h3 class="white-text f-w-600 m-0 p-0">
+                                    How Can We Help?
+                                </h3>
+                                <p class="white-text my-3 font-16 pr-lg-5 mr-lg-5 pr-3 mr-3 ">
+                                    We are glad to know, you have an interest in our products/services. Whether you have
+                                    a query or have something interesting to share, reach out to us and we shall get
+                                    back to you shortly.
+                                </p>
+                                <div class="emailAs font-16 f-w-500 white-text">
+                                    Email us at
+                                    <a href="mailto:sales@ksolves.com"
+                                        class="font-25 f-w-600 white-text">sales@ksolves.com</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+                            <div class="contact-form p-lg-5 p-4 pt-5 light-bg mx-lg-4 text-center">
+                                <h2 *ngIf="this.mod_name !=null && this.ver !=null; " class="f-w-600 font-30 mb-4">
+                                    Free Demo Request
+                                </h2>
+
+                                <h2 *ngIf="this.mod_name ==null || this.ver ==null; " class="f-w-600 font-30 mb-4">
+                                    Write to us
+                                </h2>
+
+                                <form [formGroup]="addShopFormGroup" (ngSubmit)="formSubmit()"
+                                    class="s_website_form container-fluid px-0 ks-form-inputs-style">
+                                    <div class="mat-form-field w-100 mb-4 font-16">
+                                        <div class="ks-floating ks-normal-area text-left position-relative">
+                                            <input type="text" placeholder="" class="font-12" formControlName="name">
+                                            <label class="for-label position-absolute">Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="mat-form-field w-100 mb-4 font-16">
+                                        <div class="ks-floating ks-normal-area text-left position-relative">
+                                            <input type="email" placeholder="" class="font-12" formControlName="email"
+                                                required>
+                                            <label class="for-label position-absolute">Email <span class="ks-star-red">*</span></label>
+                                        </div>
+                                        <div *ngIf="validationErrorExists();" style="color:red;text-align: left;">
+                                            <div *ngIf="hasError('email', 'required')">*Email is required</div>
+                                            <div *ngIf="hasError('email', 'pattern')">*Please enter valid email</div>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="mat-form-field w-100 mb-4 font-16">
+                                        <div class="ks-floating ks-message-area text-left position-relative">
+                                            <textarea rows="5" class="font-14" placeholder=""
+                                                formControlName="description"></textarea>
+                                            <label class="for-label position-absolute msg-area">Message</label>
+                                        </div>
+                                    </div>
+                                    <div class="text-left">
+                                        <button class="o_website_form_send btn btn-primary py-3 px-5">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grey-bg px-3 pb-xl-4 pb-3">
+                <div class="container light-bg py-4 py-xl-5 mb-md-5 mb-2 office-address negative-margin">
+                    <div class="row pb-xl-5 rowAdd">
+                        <div class="col-lg-12 col-md-12 m-auto">
+                            <div class="row mx-0">
+                                <div class="col-md-12">
+                                    <h3 class="f-w-600 font-40">
+                                        Ksolves Offices
+                                    </h3>
+                                </div>
+                                <div class="col-lg-3 col-sm-6 address_item">
+                                    <h3 class="blue-text-p f-w-600 font-24 m-0">
+                                        NOIDA
+                                    </h3>
+                                    <p class="font-16">
+                                        Third Floor, B-4 Office No 301, B Block Rd, Sector 63, Noida 201301
+                                        Uttar Pradesh India
+                                    </p>
+                                    <div class="ks-contact-data">
+                                        <div class="d-flex align-items-center pb-1 font-18 ks-icons-line">
+                                            <img src="../../../assets/images/contact-us/phone.png" class="mr-3"
+                                                alt="phone-icon">
+                                            <a href="tel:+91-7498170227">
+                                                <span>+91-7498170227</span>
+                                            </a>
+                                        </div>
+                                        <div class="d-flex align-items-center pb-1 font-18 ks-icons-line">
+                                            <img src="../../../assets/images/contact-us/email.png" class="mr-3"
+                                                alt="mail-icon">
+                                            <a href="mailto:sales@ksolves.com" class="text-normal">
+                                                <span>sales@ksolves.com</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-6 address_item">
+                                    <h3 class="blue-text-p f-w-600 font-24 m-0">
+                                        INDORE
+                                    </h3>
+                                    <p class="font-16">
+                                        41, 42 PU4 Scheme No.54,
+                                        <br>
+                                        Vijay Nagar, Indore, 452010
+                                    </p>
+                                    <div class="ks-contact-data">
+                                        <div class="d-flex align-items-center pb-1 font-18 ks-icons-line">
+                                            <img src="../../../assets/images/contact-us/phone.png" class="mr-3"
+                                                alt="phone-icon">
+                                            <a href="tel:+91-9999846497">
+                                                <span>
+                                                    +91 999 984 6497
+                                                </span>
+                                            </a>
+                                        </div>
+
+                                        <div class="d-flex align-items-center pb-1 font-18 ks-icons-line">
+                                            <img src="../../../assets/images/contact-us/email.png" class="mr-3"
+                                                alt="mail-icon">
+                                            <a href="mailto:sales@ksolves.com" class="text-normal">
+                                                <span>sales@ksolves.com</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-6 address_item">
+                                    <h3 class="blue-text-p f-w-600 font-24 m-0">
+                                        USA
+                                    </h3>
+                                    <p class="font-16">
+                                        111 N. Market, Street Suite 300 , San Jose, CA- 95113
+                                    </p>
+                                    <div class="ks-contact-data">
+                                        <div class="d-flex align-items-center pb-1 font-18 ks-icons-line">
+                                            <img src="../../../assets/images/contact-us/phone.png" class="mr-3"
+                                                alt="phone-icon">
+                                            <a href="tel:+1(646)203-1075">
+                                                <span>
+                                                    +1 (646) 203-1075
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <div class="d-flex align-items-center pb-1 font-18 ks-icons-line">
+                                            <img src="../../../assets/images/contact-us/email.png" class="mr-3"
+                                                alt="mail-icon">
+                                            <a href="mailto:sales@ksolves.com" class="text-normal">
+                                                <span>sales@ksolves.com</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-6 address_item">
+                                    <h3 class="blue-text-p f-w-600 font-24 m-0">
+                                        MOZAMBIQUE
+                                    </h3>
+                                    <p class="">
+                                        1st Floor Millennium Park Building, Avenida Vladimir Lenine, Maputo - 174,
+                                        Mozambique
+                                    </p>
+                                    <div class="ks-contact-data">
+                                        <div class="d-flex align-items-center pb-1 ks-icons-line">
+                                            <img src="../../../assets/images/contact-us/phone.png" class="mr-3"
+                                                alt="phone-icon">
+                                            <a href="tel:+91-8130704295">
+                                                <span>
+                                                    +91 8130704295
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <div class="d-flex align-items-center pb-1 ks-icons-line">
+                                            <img src="../../../assets/images/contact-us/email.png" class="mr-3"
+                                                alt="mail-icon">
+                                            <a href="mailto:sales@ksolves.com" class="text-normal">
+                                                <span>sales@ksolves.com</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>

@@ -1,0 +1,102 @@
+.main-section {
+    .ks-sign-up {
+      .container {
+        @media screen and (max-width: 1500px) {
+          max-width: 1250px;
+        }
+        .signup-box {
+          .signup_suggest {
+            background-color: #e64a5e;
+            border-radius: 20px;
+            h4 {
+              font-size: 1.3125rem;
+            }
+            li {
+              color: #fff;
+              line-height: 1.8rem;
+              font-size: 1rem;
+            }
+          }
+          .ks-used-id-error{
+            background-color: #fff;
+            border:1px solid #c40000;
+            box-shadow: 0 0 0 4px #fcf4f4 inset;
+            border-radius: 4px;
+            position: relative;
+            padding: 14px 18px 14px 63px; 
+            .alert-img{
+              left: 18px;
+              top: 16px;
+            }
+            .close-img{
+              right: 8px;
+              top: 5px;
+              .btn-alert-close{
+                border: transparent;
+                background-color: transparent;
+              }
+            }
+            .ks-used-id-error{
+              .ks-error-heading
+              {
+                font-size: 17px;
+                line-height: 1.255;
+              }
+            }
+          }
+          .form-section {
+            width: 350px;
+            @media screen and (max-width: 992px) {
+              width: auto;
+            }
+            .form-group {
+              label {
+                margin-bottom: 20px;
+              }
+              .form-control {
+                height: 40px;
+                line-height: 40px;
+                padding: 0px 8px;
+                margin-bottom: 30px !important;
+                border-color: #e5e0e0 !important;
+                border-radius: 4px;
+                font-size: 0.9rem;
+              }
+              a {
+                text-decoration: none;
+              }
+              a:hover {
+                text-decoration: none;
+                color: #000000;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+.ks-thankyou-post{
+  
+  .ks-tick-icon{
+    border-radius: 100%;
+    border: 2px solid #3ee63e;
+    height: 47px;
+    max-width: 46px;
+    width: 100%;
+    margin: auto;
+    svg{
+      margin-top: -15px;
+    }
+  }
+  .ks-msg{
+    .ks-bold{
+      font-weight: 500;
+      font-size:16px;
+    }
+  }
+  .btn-success{
+    border-radius: 5px;
+    border-color: transparent;
+    box-shadow: 0px 8px 15px rgba(21, 208, 96, 0.1);
+  }
+}

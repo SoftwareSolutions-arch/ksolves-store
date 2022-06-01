@@ -1,0 +1,122 @@
+.f-w-500 {
+  font-weight: 500;
+}
+
+footer.ks-footer {
+  .footer-up {
+    background-color: #202020;
+    .company_logo {
+      height: 2.85rem;
+    }
+    .footer-container {
+      color: #c6c6c6;
+      .ks-icons-address {
+        font-size: 18px;
+        margin-top: 2px;
+        margin-right: 7px;
+        filter: invert(100%);
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        .ks-call {
+          display: flex;
+          @media screen and (max-width: 1200px) and (min-width: 992px) {
+            display: block;
+            a {
+              line-height: 4px;
+            }
+          }
+        }
+        li {
+          img {
+            height: 17px;
+          }
+          a {
+            line-height: 24px;
+            text-decoration: none;
+            color: #c6c6c6;
+
+            &:hover {
+              color: #fff;
+            }
+          }
+        }
+        .social-links {
+          a {
+            margin-right: 5px;
+            padding: 5px;
+            i {
+              font-size: 19px;
+              padding-top: 2px;
+            }
+          }
+          .ks-linkedin {
+            filter: invert(100%);
+            img {
+              padding-top: 2px;
+              height: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .footer-down {
+    background-color: #000;
+    color: #c6c6c6;
+    .ks-img-right {
+      img {
+        border: 2px solid #fff;
+        border-radius: 3px;
+        vertical-align: middle;
+      }
+    }
+  }
+  .copyright {
+    background-color: #202020;
+    color: #c4c4c4;
+  }
+}
+
+.ks_cookies_panel {
+  z-index: 9999;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  max-width: 265px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  border: 1px solid #b4b4b4;
+  box-shadow: 0 0 8px rgb(0 0 0 / 30%);
+  .ks-cookie-head {
+    color: #5a5b5c;
+  }
+  .ks_cookies_panel_btn {
+    color: #000;
+  }
+  .ks-cookie-para {
+    color:#5A5B5C;
+    a {
+      text-decoration: none;
+    }
+  }
+  .ks-cookie-btn {
+    .ks_cookies_panel_btn_accept {
+      background-color: #ffffff;
+    }
+    .ks_cookies_panel_btn_accept:hover {
+      color: #212529;
+      background-color: #e0a800;
+      border-color: #d39e00;
+    }
+    .ks_cookies_panel_btn_decline {
+      color: #ffc107;
+    }
+    .ks_cookies_panel_btn_decline:hover {
+      color: #000;
+    }
+  }
+}

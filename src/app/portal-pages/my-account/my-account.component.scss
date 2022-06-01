@@ -1,0 +1,66 @@
+
+
+.ks-portal-main-view{
+  min-height: 26vw;
+  background-color: #ececec;
+  @media screen and (max-width:768px) {
+    min-height: 77vw;
+  }
+}
+.main-section {
+    .ks-my-account {
+      .pb64 {
+        padding-bottom: 64px !important;
+      }
+      .btn {
+        padding: 8px 30px;
+      }
+      .container {
+        @media screen and (max-width: 1500px) {
+          max-width: 1250px;
+        }
+        .o_portal_docs {
+          .list-group-item:first-child {
+            border-top-left-radius: 0.25rem;
+            border-top-right-radius: 0.25rem;
+          }
+          .badge-secondary {
+            color: #ffffff;
+            background-color: #875a7b;
+          }
+        }
+        .o_portal_my_details {
+          color: #212529;
+          h4 {
+            font-size: 1.3125rem;
+            color: #212529;
+          }
+          .btn-link {
+            text-decoration: none;
+            color: #212529;
+          }
+          hr {
+            padding: 0;
+            border: 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+          }
+          .ks-address {
+            .ks-mt-sm {
+              margin-top: 0.5em;
+              .ks-addres-p {
+                display: block;
+                padding-left: 1em;
+                line-height: 1.2;
+                margin-bottom: 0.3em;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .ks-bg-ec {
+    background-color: #ececec;
+  }
+
+  

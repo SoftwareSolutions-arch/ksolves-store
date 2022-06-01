@@ -1,0 +1,16 @@
+.banner-section{
+    min-height: 31vw;
+    background-color: #e5e5e5;
+    .carousel-control-prev{
+        position: absolute;
+        // height: fit-content;
+        width: 8%;
+        justify-content: end;
+    }
+    .carousel-control-next{
+        position: absolute;
+        // height: fit-content;
+        width: 8%;
+        justify-content: start;
+    }
+}

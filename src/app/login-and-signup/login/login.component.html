@@ -1,0 +1,87 @@
+<main class="main-section ks-bg-col">
+    <div *ngIf="isLoadingBool" class="loading-indicator">
+        <div class="loader">
+            <div class="loader-inner">
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ks-content">
+        <section class="signup py-4 pt-md-5">
+            <div class="container">
+                <div class="signup-box bg-white p-4 p-md-5">
+                    <div class="row">
+                        <div class="col-md-12 px-md-5 d-flex align-items-center justify-content-center">
+                            <div class="form-section">
+                                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                                    <h1 class="text-center f-w-600 font-29 mb-3">
+                                        Login
+                                    </h1>
+                                    <div class="form-group mb-1 field-login">
+                                        <label for="" class="f-w-700 font-16">Email Address</label>
+                                        <input formControlName="email" type="text" class="form-control mt-2 mb-4"
+                                            placeholder="Enter email" required>
+                                        <ng-container *ngFor="let error of error_messages.email">
+                                            <div class="error-message"
+                                                *ngIf="loginForm.get('email').hasError(error.type) &&
+                                                              (loginForm.get('email').submitted || loginForm.get('email').submitted)">{{
+                                                error.message }}</div>
+                                        </ng-container>
+                                    </div>
+                                    <div class="form-group mb-1 field-login">
+                                        <label for="" class="f-w-700 font-16">Password</label>
+                                        <input formControlName="password" type="password" class="form-control mt-2 mb-4"
+                                            placeholder="Password" required>
+                                        <ng-container *ngFor="let error of error_messages.password">
+                                            <div class="error-message"
+                                                *ngIf="loginForm.get('password').hasError(error.type) &&
+                                                                  (loginForm.get('password').submitted || loginForm.get('password').submitted)">
+                                                {{
+                                                error.message }}</div>
+                                        </ng-container>
+                                    </div>
+                                    <div class="form-group oe_login_buttons pt-3">
+                                        <button [disabled]="!loginForm.valid" type="submit"
+                                            class="btn btn-primary btn-block font-22 cursor-pointer">
+                                            Log in
+                                            <div *ngIf="this.loader" class="spinner-border" role="status">
+                                                <span class="sr-only">Loading...</span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-7">
+                                                <a [routerLink]="['/registration/signup']"
+                                                    class="text-dark font-13 d-inline">Don't have an
+                                                    account?</a>
+                                            </div>
+                                            <div class="col-12 ks-p-area col-sm-5 ks-text-position">
+                                                <a [routerLink]="['/registration/reset-password']"
+                                                    class="text-dark font-13">Reset Password</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>

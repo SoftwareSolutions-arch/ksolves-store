@@ -1,0 +1,695 @@
+<div *ngIf="isLoadingBool" class="loading-indicator">
+	<div class="loader">
+		<div class="loader-inner">
+			<div class="loader-line-wrap">
+				<div class="loader-line"></div>
+			</div>
+			<div class="loader-line-wrap">
+				<div class="loader-line"></div>
+			</div>
+			<div class="loader-line-wrap">
+				<div class="loader-line"></div>
+			</div>
+			<div class="loader-line-wrap">
+				<div class="loader-line"></div>
+			</div>
+			<div class="loader-line-wrap">
+				<div class="loader-line"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="wrap" class="js_sale">
+	<div class="oe_structure" id="oe_structure_website_sale_products_1"></div>
+	<div class="grey-bg inner oe_website_sale pt-0 pt-lg-2">
+		<link type="text/css" rel="stylesheet" href="/web/content/45404-800c37c/1/ks_website_theme.ks_shop_page.0.css">
+		<div class="container px-0 mt-lg-4">
+			<div class="row mx-0 ks-app-odoo-cards-main-view">
+				<div class="col-12 d-flex justify-content-between
+				   shop-page-header py-3 mb-md-3 flex-wrap flex-lg-nowrap
+				   aos-init aos-animate" data-aos="zoom-in">
+					<div class="show-apps mt-sm-1 mb-3 mb-lg-0 mr-2 mr-lg-0">
+						<h1 class="lightbold font-16 mb-0">
+							All Apps
+						</h1> ( {{search_count}} Results)
+					</div>
+					<div class="search position-relative mb-3 mb-lg-0 d-none d-lg-block">
+						<form method="get" action="/shop/category/odoo-all-28?category=28"
+							class="o_website_sale_search">
+							<div class="input-group d-flex flex-nowrap">
+								<input type="text" name="search" [(ngModel)]="globalQuery" class="search-query form-control
+								   oe_search_box" placeholder="Search..." (keyup.enter)="searchfilter('search')" value="">
+								<div class="input-group-append">
+									<button type="submit" class="btn
+									   btn-secondary oe_search_button" (click)="searchfilter('search')" aria-label="Search" title="Search">
+										<img style="margin-top: -6px;" src="../../../assets/images/icons/search.svg"
+											alt="search-icon" width="18" height="18">
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div id="sortby" class="sort-by d-md-flex align-items-center mb-0 collapse">
+						<div class="sortby-panel d-flex flex-wrap
+						   justify-content-center align-items-center">
+							<span class="sort-lable">
+								<span class="mr-1 ks-sort-text">Sort By :</span>
+								<span class="d-block d-lg-none btn-sort-close" data-toggle="collapse"
+									data-target="#sortby" aria-expanded="false" aria-controls="sortby">
+									<img src="../../../assets/images/filter-sortby/cross-filter.svg" alt="Close">
+								</span>
+							</span>
+							<div class="dropdown header-dropdown">
+								<a role="button" class="dropdown-toggle btn btn-sm cursor-point" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false">
+									<span *ngIf="sortbylebel?.key == null">Relevance or Popularity</span>
+									<span *ngIf="sortbylebel?.key != null">{{sortbylebel?.key}}</span>
+								</a>
+								<div class="dropdown-menu" role="menu">
+									<a (click)="clickEvent1()" [ngClass]="status1 ? 'success' : 'danger'"
+										role="menuitem" rel="noindex,nofollow" class="dropdown-item cursor-point"
+										(click)="sortProductascending('website_sequence+asc')">
+										<span>Relevance or Popularity</span> </a>
+									<a (click)="clickEvent2()" [ngClass]="status2 ? 'success' : 'danger'"
+										role="menuitem" rel="noindex,nofollow" class="dropdown-item cursor-point"
+										(click)="sortProductascending('ks_display_price+desc')">
+										<span>Price: High to Low</span> </a>
+									<a (click)="clickEvent3()" [ngClass]="status3 ? 'success' : 'danger'"
+										role="menuitem" rel="noindex,nofollow" class="dropdown-item cursor-point"
+										(click)="sortProductascending('ks_display_price+asc')">
+										<span>Price: Low to High</span> </a>
+									<a (click)="clickEvent4()" [ngClass]="status4 ? 'success' : 'danger'"
+										role="menuitem" rel="noindex,nofollow" class="dropdown-item cursor-point"
+										(click)="sortProductascending('name+asc')">
+										<span>Name - A to Z</span> </a>
+									<a (click)="clickEvent5()" [ngClass]="status5 ? 'success' : 'danger'"
+										role="menuitem" rel="noindex,nofollow" class="dropdown-item cursor-point"
+										(click)="sortProductascending('name+desc')">
+										<span>Name - Z to A</span> </a>
+								</div>
+							</div>
+						</div>
+						<div class="overlay-nav" data-toggle="collapse" data-target="#sortby" aria-expanded="false"
+							aria-controls="sortby"></div>
+					</div>
+					<div class="ml-lg-4 ml-auto">
+						<div class="d-flex align-items-center"> <span class="mr-1 lightbold show-text">Show</span>
+							<div class="dropdown header-dropdown
+							   dropdown-page-show">
+								<button class="btn btn-sm dropdown-toggle px-3" type="button" aria-expanded="false"
+									id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true">
+									{{totaldisplayValue}} </button>
+								<div class="product-select ks-prod-ppg dropdown-menu dropdown-menu-right"
+									aria-labelledby="dropdownMenuButton">
+									<a rel="noindex,nofollow" class="dropdown-item cursor-point"
+										(click)=totalNumberItems(10)>10</a>
+									<a rel="noindex,nofollow" class="dropdown-item cursor-point"
+										(click)=totalNumberItems(20)>20</a>
+									<a rel="noindex,nofollow" class="dropdown-item cursor-point"
+										(click)=totalNumberItems(30)>30</a>
+									<a rel="noindex,nofollow" class="dropdown-item cursor-point"
+										(click)=totalNumberItems(40)>40</a>
+								</div>
+							</div>
+							<form action="/shop" method="get">
+								<input type="hidden" name="ppg" class="ks_text" value="20">
+								<input type="hidden" name="category" value="product.public.category(28,)">
+							</form>
+						</div>
+					</div>
+					<div class="products_pager form-inline
+					   justify-content-center d-none">
+						<form method="get" action="/shop/category/odoo-all-28?category=28"
+							class="o_website_sale_search">
+							<div class="input-group">
+								<input type="text" name="search" class="search-query form-control
+								   oe_search_box" placeholder="Search..." value="">
+								<div class="input-group-append">
+									<button type="submit" class="btn
+									   btn-secondary oe_search_button" aria-label="Search" title="Search"><i class="fa fa-search"></i></button>
+								</div>
+							</div>
+						</form>
+						<div class="dropdown ks_price_list ml-2"> <a role="button" class="dropdown-toggle btn
+							   btn-secondary" data-toggle="dropdown">
+								USD
+							</a>
+							<div class="dropdown-menu" role="menu">
+								<a role="menuitem" class="dropdown-item" href="/shop/change_pricelist/2"> <span
+										class="switcher_pricelist" data-pl_id="2">USD</span> </a>
+								<a role="menuitem" class="dropdown-item" href="/shop/change_pricelist/1"> <span
+										class="switcher_pricelist" data-pl_id="1">EUR</span> </a>
+								<a role="menuitem" class="dropdown-item" href="/shop/change_pricelist/3"> <span
+										class="switcher_pricelist" data-pl_id="3">INR</span> </a>
+							</div>
+						</div>
+						<nav>
+							<ul class="pagination mb-0 ks_product_pager ml-2">
+								<li class="page-item disabled">
+									<a class="page-link" rel="noindex,nofollow"> <img
+											src="../../assets/images/shop-imgs/arrow-right.svg" class="pagination-arrow
+										   pagination-prev" alt="Right Arrow" width="10" height="10"> Previous </a>
+								</li>
+								<li class="page-item active"> <a rel="noindex,nofollow" class="page-link"
+										href="/shop/odoo-apps">1</a> </li>
+								<li class="page-item"> <a rel="noindex,nofollow" class="page-link"
+										href="/shop/odoo-apps/page/2">2</a> </li>
+								<li class="page-item"> <a rel="noindex,nofollow" class="page-link"
+										href="/shop/odoo-apps/page/3">3</a> </li>
+								<li class="page-item"> <a rel="noindex,nofollow" class="page-link"
+										href="/shop/odoo-apps/page/4">4</a> </li>
+								<li class="page-item"> <a class="page-link" rel="noindex,nofollow"
+										href="/shop/odoo-apps/page/2">Next
+										<img src="../../assets/images/shop-imgs/arrow-right.svg" class="pagination-arrow
+										   pagination-next" alt="Right Arrow" width="10" height="10">
+									</a> </li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<div class="col-lg-2 col-12 mb-4 ks-filter-outer d-md-block collapse aos-init aos-animate"
+					data-aos="fade-right" id="datafilter">
+					<div class="ks-filter-inner ">
+						<div class="filter-title d-flex d-lg-none ">
+							<h4 class="mb-0 filter-title-text">Filter</h4>
+							<button class="btn btn-sort-close" type="button" data-toggle="collapse"
+								data-target="#datafilter" aria-expanded="false" aria-controls="datafilter">
+								<img src="../../../assets/images/filter-sortby/cross-filter.svg" alt="Close">
+							</button>
+						</div>
+						<div class="ks-filter ks-cat-area bg-white mb-3" *ngIf="this.categories != '' ">
+							<h5 class="mb-0 py-3 pl-3 border-bottom">Categories</h5>
+							<ul class="list-unstyled mb-0" *ngFor="let item of categories;">
+								<li>
+									<a [ngClass]="{'class_name': item.name === currentCompany  }"
+										href="{{this.baseUrl}}{{item.href}}"
+										(click)="getProductBycategories(item.href,item.name)">{{item.name}}</a>
+								</li>
+							</ul>
+						</div>
+						<div class="ks-filter ks-verison-area bg-white mb-3" *ngIf="this.versions != '' ">
+							<h5 class="mb-0 py-3 pl-3 border-bottom">Versions</h5>
+							<ul class="list-unstyled mb-0 ks_product_version" *ngFor="let item of versions;">
+								<li>
+									<label class="container-checkbox border-bottom ks_version_label">
+										<p class="version-text mb-0">Version&nbsp;{{item.name}}</p>
+										<input type="checkbox" [value]="item.name" (change)="fiterVersion($event)"
+											class="ks_input_version"
+											[attr.checked]="item.checked === 'checked' ? true : null"> <span
+											class="checkmark"></span>
+									</label>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-10  pb-3 border-bottom product-listing">
+					<div *ngIf="isLoadingBool" class="loading-indicator">
+						<div class="loader">
+							<div class="loader-inner">
+								<div class="loader-line-wrap">
+									<div class="loader-line"></div>
+								</div>
+								<div class="loader-line-wrap">
+									<div class="loader-line"></div>
+								</div>
+								<div class="loader-line-wrap">
+									<div class="loader-line"></div>
+								</div>
+								<div class="loader-line-wrap">
+									<div class="loader-line"></div>
+								</div>
+								<div class="loader-line-wrap">
+									<div class="loader-line"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- lazy-loading-card-design -->
+					<div class="row mx-1" *ngIf="isLoadingBool_second">
+						<div class="col-lg-4 col-xl-3 col-sm-6 mb-4 px-1 pl-lg-3 pr-lg-0">
+							<div class="card ks-card mb-3 dummy-card-area p-2">
+								<div class="ks-dummy-horizontal-view d-lg-block d-flex">
+									<div
+										class="d-flex align-items-lg-center justify-content-lg-center py-lg-5 py-3 mr-2">
+										<img style="filter:invert(4%) sepia(19%) saturate(27%) hue-rotate(69deg) brightness(72%) contrast(262%)"
+											src="../../../assets/images/icons/loading.png" alt="" height="120"
+											width="120" class="img-fluid">
+									</div>
+									<div class="d-block w-100 align-items-center h-100">
+										<div class="ks-blanck-space w-100 mb-2"></div>
+										<div class="ks-blanck-space w-75 mb-1"></div>
+										<div class="ks-blanck-space w-25 mb-1"></div>
+										<div class="ks-blanck-space w-50 mb-3"></div>
+									</div>
+								</div>
+								<div class="d-flex align-items-center justify-content-center">
+									<div class="ks-blanck-space w-50 mb-1 mr-1"></div>
+									<div class="ks-blanck-space w-50 mb-1 ml-1"></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-xl-3 col-sm-6 mb-4 px-1 pl-lg-3 pr-lg-0">
+							<div class="card ks-card mb-3 dummy-card-area p-2">
+								<div class="ks-dummy-horizontal-view d-lg-block d-flex">
+									<div
+										class="d-flex align-items-lg-center justify-content-lg-center py-lg-5 py-3 mr-2">
+										<img style="filter:invert(4%) sepia(19%) saturate(27%) hue-rotate(69deg) brightness(72%) contrast(262%)"
+											src="../../../assets/images/icons/loading.png" alt="" height="120"
+											width="120" class="img-fluid">
+									</div>
+									<div class="d-block w-100 align-items-center h-100">
+										<div class="ks-blanck-space-y w-100 mb-2"></div>
+										<div class="ks-blanck-space-y w-75 mb-1"></div>
+										<div class="ks-blanck-space-y w-25 mb-1"></div>
+										<div class="ks-blanck-space-y w-50 mb-3"></div>
+									</div>
+								</div>
+								<div class="d-flex align-items-center justify-content-center">
+									<div class="ks-blanck-space-y w-50 mb-1 mr-1"></div>
+									<div class="ks-blanck-space-y w-50 mb-1 ml-1"></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-xl-3 col-sm-6 mb-4 px-1 pl-lg-3 pr-lg-0">
+							<div class="card ks-card mb-3 dummy-card-area p-2">
+								<div class="ks-dummy-horizontal-view d-lg-block d-flex">
+									<div
+										class="d-flex align-items-lg-center justify-content-lg-center py-lg-5 py-3 mr-2">
+										<img style="filter:invert(4%) sepia(19%) saturate(27%) hue-rotate(69deg) brightness(72%) contrast(262%)"
+											src="../../../assets/images/icons/loading.png" alt="" height="120"
+											width="120" class="img-fluid">
+									</div>
+									<div class="d-block w-100 align-items-center h-100">
+										<div class="ks-blanck-space w-100 mb-2"></div>
+										<div class="ks-blanck-space w-75 mb-1"></div>
+										<div class="ks-blanck-space w-25 mb-1"></div>
+										<div class="ks-blanck-space w-50 mb-3"></div>
+									</div>
+								</div>
+								<div class="d-flex align-items-center justify-content-center">
+									<div class="ks-blanck-space w-50 mb-1 mr-1"></div>
+									<div class="ks-blanck-space w-50 mb-1 ml-1"></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-xl-3 col-sm-6 mb-4 px-1 pl-lg-3 pr-lg-0">
+							<div class="card ks-card mb-3 dummy-card-area p-2">
+								<div class="ks-dummy-horizontal-view d-lg-block d-flex">
+									<div
+										class="d-flex align-items-lg-center justify-content-lg-center py-lg-5 py-3 mr-2">
+										<img style="filter:invert(4%) sepia(19%) saturate(27%) hue-rotate(69deg) brightness(72%) contrast(262%)"
+											src="../../../assets/images/icons/loading.png" alt="" height="120"
+											width="120" class="img-fluid">
+									</div>
+									<div class="d-block w-100 align-items-center h-100">
+										<div class="ks-blanck-space-y w-100 mb-2"></div>
+										<div class="ks-blanck-space-y w-75 mb-1"></div>
+										<div class="ks-blanck-space-y w-25 mb-1"></div>
+										<div class="ks-blanck-space-y w-50 mb-3"></div>
+									</div>
+								</div>
+								<div class="d-flex align-items-center justify-content-center">
+									<div class="ks-blanck-space-y w-50 mb-1 mr-1"></div>
+									<div class="ks-blanck-space-y w-50 mb-1 ml-1"></div>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+
+					<div class="row mx-1">
+						<div class="col-lg-4 col-xl-3 col-sm-6 mb-4 px-1 pl-lg-3 pr-lg-0 aos-init"
+							data-aos-duration="800" data-aos="flip-up" *ngFor="let item of this.allProdcuts">
+							<div class="card ks-card pb-3" *ngIf="this.allProdcuts.length != 0">
+								<div class="product-card-view d-lg-block d-flex ">
+
+									<div class="ks-thum-img text-center py-3"
+										[style.background-color]="item.background_color"
+										style="cursor:pointer !important">
+										<span class="fav-sec" (click)="addTowishlist(item)">
+											<svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24"
+												width="18px" class="fav-svg" [class.disabled]="item.in_wish === true">
+												<path d="M0 0h24v24H0z" fill="none" />
+												<path class="fev-hover"
+													d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+											</svg>
+										</span>
+										<a class="link-img-area" (click)="detailPage(item)" href="{{environment}}shop/{{item.product_href.split('/')[2]}}/{{item.product_href.split('/')[3]}}">
+											<img src="{{this.baseUrl}}web/image/product.product/{{item.product_var_id}}/{{item.logo}}"
+												alt="" width="120" height="120" />
+										</a>
+									</div>
+									<div class="ks-card-body px-3 px-sm-4 pt-3 w-100" (click)="detailPage(item)"
+										style="cursor:pointer !important">
+										<div class="ks-card-title  font-16 semi-bold mb-2 text-dark">
+											<a class="link-text-area" href="{{environment}}shop/{{item.product_href.split('/')[2]}}/{{item.product_href.split('/')[3]}}">
+												<span>{{item.name}}</span>
+											</a>
+										</div>
+										<div
+											class="d-flex align-items-md-center align-items-start justify-content-md-between flex-column flex-md-row justify-content-center">
+											<p class="review-rating mb-0 d-flex align-items-end">
+												<!-- 1 star  -->
+												<i
+													[ngClass]="(item.rating_avg == 0) ? 'far fa-star' : (item.rating_avg > 0 && item.rating_avg < 1) ? 'fas fa-star-half-alt' : 'fas fa-star'"></i>
+
+												<!-- 2 star  -->
+												<i
+													[ngClass]="(item.rating_avg > 1 && item.rating_avg < 2) ? 'fas fa-star-half-alt' : (item.rating_avg >= 2) ? 'fas fa-star' : 'far fa-star'"></i>
+
+												<!-- 3 star  -->
+												<i
+													[ngClass]="(item.rating_avg > 2 && item.rating_avg < 3) ? 'fas fa-star-half-alt' : (item.rating_avg >= 3) ? 'fas fa-star' : 'far fa-star'"></i>
+
+												<!-- 4 star  -->
+												<i
+													[ngClass]="(item.rating_avg > 3 && item.rating_avg < 4) ? 'fas fa-star-half-alt' : (item.rating_avg >= 4) ? 'fas fa-star' : 'far fa-star'"></i>
+
+												<!-- 5 star  -->
+												<i
+													[ngClass]="(item.rating_avg > 4 && item.rating_avg < 5) ? 'fas fa-star-half-alt' : (item.rating_avg >= 5) ? 'fas fa-star' : 'far fa-star'"></i>
+												<span class="pl-lg-2 pl-1 ks_rating_count">{{item.rating_count}}</span>
+											</p>
+											<div
+												class="ks-download-info  mt-1 d-flex align-items-center font-14 text-normalpy-2">
+												<img src="./../../../assets/images/icons/download-icon.svg" alt=""
+													width="14" height="14" class="mr-1" />
+												<span>{{item.downloads}}</span>
+											</div>
+										</div>
+										<div class="ks-price py-2" *ngIf="!isProductFree(item.price)">
+											<span>{{item.price }} </span>
+											<span *ngIf="item.original_price != null" class="ks-price-cut px-1 mx-1">
+												<span class="ks_undiscounted_price pl-1">
+													{{item.original_price}}
+												</span>
+											</span>
+										</div>
+										<div class="ks-price py-2" *ngIf="isProductFree(item.price) ">
+											<span>Free</span>
+										</div>
+									</div>
+								</div>
+								<div class="ks-card-footer px-3 pt-1 product-footer d-flex justify-content-between mt-auto">
+									<button *ngIf="item.in_cart==false" class="order-2 order-md-1 app-cart home_cart_button btn btn-primary p-0"
+										(click)="onSubmit(item)">Add to Cart</button>
+										<button style="width: 100%;" *ngIf="item.in_cart==true" class="order-2 order-md-1 app-cart home_cart_button btn btn-success p-0"
+									 	(click)="goToCart()">Go to Cart</button>
+									<button *ngIf="item.in_cart==false"  class="order-1 order-md-2 btn btn-secondary p-0 home_cart_button product_detail_cart"
+										(click)="buy_now(item)">Buy Now</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div *ngIf="!isLoadingBool">
+						<div class="text-center text-muted oe_product" *ngIf="this.allProdcuts.length==0">
+							<h3 class="css_editable_display mt8">No product defined.</h3>
+							<p *ngIf="!globalQuery"> No results found for {{lastString}}</p>
+
+							<p *ngIf="globalQuery"> No results found for<strong> {{globalQuery}} </strong></p>
+						</div>
+					</div>
+
+					<div class="col-12" *ngIf="this.pagination.page_count>1">
+						<div class="ks-pagination d-flex flex-wrap justify-content-end mt-4">
+							<nav>
+								<ul class="pagination mb-0">
+									<li class="page-item">
+										<a (click)="previousPage()" class="page-link" rel="noindex,nofollow">
+											<img src="../../assets/images/shop-imgs/arrow-right.svg"
+												class="pagination-arrow pagination-prev" alt="Right Arrow" width="10"
+												height="10"> Previous
+										</a>
+									</li>
+									<li (click)="filterDataPage(item)" *ngFor="let item of pagination.pages;"
+										[class.active]="selectedIndex === item.num-1" class="page-item">
+										<a rel="noindex,nofollow" class="page-link">{{item.num}}</a>
+									</li>
+
+									<li (click)="nextPage()" class="page-item">
+										<a class="page-link" rel="noindex,nofollow">Next
+											<img src="../../assets/images/shop-imgs/arrow-right.svg"
+												class="pagination-arrow pagination-next" alt="Right Arrow" width="10"
+												height="10">
+										</a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row mx-0">
+				<div class="col-lg-3 d-none" id="products_grid_before">
+					<form class="js_attributes" method="get">
+						<input type="hidden" name="ppg" class="ks_text" value="20">
+						<input type="hidden" name="versions" class="ks_version">
+						<input type="hidden" name="category" value="28">
+						<input type="hidden" name="search" value="">
+						<ul class="nav nav-pills flex-column mt16">
+							<li class="nav-item">
+								<div> <strong>Versions</strong> </div>
+								<select class="form-control" name="attrib">
+									<option value=""></option>
+									<option value="1-21">15.0</option>
+									<option value="1-18">14.0</option>
+									<option value="1-5">13.0</option>
+									<option value="1-1">12.0</option>
+									<option value="1-2">11.0</option>
+									<option value="1-3">10.0</option>
+									<option value="1-4">9.0</option>
+								</select>
+							</li>
+						</ul>
+					</form>
+				</div>
+				<div class="col-lg-12" id="products_grid"> </div>
+			</div>
+		</div>
+		<div *ngIf="category_content!=null || false" class="app-not-match grey-gradient px-2 py-4 py-md-5 aos-init"
+			data-aos="zoom-in">
+			<div class="container py-3">
+				<div class="row">
+					<div class="col-md-10 m-auto">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="details pr-md-5 text-center
+								   white-text aos-init" data-aos="fade-left" data-aos-duration="1000">
+									<div [innerHTML]="htmlData"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="app-not-match blue-gradient px-2 py-4 py-md-5 aos-init" data-aos="zoom-in">
+			<div class="container py-3">
+				<div class="row">
+					<div class="col-md-10 m-auto">
+						<div class="row">
+							<div class="col-md-8">
+								<div class="details pr-md-5">
+									<h2 class="bold font-30 white-text aos-init" data-aos="flip-up"
+										data-aos-duration="1000">
+										Couldn’t Find What You’re Looking?
+									</h2>
+									<p class="font-18 font-sm-18 mt-4 white-text
+							   mb-0 aos-init" data-aos="fade-left" data-aos-duration="1000"> We can custom-tailor
+										apps/themes as per your business requirements. If you have any idea which you
+										wish to
+										discuss, please feel free to reach out to us!
+									</p>
+									<a class="btn big btn-orange semi-bold
+							   mt-lg-5 my-3 white-text py-3 aos-init" target="_blank" href="/contact-us">Contact us Now!
+									</a>
+								</div>
+							</div>
+							<div class="col-md-4 d-none d-md-block aos-init
+						   aos-animate" data-aos="flip-right" data-aos-duration="1300">
+								<div class="not-match-img"> <img class="img-fluid"
+										src="../../assets/images/shop-imgs/match.webp"
+										alt="Couldn’t Find What You’re Looking" width="317" height="272"> </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="what-in-app dark-gradient py-4 py-md-5">
+			<div class="container py-3">
+				<div class="row">
+					<div class="col-md-12">
+						<h2 class="font-35 white-text mb-3 mt-3 mt-md-0 mb-md-5 light text-center aos-init aos-animate"
+							data-aos="fade-down" data-aos-duration="1000">What's in Store For You?
+						</h2>
+						<div class="ks-store-carousel-menu mx-auto">
+							<owl-carousel-o [options]="customOptions">
+								<ng-template carouselSlide>
+									<div class="slide py-md-4 py-2">
+										<div class="item ">
+											<div class="item option py-3 mx-2 text-center aos-init aos-animate d-flex align-items-center justify-content-center flex-column"
+												data-aos="fade-down" data-aos-duration="1000">
+												<div class="option-img">
+													<img src="../../../assets/images/shop-imgs/shop-store-for-you/1Small-Business.webp"
+														alt="Small Business" width="220" height="160">
+												</div>
+												<div class="font-18 my-3 white-text">Small Business</div>
+											</div>
+										</div>
+
+									</div>
+								</ng-template>
+								<ng-template carouselSlide>
+									<div class="slide py-md-4 py-2">
+										<div class="item ">
+											<div class="item option py-3 mx-2 text-center aos-init aos-animate d-flex align-items-center justify-content-center flex-column"
+												data-aos="fade-down" data-aos-duration="1000">
+												<div class="option-img">
+													<img src="../../../assets/images/shop-imgs/shop-store-for-you/2ERP_Migration_02.webp"
+														alt="ERP Migration" height="160">
+												</div>
+												<div class="font-18 white-text  my-3">ERP Migration</div>
+											</div>
+										</div>
+
+									</div>
+								</ng-template>
+								<ng-template carouselSlide>
+									<div class="slide py-md-4 py-2">
+										<div class="item ">
+											<div class="item option py-3 mx-2 text-center aos-init aos-animate d-flex align-items-center justify-content-center flex-column"
+												data-aos="fade-down" data-aos-duration="1000">
+												<div class="option-img">
+													<img src="../../../assets/images/shop-imgs/shop-store-for-you/3accounting-app.webp"
+														alt="Odoo Accounting Apps" height="160">
+												</div>
+												<div class="font-18 my-3 white-text ">Odoo Accounting Apps</div>
+											</div>
+										</div>
+
+									</div>
+								</ng-template>
+								<ng-template carouselSlide>
+									<div class="slide py-md-4 py-2">
+										<div class="item ">
+											<div class="item option py-3 mx-2 text-center aos-init aos-animate d-flex align-items-center justify-content-center flex-column"
+												data-aos="fade-down" data-aos-duration="1000">
+												<div class="option-img">
+													<img src="../../../assets/images/shop-imgs/shop-store-for-you/4erp-app.webp"
+														alt="Odoo Sales ERP Solutions" height="160">
+												</div>
+												<div class="font-18 my-3 white-text ">Odoo Sales ERP Solutions</div>
+											</div>
+										</div>
+
+									</div>
+								</ng-template>
+								<ng-template carouselSlide>
+									<div class="slide py-md-4 py-2">
+										<div class="item ">
+											<div class="item option py-3 mx-2 text-center aos-init aos-animate d-flex align-items-center justify-content-center flex-column"
+												data-aos="fade-down" data-aos-duration="1000">
+												<div class="option-img">
+													<img src="../../../assets/images/shop-imgs/shop-store-for-you/5dashboard-app.webp"
+														alt="Dashboard Apps" height="160">
+												</div>
+												<div class="font-18 my-3 white-text ">Dashboard Apps</div>
+											</div>
+										</div>
+
+									</div>
+								</ng-template>
+								<ng-template carouselSlide>
+									<div class="slide py-md-4 py-2">
+										<div class="item ">
+											<div class="item option py-3 mx-2 text-center aos-init aos-animate d-flex align-items-center justify-content-center flex-column"
+												data-aos="fade-down" data-aos-duration="1000">
+												<div class="option-img">
+													<img src="../../../assets/images/shop-imgs/shop-store-for-you/6crm-app.webp"
+														alt="Odoo CRM Apps" height="160">
+												</div>
+												<div class="font-18 my-3 white-text ">Odoo CRM Apps</div>
+											</div>
+										</div>
+
+									</div>
+								</ng-template>
+								<ng-template carouselSlide>
+									<div class="slide py-md-4 py-2">
+										<div class="item ">
+											<div class="item option py-3 mx-2 text-center aos-init aos-animate d-flex align-items-center justify-content-center flex-column"
+												data-aos="fade-down" data-aos-duration="1000">
+												<div class="option-img">
+													<img src="../../../assets/images/shop-imgs/shop-store-for-you/7inventory-app.webp"
+														alt="Odoo Inventory Apps" height="160">
+												</div>
+												<div class="font-18 my-3 white-text ">Odoo Inventory Apps</div>
+											</div>
+										</div>
+
+									</div>
+								</ng-template>
+							</owl-carousel-o>
+						</div>
+						<div class="font-40 regular text-center white-text mb-4 my-md-5 aos-init aos-animate"
+							data-aos="zoom-in" data-aos-duration="1500">An Odoo ERP solution for every business need!
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="we-offer px-2 py-5 we_offer_wrap">
+			<div class="container mb-lg-5 mb-2">
+				<div class="row">
+					<div class="col-md-7 m-auto">
+						<h2 class="white-text bold mb-3 my-md-4 font-35
+					   text-center pt-lg-5 aos-init" data-aos="flip-up" data-aos-duration="1000">We Also Offer
+						</h2>
+						<p class="text-center font-18 font-sm-18 white-text
+					   aos-init" data-aos="zoom-out-up" data-aos-duration="1000"> To meet the latest trends and demands of
+							our customers, Our Odoo ERP consultants and developers work hard on ERP implementation. We
+							are the
+							leading ERP Software Development Company that provides the best Odoo Apps with
+							{{free_support_days}} Days Support with
+							{{refund_validity}} Days Refund Policy.
+						</p>
+						<p class="text-center font-18 white-text aos-init" data-aos="zoom-out-up"
+							data-aos-duration="1000"> When
+							it comes to Odoo development, Odoo integrations, Odoo implementations, Odoo migrations, Odoo
+							consultations and delivering the best ERP system solutions overall.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer-panel d-lg-none">
+			<ul class="d-flex mb-0 p-0">
+				<li class="w-50 text-center">
+					<button class="btn p-3 d-flex align-items-center justify-content-center" type="button"
+						data-toggle="collapse" data-target="#sortby" aria-expanded="false" aria-controls="sortby">
+						<img src="../../../assets/images/filter-sortby/sortby-img.svg" alt="icon" width="23"
+							height="21">
+						<span class="ml-1 ks-text">Sort by</span>
+					</button>
+				</li>
+				<li class="w-50 text-center">
+					<button class="btn p-3 d-flex align-items-center justify-content-center" type="button"
+						data-toggle="collapse" data-target="#datafilter" aria-expanded="false"
+						aria-controls="datafilter">
+						<img src="../../../assets/images/filter-sortby/filter-img.svg" alt="icon" width="23"
+							height="21">
+						<span class="ml-1 ks-text">Filter</span>
+					</button>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

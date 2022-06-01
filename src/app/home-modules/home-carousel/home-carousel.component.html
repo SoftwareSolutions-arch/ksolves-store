@@ -1,0 +1,29 @@
+<section *ngIf="!isLoadingBool" class="banner-section">
+    <div id="carouselHomeFade" class="carousel slide carousel-fade position-relative" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a [routerLink]="['/festive_sale']"
+                    routerLinkActive="router-link-active">
+                    <img class="img-fluid" src="../../../assets/images/index-page/ksolves_store_main_page_banner.png"
+                        alt="Slider Image" width="1903" height="605">
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a [routerLink]="['/shop/magento-apps/magento-2-multi-vendor-marketplace-extension-111']"
+                    routerLinkActive="router-link-active">
+                    <img class="img-fluid w-100" src="../../../assets/images/index-page/Magento_Banner.jpg"
+                        alt="Slider Image" width="1903" height="605">
+                </a>
+            </div>
+            <div class="carousel-item" *ngFor="let item of this.bannerProducts">
+                <a href="{{this.front_end_url}}{{item.url}}">
+                    <img class="d-block w-100" src="{{this.baseUrl}}web/image/ks_website_theme.slider_product/{{item.id}}/background_img" alt="">
+                </a>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselHomeFade" role="button" data-slide="prev"> <span
+                class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
+        <a class="carousel-control-next" href="#carouselHomeFade" role="button" data-slide="next"> <span
+                class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+    </div>
+</section>

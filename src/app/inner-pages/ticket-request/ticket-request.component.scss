@@ -1,0 +1,183 @@
+.ticket_section {
+  .container {
+    @media screen and (max-width: 1500px) {
+      max-width: 1250px;
+    }
+    .ks-floating.ks-normal-area {
+      height: 42px;
+    }
+    .ks-message-area {
+      height: 140px;
+      textarea {
+        height: 140px;
+        max-height: 140px;
+        min-height: 140px;
+        resize: none;
+      }
+    }
+    .font-40 {
+      @media screen and (max-width: 768px) {
+        font-size: 25px;
+      }
+    }
+  }
+  .btn:disabled {
+    opacity: 1 !important;
+  }
+  .ks-floating > label {
+    bottom: 34px;
+    left: 8px;
+    position: relative;
+    padding: 0px 5px 0px 5px;
+    font-size: 13px;
+    transition: 0.1s;
+    pointer-events: none;
+    transform-origin: bottom left;
+    margin: 0;
+    opacity: 0.8;
+    display: inline-block;
+    background-color: #ffffff;
+    @media screen and (max-width: 390px) {
+      font-size: 11px;
+      // background-color: transparent;
+    }
+  }
+  .ks-floating > label.msg-area {
+    top: -140px;
+    left: 8px;
+    position: relative;
+    padding: 0px 5px 0px 5px;
+    font-size: 13px;
+    transition: 0.1s;
+    pointer-events: none;
+    transform-origin: bottom left;
+    margin: 0;
+    opacity: 0.8;
+    display: inline-block;
+    background-color: #ffffff;
+    @media screen and (max-width: 390px) {
+      font-size: 11px;
+      // background-color: transparent;
+    }
+  }
+  .ks-floating input:valid ~ label,
+  .ks-floating input.ng-valid ~ label,
+  .ks-floating textarea.ng-valid ~ label {
+    transform-origin: bottom left;
+    transform: translate(1px, -80%) scale(0.8);
+    opacity: 1;
+    background: #ffffff;
+    font-weight: 700;
+    font-size: 20px;
+    @media screen and (max-width: 390px) {
+      font-size: 12px;
+      transform: translate(1px, -115%) scale(0.8);
+    }
+  }
+  .ks-floating .ng-invalid.ng-touched ~ label,
+  .ks-floating input:focus ~ label,
+  .ks-floating textarea:focus ~ label {
+    transform: translate(1px, -80%) scale(0.8);
+    opacity: 1;
+    font-weight: 700;
+    font-size: 20px;
+    @media screen and (max-width: 390px) {
+      font-size: 12px;
+      transform: translate(1px, -115%) scale(0.8);
+    }
+  }
+  .ks-floating textarea > label {
+    top: 34px;
+    left: 8px;
+    position: relative;
+    padding: 0px 5px 0px 5px;
+    font-size: 13px;
+    transition: 0.1s;
+    pointer-events: none;
+    transform-origin: bottom left;
+    margin: 0;
+    opacity: 0.8;
+    display: inline-block;
+    background-color: #ffffff;
+  }
+
+  .ks-floating input:focus,
+  .ks-floating textarea:focus {
+    outline: none;
+  }
+  .ks-form-inputs-style {
+    .btn {
+      line-height: 45px !important;
+      padding: 0 45px !important;
+    }
+    .file-upload {
+      border: 1px solid #cdced0;
+      position: relative;
+      padding: 0.5rem 1rem;
+      overflow: hidden;
+      display: inline-block;
+      border-radius: 5px;
+      .attached-file {
+        position: absolute;
+        left: 0;
+        opacity: 0;
+      }
+    }
+  }
+}
+.ks-form-inputs-style {
+  .mat-form-field {
+    position: relative;
+    display: inline-block;
+    padding-top: 6px;
+    line-height: 1.5;
+    overflow: hidden;
+    input,
+    textarea {
+      box-sizing: border-box;
+      margin: 0;
+      border: solid 1px !important;
+      border-color: #cdced0 !important;
+      border-radius: 4px;
+      padding: 10px 13px 10px;
+      width: 100%;
+      height: inherit;
+      color: #585959;
+      background-color: #ffffff;
+      box-shadow: none;
+      caret-color: #cdced0;
+      transition: border 0.2s, box-shadow 0.2s;
+    }
+  }
+  .mat-form-field > textarea:focus,
+  .mat-form-field > input:focus {
+    box-shadow: inset 1px 0 #cdced0, inset -1px 0 #cdced0, inset 0 -1px #cdced0;
+    outline: none;
+    // border-top: transparent !important;
+  }
+  .mat-form-field > textarea:focus + label,
+  .mat-form-field > input:focus + label {
+    font-weight: 500;
+    font-size: 16px !important;
+    color: #5a5b5c;
+  }
+  // .mat-form-field > textarea:not(:focus) + label,
+  // .mat-form-field > input:not(:focus) + label {
+  //   opacity: 0;
+  // }
+  .mat-form-field > textarea + label,
+  .mat-form-field > input + label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    border-color: #cdced0;
+    width: 100%;
+    max-height: 100%;
+    color: #2e2d2d;
+    line-height: 15px;
+    cursor: text;
+    transition: color 0.2s, font-size 0.2s, line-height 0.2s;
+    opacity: 1;
+  }
+}

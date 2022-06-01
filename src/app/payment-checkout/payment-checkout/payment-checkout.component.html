@@ -1,0 +1,232 @@
+<main class="main-section ks-bg-col">
+   <div *ngIf="isLoadingBool" class="loading-indicator">
+      <div class="loader">
+    <div class="loader-inner">
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+    </div>
+</div>
+  </div>
+   <div class="ks-content">
+      <section class="review-order">
+         <div class="container bg-white-lg px-3 oe_website_sale">
+            <div class="row oe_cart">
+               <div class="product-detail-panel col-md-12 col-lg-4 px-md-4 pt-2 pt-lg-5 pt-md-3 pb-4">
+                  <div class="pb-2 ml-1 d-none d-lg-block">
+                     <span class="progress-dot"></span>
+                     <a class="no-decoration">
+                        <h3 class="cursor-pointer ">Review Order</h3>
+                     </a>
+                  </div>
+                  <div class="mt-lg-2 px-lg-2 h-100 ks-order">
+                     <h2 class="pt-lg-3 pb-3 font-20 f-w-600 ks-sub-header-title font-20">Your Order</h2>
+                     <div class="table-repon">
+                        <div class="table-area">
+                           <table class="js_cart_lines col-12">
+                              <tbody>
+                                 <tr *ngFor="let item of Allproducts">
+                                    <td>
+                                       <div class="checkout-product d-flex w-100 ks_product_cart_div mb-4 mb-md-5">
+                                          <div class="checkout-product-image text-center">
+                                             <img *ngIf="item.logo" src="{{this.baseUrl}}web/image/product.product/{{item.product_id}}/{{item.logo}}" alt="product-logo" class="img-fluid rounded">
+                                             <img *ngIf="!item.logo" src="{{this.baseUrl}}web/image/product.product/{{item.product_id}}/ks_product_logo" alt="product-logo" class="img-fluid rounded">
+
+                                          </div>
+                                          <div class="w-100">
+                                             <div class="w-100 ks-product-detail">
+                                                <div class="checkout-product-details d-flex ml-3 w-100 mb-3">
+                                                   <a class="font-18 ks-producttitle f-w-600" (click)="detsilPage(item)" href="{{environment}}shop/{{item.href.split('/')[2]}}/{{item.href.split('/')[3]}}">
+                                                      {{item.product_name}}
+                                                   </a>
+                                                   <span class="float-lg-right btn-delete-icon mx-2 pt-1">
+                                                      <a (click)=deleteItems(item) class="">
+                                                         <img src="../../../assets/images/icons/delete_red.svg" alt="delete-icon">
+                                                      </a>
+                                                   </span>
+                                                </div>
+                                             </div>
+                                             <div class="d-flex position-relative ml-3 quantity">
+                                                <div class="border-md-right pr-md-4 mr-3 mb-0">
+                                                   <div class="css_quantity input-group payment-page oe_website_spinner input-group">
+                                                      <div (click)=decrementItems(item) class="input-group-prepend d-flex">
+                                                         <a class="btn btn-link js_add_cart_json f-w-600">-</a>
+                                                      </div>
+
+                                                      <input type="text" disabled [(ngModel)]="item.product_qty" class="disabled bg-white js_quantity form-control quantity m-0 text-center">
+
+                                                      <div class="input-group-append d-flex" (click)=incrementItem(item)>
+                                                         <a class="btn btn-link float_left js_add_cart_json f-w-600">+</a>
+                                                      </div>
+
+                                                   </div>
+                                                </div>
+                                                <div class=" cart-price-sec d-sm-flex align-items-sm-center">
+                                                   <span class=" ks-price-money font-17 ">
+                                                      {{item.price_reduce_taxexcl}}&nbsp;
+                                                   </span>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     <div class="js_cart_summary col-12 short_cart_summary">
+                        <h4 class="mt-1 mt-lg-4 pb-3 font-20 f-w-600 mb-0">
+                           Order Details
+                        </h4>
+                        <div class="cart_total font-16">
+                           <table class="table mb-0">
+                              <tbody>
+                                 <tr class="order_total_untaxed">
+                                    <td class="noborder ks-title-area">
+                                       Subtotal:
+                                    </td>
+                                    <td class="text-right noborder ks-title-list">
+                                       {{website_cart_summary?.Subtotal }}&nbsp;
+                                    </td>
+                                 </tr>
+                                 <tr class="order_total_taxed">
+                                    <td class="noborder ks-title-area">
+                                       Taxes:
+                                    </td>
+                                    <td class="text-right noborder ks-title-list">
+                                       {{website_cart_summary?.Taxes }}&nbsp;
+                                    </td>
+                                 </tr>
+                                 <tr class="order_total">
+                                    <td class="ks-table-total-text">
+                                       <span class="">Total:</span>
+                                    </td>
+                                    <td class="text-right ks-table-total-amount">
+                                      <span class="">{{website_cart_summary?.Total }}&nbsp;</span>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     <div class="ks-promoo-payment-section mt-lg-0 mt-md-5 mt-4 mb-3 mb-md-4">
+                        <h4 class="f-w-600 mt-3">Promo Code...</h4>
+                        <!-- <p>Have a Promo code? Fill this field and apply.</p> -->
+                        <div class="alert alert-danger px-2 py-1" *ngIf="giftCouponStatus.promo_code_error_msg">{{giftCouponStatus.promo_code_error_msg}}</div>
+                        <div class="alert alert-success px-2 py-1" *ngIf="giftCouponStatus.promo_code_applied== true">Promocode applied successfully</div>
+
+                        <div class="input-group mb-3">
+                           <input [(ngModel)]="promo_code" type="text" class="form-control" placeholder="Promo Code"
+                              aria-label="Recipient's username" aria-describedby="basic-addon2">
+                           <div (click)="applyPromoCode()" class="input-group-append">
+                              <span class="input-group-text btn btn-primary" id="basic-addon2">Submit</span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="product-address-panel col-md-12 col-lg-4 border-rl px-md-4 px-xs-1 pt-lg-5 pb-4">
+                  <div class="ks_payment_box">
+                     <div class="pb-2 ml-1 d-none d-lg-block">
+                        <span class="progress-dot"></span>
+                        <a class="no-decoration">
+                           <h3 class="cursor-pointer">Checkout</h3>
+                        </a>
+                     </div>
+                     <div *ngIf="isShow" class="mt-lg-2 px-lg-2 h-100 ks-checkout" id="ks-address">
+                        <h2 class="pt-3 pb-3 font-20 f-w-600 ks-sub-header-title">Your Email</h2>
+                        <form [formGroup]="addressForm" class="checkout_autoformat">
+                           <input *ngIf="this.myAddress" readonly="false" formControlName="email" type="email" class="form-control font-14" >
+                           <input *ngIf="!this.myAddress"  formControlName="email" type="email" class="form-control font-14" >
+                           <ng-container *ngFor="let error of error_messages.email">
+                              <div class="error-message" *ngIf="addressForm.get('email').hasError(error.type) &&
+                                  (addressForm.get('email').dirty || addressForm.get('email').touched)">
+                                 {{error.message }}
+                              </div>
+                           </ng-container>
+                        </form>
+                     </div>
+                     
+                  </div>
+               </div>
+               <div *ngIf="total_amount>0"
+                  class="product-confirm-panel col-md-12 col-lg-4 px-md-4 pt-2 pt-lg-5 pb-4">
+                  <div class="pb-2 ml-1 d-none d-lg-block">
+                     <span class="progress-dot-orange"></span>
+                     <a class="no-decoration">
+                        <h4 class="cursor-pointer color-orange">Confirm Order</h4>
+                     </a>
+                  </div>
+                  <div class="mt-lg-2 px-lg-2 h-100 ks-payment">
+                     <h2 class="pt-3 pb-3 font-20 f-w-600 ks-sub-header-title">Your Payment</h2>
+                     <div class="ks-payment-area w-100">
+                        <div class="payment-method mt-md-3">
+                       
+                           <div class="payment_method">
+                              <form action="" class="o_payment_form mt-3">
+                                 <div class="card mb-4">
+                                    <div class="card-body" *ngFor="let item of this.payment_acquirers">
+                                       <div class="row">
+                                          <div class="col-12">
+                                             <label for="" class="payment-radio-buttons">
+                                                <input [checked]="item.name==myname" (click)="userInputData(item)" name="paypal" type="radio"
+                                                   class="mr-2">
+                                                <span class="payment_option_name">{{item.name}}</span>
+                                             </label>
+                                          </div>
+                                          <div class="col-lg-10 col-12">
+                                             <ul class="d-flex mb-0 ks-long-view pl-0">
+                                                <li *ngFor="let list of item.payment_icons" class="mr-xl-3 mr-2">
+                                                   <img style="width: 45px;"
+                                                      src="{{this.baseUrl}}web/image/payment.icon/{{list}}/image_payment_form" alt="visa-img">
+                                                </li>
+                                             </ul>
+                                          </div>
+
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <button [disabled]="!addressForm.valid" (click)="onSubmit()" type="submit"
+                                    class="w-100 btn btn-primary font-14 font-600"> Pay Now </button>
+                              </form>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <div *ngIf="total_amount==0"
+                  class="product-confirm-panel col-md-12 col-lg-4 px-md-4 pt-2 pt-lg-5 pb-4">
+                  <div class="pb-2 ml-1 d-none d-lg-block">
+                     <span class="progress-dot-orange"></span>
+                     <a class="no-decoration">
+                        <h4 class="cursor-pointer color-orange">Confirm Order</h4>
+                     </a>
+                  </div>
+                  <div class="mt-lg-2 px-lg-2 h-100 ks-payment">
+                     <div class="text-right">
+                        <button style="color: white;" (click)="confirmOrder()" routerLinkActive="router-link-active"
+                           class="btn ks-payment-zero-btn font-14 font-600">
+                           Confirm Order
+                        </button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+   </div>
+</main>

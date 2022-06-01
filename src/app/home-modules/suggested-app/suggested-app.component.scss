@@ -1,0 +1,199 @@
+
+.suggested-section {
+  min-height: 41vw !important;
+  background-color: white;
+}
+
+.suggested-section .large-card .card-body a .product-price {
+    color: #5a5b5c !important;
+}
+.suggested-section {
+  .container {
+    @media screen and (min-width: 1300px) {
+      max-width: 1250px;
+    }
+  }
+  .orange-gradient {
+    background: linear-gradient(180deg, #fa5e1f 0%, #eba721 176.17%), #ffd508;
+    box-shadow: 5px 10px 20px rgba(0.247, 0.110, 0.32, 0.40);
+    border-radius: 10px;
+  }
+  .btn-white {
+    padding: 8px 12px;
+    background: #ffffff;
+    color: var(--col-text-grey);
+  }
+  .btn-white:hover {
+    border: solid 1px #363737;
+    color: #ffffff;
+    background: #363737;
+  }
+  .o_website_rating_static {
+    // color: #facc2e;
+    img {
+      width: 12px;
+      margin-right: 2px;
+    }
+    .ks_rating_count {
+      padding-left: 3px;
+    }
+  }
+  .card-bg-pink {
+    background-color: #d74d56;
+  }
+  .card-bg-purple {
+    background-color: #512553;
+  }
+  .card-bg-white {
+    background-color: #ffffff;
+  }
+  .small-card {
+    height: 265px;
+    border-radius: 10px;
+    .small-section-title {
+      a {
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: none;
+        color: black;
+      }
+    }
+    .product-download {
+      color: var(--col-text-grey);
+      a {
+        text-decoration: none;
+        display:flex;
+        img {
+          filter: invert(100%);
+        }
+      }
+    }
+    .ks-whitish-style {
+      .product-download {
+        color: var(--col-text-grey);
+        a {
+          text-decoration: none;
+          img {
+            filter: invert(50%);
+          }
+        }
+      }
+    }
+  }
+  
+  .large-card {
+    border-radius: 10px;
+    .bg-white-card {
+      background-color: #ffffff;
+    }
+    .bg-grey-card {
+      background-color: #404040;
+    }
+    .card-thumn {
+      min-height: 326px;
+      border-radius: 10px 10px 0px 0px;
+    }
+    .card-body {
+      flex-wrap: wrap;
+      box-shadow: 5px 10px 25px rgba(0, 0, 0, 0.15);
+      border-radius: 0px 0px 10px 10px;
+      a {
+        text-decoration: none;
+        .o_website_rating_static {
+          .ks_rating_count {
+            color: var(--col-text-grey);
+          }
+        }
+        .product-price {
+          color: var(--col-text-grey);
+        }
+      }
+      .ks-card-footer {
+        .app-cart {
+          max-width: 150px;
+        }
+        .border {
+          border: 1px solid #dee2e6 !important;
+        }
+        .product-download {
+          a {
+            text-decoration: none;
+            color: var(--col-text-grey);
+            img {
+              filter: invert(60%);
+            }
+          }
+        }
+      }
+    }
+  }
+  .ks-scroll-view {
+    @media screen and (max-width: 992px) {
+      width: auto;
+      overflow: auto;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      &::-webkit-scrollbar {
+        display: none; /* for Chrome, Safari, and Opera */
+      }
+      .ks-scroll {
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        width: 100%;
+        .ks-md-900 {
+          width: 900px;
+        }
+        .orange-gradient {
+          h2 {
+            flex-wrap: wrap;
+            // white-space: pre-wrap;
+          }
+          p {
+            flex-wrap: wrap;
+            // white-space: pre-wrap;
+          }
+        }
+        .small-section-title {
+          flex-wrap: wrap;
+          white-space: initial;
+        }
+      }
+    }
+    @media screen and (max-width: 600px) {
+      margin-left: 20px;
+    }
+  }
+}
+
+.bg-blue-suggest {
+  background-color: #2B5FB1 !important;
+}
+
+.bg-green-sug {
+  background-color: #95BA7B !important;
+}
+
+.bg-grey-card {
+  background-color: #404040;
+}
+
+.product-download{
+  a{
+    display: flex;
+    align-items: center;
+  }
+}
+
+::ng-deep{
+   @media(max-width: 767px){
+    .owl-carousel .owl-item img.img-fluid{
+        width: auto; 
+        height: 120px;
+    } 
+  }
+}
+
+.ks_rating_count.font-12{
+  font-size: 14px;
+}

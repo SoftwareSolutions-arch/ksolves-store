@@ -1,0 +1,44 @@
+.ks-awards {
+  background: linear-gradient(180deg, #0a0909 0%, rgba(61, 61, 61, 0.93) 100%), #191918;
+  overflow: hidden;
+
+  .ks-awards-carousel {
+    max-width: 1100px;
+
+    .carousel-control-next,
+    .carousel-control-prev {
+      width: 40px;
+    }
+
+    .carousel-control-prev {
+      left: -60px;
+    }
+
+    .carousel-control-next {
+      right: -60px;
+    }
+  }
+
+  .ks-box-items {
+    background: #fffbf3;
+    width: 100%;
+    margin-right: 15px;
+    margin-bottom: 5px;
+
+    &.award-logo {
+      border-radius: 40px;
+      height: 190px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+@media (max-width:578px){
+  .ks-awards .ks-box-items.award-logo 
+  {
+    width: 90%;
+    margin: auto;
+  }
+}

@@ -1,0 +1,49 @@
+.sitemap {
+    .container {
+      @media screen and (max-width: 1500px) {
+        max-width: 1250px;
+      }
+      .bg_white_wrapper {
+        .page_heading_wrap {
+          .font-45 {
+            @media screen and (max-width: 768px) {
+              font-size: 30px;
+            }
+          }
+        }
+        .ks-title-groups {
+          h4 {
+            line-height: 26px;
+            color: #575757;
+            margin-bottom: 25px !important;
+          }
+          ul {
+            padding-left: 0;
+            list-style-type: none;
+            a {
+              text-decoration: none;
+              line-height: 19px;
+              color: #5a5b5c;
+              position: relative;
+              padding-left: 18px;
+              margin-bottom: 12px;
+            }
+            a:hover:before {
+              left: 3px;
+            }
+            a:before {
+              content: "";
+              position: absolute;
+              left: 0;
+              top: 3px;
+              width: 7px;
+              height: 12px;
+              background-image: url("../../../assets/images/sitemap/arrow.png");
+              transition: all 100ms ease-in-out;
+            }
+          }
+        }
+      }
+    }
+  }
+  

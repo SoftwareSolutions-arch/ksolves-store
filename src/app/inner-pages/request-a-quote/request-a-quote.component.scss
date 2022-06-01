@@ -1,0 +1,401 @@
+.ks-text-red {
+  color: #e84a5f;
+}
+.ks-content {
+  .container {
+    @media screen and (min-width: 1200px) {
+      max-width: 1250px;
+    }
+    .ks-floating.ks-normal-area {
+      height: 42px;
+    }
+    .ks-message-area {
+      height: 140px;
+      textarea {
+        height: 140px;
+        max-height: 140px;
+        min-height: 140px;
+        resize: none;
+      }
+    }
+  }
+}
+.btn:disabled {
+  opacity: 1 !important;
+}
+.ks-floating > label {
+  bottom: 34px;
+  left: 8px;
+  position: relative;
+  padding: 0px 5px 0px 5px;
+  font-size: 13px;
+  transition: 0.1s;
+  pointer-events: none;
+  transform-origin: bottom left;
+  margin: 0;
+  opacity: 0.8;
+  display: inline-block;
+  background-color: #ffffff;
+  @media screen and (max-width: 390px) {
+    font-size: 11px;
+    // background-color: transparent;
+  }
+}
+.ks-floating > label.msg-area {
+  top: -140px;
+  left: 8px;
+  position: relative;
+  padding: 0px 5px 0px 5px;
+  font-size: 13px;
+  transition: 0.1s;
+  pointer-events: none;
+  transform-origin: bottom left;
+  margin: 0;
+  opacity: 0.8;
+  display: inline-block;
+  background-color: #ffffff;
+  @media screen and (max-width: 390px) {
+    font-size: 11px;
+    // background-color: transparent;
+  }
+}
+.ks-floating input:valid ~ label,
+.ks-floating input.ng-valid ~ label,
+.ks-floating textarea.ng-valid ~ label {
+  transform-origin: bottom left;
+  transform: translate(1px, -80%) scale(0.8);
+  opacity: 1;
+  background: #ffffff;
+  font-weight: 700;
+  font-size: 20px;
+  @media screen and (max-width: 390px) {
+    font-size: 12px;
+    transform: translate(1px, -115%) scale(0.8);
+  }
+}
+.ks-floating .ng-invalid.ng-touched ~ label,
+.ks-floating input:focus ~ label,
+.ks-floating textarea:focus ~ label {
+  transform: translate(1px, -80%) scale(0.8);
+  opacity: 1;
+  font-weight: 700;
+  font-size: 20px;
+  @media screen and (max-width: 390px) {
+    font-size: 12px;
+    transform: translate(1px, -115%) scale(0.8);
+  }
+}
+.ks-floating textarea > label {
+  top: 34px;
+  left: 8px;
+  position: relative;
+  padding: 0px 5px 0px 5px;
+  font-size: 13px;
+  transition: 0.1s;
+  pointer-events: none;
+  transform-origin: bottom left;
+  margin: 0;
+  opacity: 0.8;
+  display: inline-block;
+  background-color: #ffffff;
+}
+
+.ks-floating input:focus,
+.ks-floating textarea:focus {
+  outline: none;
+}
+.quote {
+  padding: 125px 0 185px 0;
+  background-image: url("../../../assets/images//request a quote/team_photo.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  @media screen and (max-width: 1500px) {
+    padding: 91px 0 140px 0;
+    background-position: center center;
+  }
+  .container {
+    @media screen and (max-width: 1500px) {
+      max-width: 1250px;
+    }
+    p {
+      margin: 0 !important;
+      padding: 22px 0 0 0 !important;
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 33px;
+      text-align: center;
+      color: #fff9f9;
+    }
+  }
+}
+.quote:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 0;
+}
+
+.ks-request-contents {
+  background: #e5e5e5;
+  margin-top: -60px;
+  .container {
+    @media screen and (min-width: 1200px) {
+      max-width: 1250px;
+    }
+    .request_quote {
+      padding: 70px 75px 90px 75px;
+      border-radius: 20px;
+      background: #fff;
+      @media screen and (max-width: 1500px) {
+        padding: 50px;
+      }
+      @media screen and (max-width: 991px) {
+        padding: 10px 20px;
+      }
+      .request_quote-top p {
+        line-height: 30px;
+        color: #5a5b5c;
+        padding: 26px 0 63px 0;
+        @media screen and (max-width: 991px) {
+          padding: 26px 0 40px 0;
+        }
+      }
+      //form
+      .writeusform-wrap {
+        padding: 0 43px 0 0;
+        @media screen and (max-width: 1199px) {
+          padding: 0;
+        }
+        .writeusform {
+          padding: 0 35px 25px 35px;
+          border: 1px solid #e5e6e9;
+          border-radius: 20px;
+          @media screen and (max-width: 575px) {
+            padding: 0 20px 25px 20px;
+          }
+          .writeus {
+            line-height: 55px;
+            color: #e64a5e;
+            padding-top: 30px !important;
+            padding-bottom: 20px !important;
+            font-size: 35px;
+            @media screen and (max-width: 1500px) {
+              font-size: 30px;
+              line-height: 34px;
+            }
+          }
+          .ks-form-inputs-style {
+            .mat-form-field {
+              .custom-width {
+                padding: 10px 10px 8px 10px;
+                width: 100%;
+                border-color: #cdced0 !important;
+                background: #fff;
+                font-size: 12px;
+                border-radius: 4px;
+                color: #585959;
+              }
+            }
+            .ks-quote-form-btn {
+              .btn {
+                text-decoration: none;
+                padding: 12px 30px;
+                width: 148px;
+              }
+            }
+          }
+        }
+      }
+      //form ends
+      //content starts
+      .reqRight {
+        .border-steps {
+          .ks-m-position {
+            float: left;
+            position: relative;
+            width: 50%;
+            padding: 0 30px 0 102px;
+            margin: 60px 0 0 0;
+            min-height: 144px;
+            z-index: 6;
+            @media screen and (max-width: 1500px) {
+              margin: 70px 0 0 0;
+            }
+            @media screen and (max-width: 768px) {
+              width: 100%;
+              margin: 10px 0 0 10px;
+              min-height: 110px;
+            }
+            .product-image {
+              width: 96px;
+              position: absolute;
+              left: 0;
+            }
+            .product-description {
+              h3 {
+                line-height: 31px;
+                color: #5b5c5c;
+              }
+              .ks-para {
+                font-size: 16px;
+                @media screen and (max-width: 1500px) {
+                  font-size: 13px;
+                }
+              }
+            }
+          }
+          .cart-product-detail {
+            float: left;
+            position: relative;
+            width: 50%;
+            padding: 0 30px 0 102px;
+            margin: 90px 0 0 0;
+            min-height: 144px;
+            z-index: 6;
+            @media screen and (max-width: 768px) {
+              width: 100%;
+              margin: 10px 0 0 10px;
+              min-height: 110px;
+            }
+            .product-image {
+              width: 96px;
+              position: absolute;
+              left: 0;
+            }
+            .product-description {
+              h3 {
+                line-height: 31px;
+                color: #5b5c5c;
+              }
+              .ks-para {
+                font-size: 16px;
+                @media screen and (max-width: 1500px) {
+                  font-size: 13px;
+                }
+              }
+            }
+          }
+          .rowDn {
+            width: 100%;
+            position: absolute;
+            left: 42px;
+            bottom: -8px;
+            height: 51px;
+            z-index: 7;
+            background: url("../../../assets/images//request a quote/row-down3.png")
+              no-repeat;
+            @media screen and (max-width: 1500px) {
+              left: 44px;
+              background-size: 52%;
+            }
+            @media screen and (max-width: 1199px) {
+              display: none;
+            }
+          }
+        }
+        .border-steps:before {
+          position: absolute;
+          content: "";
+          width: 100%;
+          height: 50px;
+          background: url("../../../assets/images//request a quote/row-up.png");
+          background-repeat: no-repeat;
+          top: 49px !important;
+          left: 42px !important;
+          z-index: 7;
+          @media screen and (max-width: 1500px) {
+            left: 44px !important;
+            background-size: 52%;
+            top: 53px !important;
+          }
+          @media screen and (max-width: 1199px) {
+            display: none;
+          }
+        }
+        .border-steps:after {
+          position: absolute;
+          content: "";
+          width: 100%;
+          height: 130px;
+          background: url("../../../assets/images//request a quote/row_down.png");
+          background-repeat: no-repeat;
+          overflow: hidden;
+          top: 183px !important;
+          left: 42px !important;
+          z-index: 7;
+          @media screen and (max-width: 1500px) {
+            left: 44px !important;
+            background-size: 52%;
+            top: 197px !important;
+          }
+          @media screen and (max-width: 1199px) {
+            display: none;
+          }
+        }
+      }
+      //content ends
+    }
+  }
+}
+.ks-form-inputs-style {
+  .mat-form-field {
+    position: relative;
+    display: inline-block;
+    padding-top: 6px;
+    line-height: 1.5;
+    overflow: hidden;
+    input,
+    textarea {
+      box-sizing: border-box;
+      margin: 0;
+      border: solid 1px !important;
+      border-color: #cdced0 !important;
+      border-radius: 4px;
+      padding: 10px 13px 10px;
+      width: 100%;
+      height: inherit;
+      color: #585959;
+      background-color: #ffffff;
+      box-shadow: none;
+      caret-color: #cdced0;
+      transition: border 0.2s, box-shadow 0.2s;
+    }
+  }
+  .mat-form-field > textarea:focus,
+  .mat-form-field > input:focus {
+    box-shadow: inset 1px 0 #cdced0, inset -1px 0 #cdced0, inset 0 -1px #cdced0;
+    outline: none;
+    // border-top: transparent !important;
+  }
+  .mat-form-field > textarea:focus + label,
+  .mat-form-field > input:focus + label {
+    font-weight: 500;
+    font-size: 16px !important;
+    color: #5a5b5c;
+  }
+  // .mat-form-field > textarea:not(:focus) + label,
+  // .mat-form-field > input:not(:focus) + label {
+  //   opacity: 0;
+  // }
+  .mat-form-field > textarea + label,
+  .mat-form-field > input + label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    border-color: #cdced0;
+    width: 100%;
+    max-height: 100%;
+    color: #2e2d2d;
+    line-height: 15px;
+    cursor: text;
+    transition: color 0.2s, font-size 0.2s, line-height 0.2s;
+    opacity: 1;
+  }
+ 
+}

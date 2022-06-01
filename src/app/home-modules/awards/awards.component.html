@@ -1,0 +1,16 @@
+<section class="ks-awards bg-dark-gradient">
+    <div class="container pt-4 pb-4 pt-md-5 pb-md-5">
+        <h3 class="text-center text-theme-primary mb-4 mt-4 f-w-300 font-40">Awards & Accreditations</h3>
+        <p class="font-16 text-light text-center mb-5">In our 8 years in the industry, we have built quite a reputation.
+            Check out few of the awards and <br> recognitions we have gathered along the way. </p>
+        <div class="ks-awards-carousel mx-auto">
+            <owl-carousel-o [options]="customOptions">
+                <ng-template carouselSlide *ngFor="let item of awards">
+                    <div class="slide my-md-5 my-2 ks-box-items award-logo"> 
+                        <img src="{{item.awardsImgpath}}" alt="ISV" class="img-fluid" width="260" height="104" loading="lazy"> 
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+    </div>
+</section>

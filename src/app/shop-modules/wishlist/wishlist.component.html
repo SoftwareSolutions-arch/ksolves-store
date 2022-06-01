@@ -1,0 +1,146 @@
+<main class="main-section ks-bg-col">
+    <div *ngIf="isLoadingBool" class="loading-indicator">
+        <div class="loader">
+            <div class="loader-inner">
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ks-content">
+        <section class="ks-add-wishlist">
+            <div class="conatiner ks-inner">
+                <div class="container light-bg px-0">
+                    <div class="row mx-0 py-5">
+                        <div class="col-md-12 col-xl-11 m-auto">
+                            <div class="cart-detail">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="cart-heading border-bottom pb-3 mb-3 f-w-600 text-dark">
+                                            <div class="font-20">
+                                                My Wishlist (
+                                                <span>{{this.myWishListItems.length}}</span>
+                                                Items)
+                                            </div>
+                                        </div>
+                                        <form [formGroup]="optionForm">
+                                            <div class="row mx-0">
+                                                <div *ngFor="let item of myWishListItems"
+                                                    class="col-lg-6 col-md-12 mb-0 ks_wish_id ">
+                                                    <div
+                                                        class="cart-product-detail d-flex justify-content-center align-items-center flex-column flex-md-row">
+                                                        <div class="product-image mb-3 mb-md-0">
+                                                            <a class="link-img-area" (click)="detailPage(item)" href="{{environment}}{{item.href}}">
+                                                                <img src="{{this.baseUrl}}web/image/product.product/{{item.id}}/{{item.logo}}"
+                                                                    alt="product-logo" class="img-fluid">
+                                                            </a>
+                                                        </div>
+                                                        <div
+                                                            class="product-description col-md-8 col-12 ml-auto pl-4 pl-md-4">
+                                                            <h3 class="f-w-700 font-24">
+                                                                <div (click)="detailPage(item)" class="color-5a">
+                                                                    <a class="link-text-area" href="{{environment}}{{item.href}}">
+                                                                        <div class="color-5a">{{item.name}}</div>
+                                                                    </a>
+                                                                </div>
+                                                                
+                                                            </h3>
+                                                            <div class="d-flex border-bottom pb-lg-3 pb-2 mb-lg-3 mb-2">
+                                                                <div class="ks-reating">
+                                                                    <!-- *ngIf="item.ks_rating_avg" -->
+                                                                    <div class="review-rating d-flex align-items-end justify-content-center">
+                                                                        <!-- 1 star  -->
+                                                                        <i
+                                                                            [ngClass]="(item.ks_rating_avg == 0) ? 'far fa-star' : (item.ks_rating_avg > 0 && item.ks_rating_avg < 1) ? 'fas fa-star-half-alt' : 'fas fa-star'"></i>
+
+                                                                        <!-- 2 star  -->
+                                                                        <i
+                                                                            [ngClass]="(item.ks_rating_avg > 1 && item.ks_rating_avg < 2) ? 'fas fa-star-half-alt' : (item.ks_rating_avg >= 2) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                                                        <!-- 3 star  -->
+                                                                        <i
+                                                                            [ngClass]="(item.ks_rating_avg > 2 && item.ks_rating_avg < 3) ? 'fas fa-star-half-alt' : (item.ks_rating_avg >= 3) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                                                        <!-- 4 star  -->
+                                                                        <i
+                                                                            [ngClass]="(item.ks_rating_avg > 3 && item.ks_rating_avg < 4) ? 'fas fa-star-half-alt' : (item.ks_rating_avg >= 4) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                                                        <!-- 5 star  -->
+                                                                        <i
+                                                                            [ngClass]="(item.ks_rating_avg > 4 && item.ks_rating_avg < 5) ? 'fas fa-star-half-alt' : (item.ks_rating_avg >= 5) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                                        <span
+                                                                            class="pl-2 ks_rating_count f-w-600 font-15">{{item.ks_rating_avg}}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                class="ks-p-v d-flex align-items-start align-items-md-center align-items-lg-start align-items-xl-center border-bottom pb-lg-3 pb-2 mb-3 justify-content-between ks-price-version flex-lg-column flex-xl-row flex-row ">
+                                                                <div
+                                                                    class="product-price font-20 primary-text f-w-700 mb-md-0 mb-lg-2 mb-xl-0 mb-2">
+                                                                    <span>{{item.price}}</span>
+                                                                </div>
+                                                                <div *ngIf="item.product_version != false"
+                                                                    class="select-version">
+                                                                    <div class="d-flex align-items-center">
+                                                                        <span class="mr-1 f-w-500 font-16">Version</span>
+                                                                        <div class="dropdown version-dropdown">
+                                                                            <select (change)="changeVersion(item,$event)" class="btn btn-sm btn-primary px-3 font-18 py-1 dropdown-toggle">
+                                                                                <option *ngFor="let items of item.versions" value="{{items.id}}"  >{{items.name}}</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                class="cart-action d-flex justify-content-between align-items-center">
+                                                                <button (click)="deleteProduct(item.wish_id)"
+                                                                    class="btn color-5a d-flex align-items-center">
+                                                                    <span class="icon">
+                                                                        <img src="assets/images/add-wishlist/delete.svg"
+                                                                            alt="remove-icon" height="20">
+                                                                    </span>
+                                                                    <p class="mt-1 mb-0 ml-2">
+                                                                        Remove
+                                                                    </p>
+                                                                </button>
+                                                                <button (click)="addTocart(item)"
+                                                                    class="btn color-5a d-flex align-items-center">
+                                                                    <span class="icon">
+                                                                        <img src="assets/images/add-wishlist/cart.svg"
+                                                                            alt="cart-icon" height="20">
+                                                                    </span>
+                                                                    <p class="mt-1 mb-0 ml-1">
+                                                                        Move To Cart
+                                                                    </p>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<app-suggested-app></app-suggested-app>

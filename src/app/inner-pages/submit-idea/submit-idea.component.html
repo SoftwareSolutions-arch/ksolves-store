@@ -1,0 +1,139 @@
+<div *ngIf="isLoadingBool" class="loading-indicator">
+    <div class="loader">
+    <div class="loader-inner">
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+    </div>
+</div>
+</div>
+<main class="main-section ks-bg-grey-col">
+   <div class="ks-content">
+       <section class="px-3 ticket_section">
+           <div class="container pt-4 pt-md-5 pb-4">
+               <div class="row py-5 light-bg rounded-20">
+                   <div class="col-lg-10 col-md-12 m-auto">
+                       <div class="row mx-0 ks-submit-idea">
+                           <div class="col-md-12">
+                               <h2 class="f-w-700 font-40 text-center mb-4">
+                                   Write to US
+                               </h2>
+                               <div class="border rounded-20">
+                                   <form action="" [formGroup]="submitidea"
+                                       class="container-fluid px-0 ks-form-inputs-style" (ngSubmit)=onSubmit()>
+                                       <div class="row mx-0 ">
+                                           <div class="col-lg-10 col-md-12 m-auto">
+                                               <div class="row mx-0 py-5">
+                                                   <div class="col-md-12">
+                                                       <div class="mat-form-field w-100 mb-4 font-16">
+                                                           <div class="ks-floating ks-normal-area text-left">
+                                                               <input type="text" placeholder="" class="font-12" formControlName="name"  required>
+                                                               <label class="for-label">Name*</label>
+                                                           </div>
+                                                           <div *ngIf="validationErrorExists();" style="color:red;text-align: left;">
+                                                            <div *ngIf="hasError('name', 'required')">*Required</div>
+                                                        </div>
+                                                       </div>
+                                                   </div>
+                                                   <div class="col-md-6">
+                                                       <div class="mat-form-field w-100 mb-4 font-16">
+                                                           <div class="ks-floating ks-normal-area text-left">
+                                                               <input type="email" placeholder="" class="font-12" formControlName="email" required>
+                                                               <label class="for-label">Email*</label>
+                                                           </div>
+                                                           <div *ngIf="validationErrorExists();" style="color:red;text-align: left;">
+                                                            <div *ngIf="hasError('email', 'required')">*Required</div>
+                                                            <div *ngIf="hasError('email', 'pattern')">*Please enter valid email</div>
+                                                        </div>
+                                                       </div>
+                                                   </div>
+                                                   <div class="col-md-6">
+                                                       <div class="mat-form-field w-100 mb-4 font-16">
+                                                           <div class="ks-floating ks-normal-area text-left">
+                                                               <input type="tel" placeholder="" class="font-12" formControlName="phone" required>
+                                                               <label class="for-label">Phone Number</label>
+                                                           </div>
+                                                           <div *ngIf="validationErrorExists();" style="color:red;text-align: left;">
+                                                            <div *ngIf="hasError('phone', 'required')">*Required</div>
+                                                            <div *ngIf="hasError('phone', 'pattern')">*Please enter valid phone number</div>
+                                                        </div>
+                                                       </div>
+                                                   </div>
+                                                   <div class="col-md-12">
+                                                       <div class="mat-form-field w-100 mb-4 font-16">
+                                                           <div class="ks-floating ks-message-area text-left">
+                                                               <textarea rows="5" class="font-14" placeholder="" formControlName="idea"></textarea>
+                                                               <label class="for-label" class="msg-area">Your Idea*</label>
+                                                           </div>
+                                                           <div *ngIf="validationErrorExists();" style="color:red;text-align: left;">
+                                                            <div *ngIf="hasError('idea', 'required')">*Required</div>
+                                                        </div>
+                                                       </div>
+                                                   </div>
+                                                   <div class="col-md-12">
+                                                       <div class="text-right">
+                                                           <button 
+                                                               class="o_website_form_send btn btn-primary font-16 f-w-500">
+                                                               Submit
+                                                           </button>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </div>
+
+                                       </div>
+                                   </form>
+                               </div>
+                           </div>
+                           <div class="col-xl-4 col-lg-5 ks-lower-content">
+                               <h4 class="f-w-600 dark-text mt-3 mb-0">
+                                   Else, you can call us
+                               </h4>
+                               <div class="d-flex align-items-center">
+                                   <div class="mr-3">
+                                       <img src="../../../assets/images/submit idea/telephone.png" alt="phone-icon" width="20">
+                                   </div>
+                                   <div class="phone-numbers">
+                                       <a class="m-0 font-16 text-normal" href="tel:+91-7498170227">
+                                           <span>+91-7498170227</span>,
+                                       </a>
+                                       <a class="m-0 font-16 text-normal" href="tel:+1(646)-203-1075">
+                                           <span>+1(646)-203-1075</span>
+                                       </a>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-xl-4 col-lg-5 ks-lower-content">
+                               <h4 class="f-w-600 dark-text mt-3 mb-0">
+                                   or email us at
+                               </h4>
+                               <div class="d-flex align-items-center">
+                                   <div class="mr-3">
+                                       <img src="../../../assets/images/submit idea/email.png" alt="email-icon" width="20">
+                                   </div>
+                                   <div class="phone-numbers ks-email-area">
+                                       <a href="mailto:sales@ksolves.com" class="text-normal font-16">
+                                           <span>sales@ksolves.com</span>
+                                       </a>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </section>
+   </div>
+</main>

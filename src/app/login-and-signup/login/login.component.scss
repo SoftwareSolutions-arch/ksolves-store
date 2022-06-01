@@ -1,0 +1,63 @@
+  .ks-bg-col {
+      background-color: #f8f8f8;
+    }
+    .font-29 {
+      font-size: 29px;
+    }
+.signup {
+      @media screen and (max-width: 1500px) {
+        .container {
+          max-width: 1250px;
+        }
+      }
+      .signup-box {
+        .form-section {
+          width: 350px;
+          @media screen and (max-width: 991px) {
+            width: 380px;
+          }
+          @media screen and (max-width: 767px) {
+            width: 100%;
+          }
+          .oe_login_form {
+            max-width: 300px;
+            position: relative;
+            margin: 50px auto;
+            @media screen and (max-width: 991px) {
+              max-width: 380px;
+              margin: 0px auto;
+            }
+            .form-group {
+              .form-control {
+                border-color: #e5e0e0 !important;
+                border-radius: 4px;
+                padding: 8px 8px;
+                font-size: 0.9rem;
+                line-height: 1.5rem;
+              }
+              .btn {
+                padding: 8px 30px;
+                font-size: 0.9rem !important;
+              }
+              .btn-primary {
+                background: #e64a5e !important;
+                color: #ffffff;
+                line-height: normal;
+                border: solid 1px #e64a5e;
+              }
+              a {
+                text-decoration: none;
+              }
+              .ks-text-position {
+                display: flex;
+                align-items: center;
+                justify-content: end;
+                @media screen and (max-width: 575px) {
+                  justify-content: flex-start;
+                }
+              }
+            }
+          }
+        }
+      }
+}

@@ -1,0 +1,15 @@
+.ks-policy {
+  .container {
+    @media screen and (max-width: 1500px) {
+      max-width: 1250px;
+    }
+  }
+}
+.text-normal{
+  color: #ffc107!important;
+  cursor: pointer;
+}
+
+.text-normal:hover{
+  color: #ba8b00!important;
+}

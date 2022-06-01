@@ -1,0 +1,65 @@
+.main-section {
+    .newsHeading {
+      background: #0071bc;
+      padding: 90px 0 180px 0;
+      @media screen and (max-width: 991px) {
+        padding-top: 40px;
+        padding-left: 0.5rem;
+        padding-bottom: 130px;
+      }
+      .container {
+        @media screen and (max-width: 1500px) {
+          max-width: 1250px;
+        }
+      }
+      p {
+        margin: 30px 0 0 0;
+        line-height: 28px;
+      }
+    }
+    //cards style starts
+    .succes-story-page {
+      .ks-cards {
+        .container {
+          @media screen and (max-width: 2000px) {
+            max-width: 1250px;
+          }
+        }
+        .awardBox {
+          padding: 94px 157px;
+          margin: -80px 0 0 0;
+          border-radius: 20px;
+          position: relative;
+          z-index: 2;
+          @media screen and (max-width: 1500px) {
+            padding: 94px 62px;
+          }
+          @media screen and (max-width: 991px) {
+            padding-left: 1rem;
+            padding-right: 1rem;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+          }
+          .ks-mt-md {
+            @media screen and (max-width: 991px) {
+              margin-top: 1.5rem;
+            }
+          }
+          .awardBox-single {
+            box-shadow: 5px 10px 25px rgb(0 0 0 / 10%);
+            border-radius: 25px;
+            .awardBox-single-txt {
+              padding: 22px 35px 62px 35px;
+              p {
+                padding: 25px 0 0 0 !important;
+                line-height: 25px;
+                color: #5a5b5c;
+              }
+            }
+          }
+        }
+      }
+    }
+    //   cards style ends
+  }
+  

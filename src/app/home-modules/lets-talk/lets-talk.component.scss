@@ -1,0 +1,37 @@
+.ks-reach-out {
+    .reach-bg {
+      background-color: #1c1c1c;
+      height: 400px;
+      width: 100%;
+      @media(min-width: 992px){
+        background: url(./../../../assets/images/index-page/reach-out-bg.jpg) no-repeat;
+        object-fit: cover; 
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    }
+    .lets-talk-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      right: 0;
+      bottom: 0;
+      .primary-text {
+        color: #e84a5f;
+      }
+      .white-text {
+        color: #ffffff;
+      }
+      .btn-primary {
+        background: #e64a5e !important;
+        color: #ffffff;
+        line-height: normal;
+        border: solid 1px #e64a5e;
+      }
+    }
+  }

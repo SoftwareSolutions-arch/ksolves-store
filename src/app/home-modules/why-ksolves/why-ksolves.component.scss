@@ -1,0 +1,198 @@
+@media screen and (min-width: 992px) {
+  .why-ksolves {
+      transform: scaleX(-1); 
+        background-color: #000000;
+        background-image: url("./../../../assets/images/index-page/why-ksolves/ring.webp");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: 60% -35px;
+      .why-choose-ksolves {
+        .ks-rotate {
+          transform: scaleX(-1) translateY(-80px) !important;
+        }
+      }
+      .ks-sm-logo {
+        margin-right: 10%;
+        margin-bottom: 80px;
+        transition: all 0.3s ease-in-out;
+        @media (max-width: 1200px) {
+          display: none;
+        }
+      }
+      .choose-ksolves-listing {
+        ul {
+          list-style-type: none;
+          // 1----------------------
+          li:first-child {
+            left: 30%;
+          }
+          li:first-child:before {
+            top: 10px;
+            right: -75px;
+          }
+          li:first-child:after {
+            top: 70px;
+            transform: rotate(45deg);
+            right: -160px;
+          }
+          // 2----------------------
+          li:nth-child(2) {
+            left: 20%;
+          }
+          li:nth-child(2):before {
+            top: 15px px;
+            right: -80px;
+          }
+          li:nth-child(2):after {
+            top: 65px;
+            transform: rotate(30deg);
+            right: -170px;
+          }
+          // 3----------------------
+          li:nth-child(3) {
+            left: 10%;
+          }
+          li:nth-child(3):before {
+            top: 10px;
+            right: -80px;
+          }
+          li:nth-child(3):after {
+            top: 45px;
+            transform: rotate(25deg);
+            right: -175px;
+          }
+          // 4----------------------blank
+          li:nth-child(4) {
+            left: 0%;
+          }
+          li:nth-child(4):before {
+            top: 7px;
+            display: none;
+          }
+          li:nth-child(4):after {
+            top: 30px;
+            transform: rotate(15deg);
+            right: -200px;
+            display: none;
+          }
+          // 5----------------------
+          li:nth-child(5) {
+            left: -10%;
+          }
+          li:nth-child(5):before {
+            top: 10px;
+            right: -120px;
+          }
+          li:nth-child(5):after {
+            top: 20px;
+            transform: rotate(0deg);
+            right: -220px;
+          }
+          // 6----------------------blank
+          li:nth-child(6) {
+            left: 0%;
+          }
+          li:nth-child(6):before {
+            top: 15px;
+            right: -90px;
+            display: none;
+          }
+          li:nth-child(6):after {
+            top: 10px;
+            display: none;
+            transform: rotate(-15deg);
+            right: -190px;
+          }
+          // 7----------------------
+          li:nth-child(7) {
+            left: 10%;
+          }
+          li:nth-child(7):before {
+            top: 6px;
+            right: -75px;
+          }
+          li:nth-child(7):after {
+            top: -10px;
+            transform: rotate(-25deg);
+            right: -160px;
+          }
+          // 8----------------------
+          li:nth-child(8) {
+            left: 20%;
+          }
+          li:nth-child(8):before {
+            top: -2px;
+            right: -73px;
+          }
+          li:nth-child(8):after {
+            top: -30px;
+            transform: rotate(-34deg);
+            right: -160px;
+          }
+          // 9----------------------
+          li:nth-child(9) {
+            left: 30%;
+          }
+          li:nth-child(9):before {
+            top: -12px;
+            right: -75px;
+          }
+          li:nth-child(9):after {
+            top: -42px;
+            transform: rotate(-38deg);
+            right: -160px;
+          }
+          li {
+            position: relative;
+            margin-bottom: 30px;
+            cursor: pointer;
+            .ks-text {
+              display: block;
+              transform: scaleX(-1);
+              text-align: left;
+              transition: 0.3s ease-in-out;
+            }
+          }
+          li:hover {
+            color: var(--col-blue);
+            .ks-text {
+              font-weight: 600;
+              transform: scaleX(-1) scale(1.26);
+            }
+          }
+          li:hover:before {
+            background: var(--col-blue);
+          }
+          li:hover:after {
+            background: var(--col-blue);
+          }
+          li:before {
+            content: "";
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            background: #5a5b5c;
+            border-radius: 20px;
+            top: 18px;
+            right: -100px;
+          }
+          li:after {
+            content: "";
+            display: block;
+            position: absolute;
+            height: 2px;
+            background: #5a5b5c;
+            width: 80px;
+            right: -100px;
+          }
+        }
+        #ks-listing {
+          min-width: 400px;
+        }
+      }
+    }
+}
+.why-ksolves .font-45 {
+    font-size: 45px;
+    transform: scaleX(-1) translateY(-80px) !important;
+}

@@ -1,0 +1,256 @@
+.ks-invoices-list-main-view{
+min-height: 16vw;
+background-color: #ececec;
+}
+ 
+.main-section {
+    .ks-sales-order {
+      .pagination-arrow {
+        width: 10px;
+        margin-top: -2px;
+    
+        &.pagination-prev {
+            transform: rotate(180deg) !important;
+            
+        }
+    }
+      .pb64 {
+        padding-bottom: 64px !important;
+      }
+      .container {
+        @media screen and (max-width: 1500px) {
+          max-width: 1250px;
+        }
+        .navbar {
+          @media screen and (max-width: 991px) {
+            padding: 0;
+          }
+        }
+        .o_portal_navbar {
+          background-color: white !important;
+          .breadcrumb {
+            padding-left: 0;
+            padding-right: 0;
+            background-color: transparent;
+            @media screen and (max-width: 991px) {
+              display: none;
+            }
+            .ks-icons {
+              text-decoration: none;
+              color: black;
+              img {
+                margin-top: -4px;
+              }
+            }
+          }
+          .breadcrumb.active {
+            color: #6c757d;
+          }
+          .navbar {
+            @media screen and (max-width: 991px) {
+              padding: 0;
+            }
+          }
+          .nav-content-area {
+            .navbar-text {
+              color: rgba(0, 0, 0, 0.5);
+            }
+            @media screen and (max-width: 991px) {
+              background-color: #e9ecef;
+            }
+          }
+        }
+        .rounded {
+          border-radius: 0.25rem !important;
+        }
+        .border-top-0 {
+          border-top: 0 !important;
+        }
+        .border {
+          border: 1px solid #dee2e6 !important;
+        }
+        .table-responsive {
+          display: block;
+          width: 100%;
+  
+          overflow-x: auto;
+          .table {
+            min-width: 550px;
+          }
+          .o_portal_my_doc_table th {
+            vertical-align: middle;
+            white-space: nowrap;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #dee2e6;
+            padding: 0.75rem;
+            border-top: 1px solid #dee2e6;
+          }
+          .badge-purple {
+            color: #ffffff;
+            background-color: #875a7b;
+          }
+          .badge-green {
+            color: #ffffff;
+            background-color: #28a745;
+          }
+          .badge-pill {
+            padding-right: 0.6em;
+            padding-left: 0.6em;
+            border-radius: 10rem;
+          }
+          .badge {
+            display: inline-block;
+            padding: 0.25em 0.4em;
+            font-size: 75%;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            img{
+              filter: invert(100%);
+            }
+          }
+  
+          thead {
+            tr {
+              td {
+                a {
+                  text-decoration: none;
+                  color: black;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .ks-bg-ec {
+    background-color: #ececec;
+  }
+  .btn-sort {
+    .select-box {
+      display: flex;
+      width: 155px;
+      flex-direction: column;
+      border-radius: 0px;
+    }
+  
+    .select-box .options-container {
+      background: white;
+      color: black;
+      max-height: 0;
+      width: 155px;
+      opacity: 0;
+      transition: all 0.4s;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      border-radius: 0.25rem;
+      overflow: hidden;
+      position: absolute;
+      top: 39px;
+      left: 0px;
+      order: 1;
+      z-index: 10;
+    }
+    .option.active {
+      color: #ffffff;
+      text-decoration: none;
+      background-color: #00a09d;
+    }
+  
+    .selected {
+      background: white;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      color: #5a5b5c;
+      position: relative;
+      order: 0;
+      margin-bottom: -3px;
+      font-size: 1rem;
+      border: solid 1px #c3c5c7;
+      margin: 5px 0;
+      transition: all 0.4s;
+    }
+    .selected:hover {
+      background-color: #5a5b5c;
+      border-color: #5a5b5c;
+      color: #fff;
+    }
+  
+    .selected::after {
+      content: "";
+      background: url("../../../assets/images/add-wishlist/arrow-down.svg");
+      background-size: 25px;
+      background-repeat: no-repeat;
+      // z-index: inherit;
+      filter: invert(50%);
+      position: absolute;
+      height: 100%;
+      width: 32px;
+      right: 10px;
+      top: 3px;
+      transition: all 0.4s;
+    }
+  
+    .select-box .options-container.active {
+      min-height: 96px;
+      opacity: 1;
+    }
+    .select-box .ks-length.active {
+        min-height: 135px !important;
+        opacity: 1;
+    }
+  
+    .select-box .option,
+    .selected {
+      padding: 5px 24px 5px 14px;
+      cursor: pointer;
+      font-size: 14px;
+      border-radius: 3px;
+    }
+    .option.area {
+      padding: 2px 14px;
+      text-align: start;
+      display: flex;
+      width: 100%;
+    }
+  
+    .select-box .option:hover {
+      color: #16181b;
+      background-color: #f8f9fa;
+    }
+  
+    .select-box label {
+      cursor: pointer;
+    }
+  
+    .select-box .option .radio {
+      display: none;
+    }
+  }
+  
+  .ks-pagination {
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+
+
+.btn {
+  border: none;
+  outline: none;
+  padding: 10px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Style the active class, and buttons on mouse-over */
+.active,
+.btn:hover {
+  background-color: #666;
+  color: white;
+}

@@ -1,0 +1,23 @@
+.ks-empty-main-view {
+  min-height: 35vw;
+}
+.wishlist-section {
+    .container {
+      @media screen and (max-width: 2000px) {
+        max-width: 1250px;
+      }
+      .ks_section_box {
+        background: #fff;
+        border-radius: 20px;
+        padding: 20px;
+        @media screen and (max-width: 767px) {
+          .font-35 {
+            font-size: 25px;
+          }
+        }
+        .btn {
+          padding: 8px 30px;
+        }
+      }
+    }
+  }

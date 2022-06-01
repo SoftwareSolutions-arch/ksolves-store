@@ -1,0 +1,40 @@
+.ks-policy .container ol li::before {
+    content: counter(li);
+    color: #000000;
+    display: inline-block;
+    width: 2em;
+    margin-left: -2em;
+    text-align: center;
+    font-weight: bold;
+  }
+  .ks-policy .ks-link {
+    text-decoration: none;
+    color: #000000;
+  }
+  .ks-policy {
+    .container {
+      @media screen and (max-width: 1500px) {
+        max-width: 1250px;
+      }
+      ol {
+        list-style: none;
+        counter-reset: li;
+        padding-left: 1rem;
+        margin-bottom: 2rem;
+        li {
+          counter-increment: li;
+          margin-bottom: 10px;
+        }
+        li::before {
+          content: counter(li);
+          color: #000000;
+          display: inline-block;
+          width: 2em;
+          margin-left: -2em;
+          text-align: center;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  

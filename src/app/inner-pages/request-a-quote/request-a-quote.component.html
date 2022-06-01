@@ -1,0 +1,200 @@
+<div *ngIf="isLoadingBool" class="loading-indicator">
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<main class="main-section ks-bg-col">
+    <div class="ks-content wrapQuote">
+        <section class="quote">
+            <div class="container just-for-test position-relative">
+                <div class="text-center text-white px-md-5 ">
+                    <h1 class="mb-3 font-50 f-w-700 ks-text-red d-block mt-md-5 pt-md-4">
+                        Request Quotation
+                    </h1>
+                    <p class="mb-3 px-md-5 pt-md-3">
+                        With its team of 350+ developers, Ksolves has successfully delivered various international
+                        projects in numerous domains
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="container-fluid grey-bg px-0 pb-4 ks-request-contents">
+            <div class="container position-relative">
+                <div class="request_quote">
+                    <div class="request_quote-top">
+                        <p class="text-center font-20">
+                            If you wish to avail Ksolves services for your development projects, please fill out the
+                            form and we shall reach out to you at the earliest
+                        </p>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-xl-5">
+                            <div class="writeusform-wrap">
+                                <div class="writeusform">
+                                    <h4 class="text-center py-3 f-w-600 writeus">
+                                        Request For A Quote
+                                    </h4>
+                                    <form [formGroup]="reqquoteform" class="ks-form-inputs-style"
+                                        (ngSubmit)="onSubmit()">
+                                        <div class="mat-form-field w-100 mb-4 font-16">
+                                            <div class="ks-floating ks-normal-area text-left">
+                                                <input type="text" placeholder="" class="font-12" formControlName="name"
+                                                    required>
+                                                <label class="for-label">Name*</label>
+                                            </div>
+                                            <ng-container *ngFor="let error of error_messages.name">
+                                                <div class="error-message text-left"
+                                                    *ngIf="reqquoteform.get('name').hasError(error.type) &&
+                                                                 (reqquoteform.get('name').dirty || reqquoteform.get('name').touched)">
+                                                    {{ error.message }}</div>
+                                            </ng-container>
+                                            <div *ngIf="validationErrorExists();" style="color:red;text-align: left;">
+                                                <div *ngIf="hasError('name', 'required')">*Required</div>
+                                            </div>
+                                        </div>
+                                        <div class="mat-form-field w-100 mb-4 font-16">
+                                            <div class="ks-floating ks-normal-area text-left">
+                                                <input type="email" placeholder="" class="font-12"
+                                                    formControlName="email" required>
+                                                <label class="for-label">Email*</label>
+                                            </div>
+                                            <div *ngIf="validationErrorExists();" style="color:red;text-align: left;">
+                                                <div *ngIf="hasError('email', 'required')">*Required</div>
+                                                <div *ngIf="hasError('email', 'pattern')">*Please enter valid email</div>
+
+                                            </div>
+                                        </div>
+                                        <div class="mat-form-field w-100 mb-4 font-16">
+                                            <div class="ks-floating ks-normal-area text-left">
+                                                <input type="tel" placeholder="" class="font-12"
+                                                    formControlName="phone" required>
+                                                <label class="for-label">Phone Number</label>
+                                            </div>
+                                            <div *ngIf="validationErrorExists();" style="color:red;text-align: left;">
+                                                    <div *ngIf="hasError('phone', 'required')">*Required</div>
+                                                    <div *ngIf="hasError('phone', 'pattern')">*Please enter valid phone number</div>
+
+                                            </div>
+                                        </div>
+                                        <div class="mat-form-field w-100 mb-4 font-16">
+                                            <div class="ks-floating ks-normal-area ks-long-text text-left">
+                                                <input type="text" placeholder="" class="font-12"
+                                                    formControlName="organization" required>
+                                                <label class="for-label">Your Organization Name</label>
+                                            </div>
+                                            <div *ngIf="validationErrorExists();" style="color:red;text-align: left;">
+                                                <div *ngIf="hasError('organization', 'required')">*Required</div>
+                                            </div>
+                                        </div>
+                                        <label for="" class="mat-form-field w-100 mb-4 font-16">
+                                            <select formControlName="country" class="custom-width" value>
+                                                <option value="" class="country">Country...</option>
+                                                <option (change)="getCountries()"
+                                                    *ngFor="let country of this.allCountryList.countries"
+                                                    value="{{country.name}}">
+                                                    {{country.name}}
+                                                </option>
+                                            </select>
+                                            <div *ngIf="validationErrorExists();" style="color:red;text-align: left;">
+                                                <div *ngIf="hasError('country', 'required')">*Required</div>
+                                            </div>
+                                        </label>
+                                        <div class="mat-form-field w-100 mb-4 font-16">
+                                            <div class="ks-floating ks-message-area text-left">
+                                                <textarea rows="5" class="font-14" placeholder=""
+                                                    formControlName="requirements"></textarea>
+                                                <label class="for-label" class="msg-area">Requirements*</label>
+                                            </div>
+                                            <div *ngIf="validationErrorExists();" style="color:red;text-align: left;">
+                                                <div *ngIf="hasError('requirements', 'required')">*Required</div>
+                                            </div>
+                                        </div>
+                                        <div class="text-left mb-3 ks-quote-form-btn">
+                                            <button class="btn btn-primary font-16 py-2">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-7 reqRight">
+                            <div class="row border-steps position-relative">
+                                <div class="cart-product-detail cart-product-detail-first">
+                                    <div class="product-image mb-3 mb-md-0">
+                                        <img src="../../../assets/images/request a quote/1-img.png"
+                                            alt="Business Analyst">
+                                    </div>
+                                    <div class="product-idea ml-3">
+                                        <h3 class="f-w-600 font-20 mb-1 pt-0 m-0">
+                                            Business Analyst
+                                        </h3>
+                                        <p class="ks-para">
+                                            Our Business Development team will get in touch with you
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="cart-product-detail cart-product-detail-first">
+                                    <div class="product-image mb-3 mb-md-0">
+                                        <img src="../../../assets/images/request a quote/2-img.png"
+                                            alt="Requirement Analysis">
+                                    </div>
+                                    <div class="product-idea ml-3">
+                                        <h3 class="f-w-600 font-20 mb-1 pt-0 m-0">
+                                            Requirement Analysis
+                                        </h3>
+                                        <p class="ks-para">
+                                            We shall analyze each of your requirements
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="cart-product-detail-first ks-m-position">
+                                    <div class="product-image mb-3 mb-md-0">
+                                        <img src="../../../assets/images/request a quote/3-img.png"
+                                            alt="Feasibility Analysis">
+                                    </div>
+                                    <div class="product-idea ml-3">
+                                        <h3 class="f-w-600 font-20 mb-1 pt-0 m-0">
+                                            Feasibility Analysis
+                                        </h3>
+                                        <p class="ks-para">
+                                            We shall evaluate the technical possibilities and deadlines of the project
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="cart-product-detail-first ks-m-position">
+                                    <div class="product-image mb-3 mb-md-0">
+                                        <img src="../../../assets/images/request a quote/4-img.png" alt="Quote">
+                                    </div>
+                                    <div class="product-idea ml-3">
+                                        <h3 class="f-w-600 font-20 mb-1 pt-0 m-0">
+                                            Quote
+                                        </h3>
+                                        <p class="ks-para">
+                                            Finally, we shall offer you a quote for your project
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="rowDn"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>

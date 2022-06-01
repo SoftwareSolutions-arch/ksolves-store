@@ -1,0 +1,193 @@
+<div *ngIf="isLoadingBool" class="loading-indicator">
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ks-edit-addres-form-area">
+    <h3 class="f-w-500 ks-form-header px-3 pt-3">
+        Your Details
+    </h3>
+    <div class="ks-detail-form">
+        <form [formGroup]="editAddress" (ngSubmit)="onSubmit()">
+            <div class="row o_portal_details">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-lg-12 ks-form-rows d-lg-flex d-block">
+                            <div class="form-group col-xl-6">
+                                <label for="" class="col-form-label">Your Name
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input formControlName="name" type="text" class="form-control ">
+                                <ng-container *ngFor="let error of error_messages.name">
+                                    <div class="error-message" *ngIf="editAddress.get('name').hasError(error.type) && (editAddress.get('name').dirty || editAddress.get('name').touched)">{{error.message }}</div>
+                                </ng-container>
+                            </div>
+                            <div class="form-group col-xl-6">
+                                <label for="" class="col-form-label">Email
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input formControlName="email" type="email" class="form-control ">
+                                <ng-container *ngFor="let error of error_messages.email">
+                                    <div class="error-message" *ngIf="editAddress.get('email').hasError(error.type) && (editAddress.get('email').dirty || editAddress.get('email').touched)">{{ error.message }}</div>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 ks-form-rows d-lg-flex d-block">
+                            <div class="form-group col-xl-6">
+                                <label for="" class="col-form-label">Phone
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input formControlName="phone" type="number" class="form-control ">
+                                <ng-container *ngFor="let error of error_messages.phone">
+                                    <div class="error-message"
+                                        *ngIf="editAddress.get('phone').hasError(error.type) &&
+                                                     (editAddress.get('phone').dirty || editAddress.get('phone').touched)">{{
+                                        error.message }}</div>
+                                </ng-container>
+                            </div>
+
+                            <div title="Changing company name is not allowed once document(s) have been issued for your account. Please contact us directly for this operation."
+                                class="tooltip" class="form-group col-xl-6">
+                                <label for="" class="col-form-label">Company Name
+                                </label>
+                                <input  formControlName="company_name"
+                                    type="text" class="form-control ">
+                            </div>
+
+                        </div>
+                        <div class="col-lg-12 ks-form-rows d-lg-flex d-block">
+                            <div class="form-group col-xl-6">
+                                <label for="" class="col-form-label">Country
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <select (change)="getState()" formControlName="country_name" class="form-control ">
+                                    <option value="{{item.id}}" *ngFor="let item of this.accountDetails.countries"> {{item.name}}</option>
+                                </select>
+                                <ng-container *ngFor="let error of error_messages.country_name">
+                                    <div class="error-message"
+                                        *ngIf="editAddress.get('country_name').hasError(error.type) &&
+                                                     (editAddress.get('country_name').dirty || editAddress.get('country_name').touched)">{{ error.message }}</div>
+                                </ng-container>
+                            </div>
+
+                            <div *ngIf="this.accountDetails.readonly_vat==true"
+                                title="Changing VAT/GSTIN number is not allowed once document(s) have been issued for your account. Please contact us directly for this operation."
+                                class="form-group col-xl-6">
+                                <label for="" class="col-form-label"
+                                    *ngIf="this.editAddress.value.country_name!=104">VAT
+                                    Number</label>
+                                <label for="" class="col-form-label"
+                                    *ngIf="this.editAddress.value.country_name==104">GSTIN
+                                    Number</label>
+                                <input readonly={{this.accountDetails.readonly_vat}} formControlName="vat_number"
+                                    type="text" class="form-control ">
+
+                            </div>
+
+                            <div *ngIf="this.accountDetails.readonly_vat==false" class="form-group col-xl-6">
+                                <label for="" class="col-form-label"
+                                    *ngIf="this.editAddress.value.country_name!=104">VAT
+                                    Number</label>
+                                <label for="" class="col-form-label"
+                                    *ngIf="this.editAddress.value.country_name==104">GSTIN
+                                    Number</label>
+                                <input formControlName="vat_number" type="text" class="form-control ">
+                                <ng-container *ngFor="let error of error_messages.vat_number">
+                                    <div class="error-message"
+                                        *ngIf="editAddress.get('vat_number').hasError(error.type) &&
+                                                     (editAddress.get('vat_number').dirty || editAddress.get('vat_number').touched)">{{
+                                        error.message }}</div>
+                                </ng-container>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-12 ks-form-rows d-lg-flex d-block">
+                            <div class="form-group col-xl-6">
+                                <label for="" class="col-form-label">City
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input formControlName="city" type="text" class="form-control ">
+                                <ng-container *ngFor="let error of error_messages.city">
+                                    <div class="error-message"
+                                        *ngIf="editAddress.get('city').hasError(error.type) &&
+                                                     (editAddress.get('city').dirty || editAddress.get('city').touched)">
+                                        {{error.message }}</div>
+                                </ng-container>
+                            </div>
+                            <div class="form-group col-xl-6">
+                                <label for="" class="col-form-label">Street
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input formControlName="street" type="text" class="form-control ">
+                                <ng-container *ngFor="let error of error_messages.street">
+                                    <div class="error-message"
+                                        *ngIf="editAddress.get('street').hasError(error.type) &&
+                                                     (editAddress.get('street').dirty || editAddress.get('street').touched)">{{
+                                        error.message }}</div>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 ks-form-rows d-lg-flex d-block">
+                            <div [hidden]="hidestatelist" class="form-group col-xl-6">
+                                <label for="" class="col-form-label">State
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <select formControlName="state_id" class="form-control ">
+                                    <option value="{{item.id}}" *ngFor="let item of this.allStateList">
+                                        {{item.name}}</option>
+                                </select>
+                                <ng-container *ngFor="let error of error_messages.state_id">
+                                    <div class="error-message"
+                                        *ngIf="editAddress.get('state_id').hasError(error.type) &&
+                                                     (editAddress.get('state_id').dirty || editAddress.get('state_id').touched)">{{
+                                        error.message }}</div>
+                                </ng-container>
+                            </div>
+
+                            <div class="form-group col-xl-6">
+                                <label for="" class="col-form-label">Zip / Postal Code
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input formControlName="zip_code" type="number" class="form-control ">
+                                <ng-container *ngFor="let error of error_messages.zip_code">
+                                    <div class="error-message"
+                                        *ngIf="editAddress.get('zip_code').hasError(error.type) &&
+                                                     (editAddress.get('zip_code').dirty || editAddress.get('zip_code').touched)">{{
+                                        error.message }}</div>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ks-btn-right d-flex align-items-center justify-content-end mb-4">
+                        <button routerLink="/my/my-account" class="d-flex align-items-center btn btn-primary mb32 "><span>Cancel</span>
+                            <img style="filter: invert(1);" src="../../../assets/images/detail-form/close.svg" alt="arrow-icon" width="20" class="pl-1"> 
+                        </button>
+                        <button [disabled]="!editAddress.valid"
+                            class="d-flex align-items-center btn btn-success mb32 confirm-btn"><span>Confirm</span>
+                            <img style="filter: invert(1);" src="../../../assets/images/detail-form/arrow.svg"
+                                alt="arrow-icon" width="20" class="pl-1">
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-4"></div>
+            </div>
+        </form>
+    </div>
+</div>

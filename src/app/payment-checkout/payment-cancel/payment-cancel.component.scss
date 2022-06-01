@@ -1,0 +1,31 @@
+.ks-payment-cancel {
+    .container {
+      @media screen and (max-width: 2000px) {
+        max-width: 1250px;
+      }
+    }
+    .ks_section_box {
+      background: #fff;
+      border-radius: 20px;
+      padding: 20px;
+      @media screen and (max-width: 575px) {
+        padding: 5px 20px 20px 20px;
+      }
+      .ks-dark-text {
+        color: #454646;
+      }
+      .ks-need-help {
+        .contact-outer {
+          justify-content: space-evenly;
+          @media screen and (max-width: 768px) {
+            justify-content: start;
+            flex-direction: column;
+          }
+          img {
+            width: 18px;
+          }
+        }
+      }
+    }
+  }
+  

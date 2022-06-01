@@ -1,0 +1,112 @@
+<main class="main-section ks-bg-col">
+    <div *ngIf="isLoadingBool" class="loading-indicator">
+        <div class="loader">
+            <div class="loader-inner">
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ks-content">
+        <section class="ks-sign-up">
+            <div class="container">
+                <div class="signup-box bg-white p-3 p-md-5">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-6 px-md-5">
+                            <div class="signup_suggest mx-xl-5 mx-2 p-sm-5 p-3">
+                                <h2 class="text-white font-30 mb-4">
+                                    Sign Up Now
+                                </h2>
+                                <h4 class="text-white">Benefits</h4>
+                                <ul class="list-inline-item pl-3 ml-2">
+                                    <li>
+                                        Exclusive members-only Offers and Promotions
+                                    </li>
+                                    <li>Order History and latest release updates</li>
+                                    <li>Easy Refund and Support Availment</li>
+                                    <li>Priority Treatment over non-members</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-6 px-md-5 d-lg-flex align-items-center my-4">
+                            <div *ngIf="!isAccountCreated">
+                                <div class="form-section mx-lg-5 my-sm-3 my-md-5">
+                                    <div *ngIf="this.signUpError" class="ks-used-id-error mb-3">
+                                        <div class="position-absolute close-img">
+                                            <button (click)="closeButton()" class="btn-alert-close p-0">
+                                                <img src="../../../assets/images/icons/close.svg" alt="close-icon"
+                                                    width="20" height="25">
+                                            </button>
+                                        </div>
+                                        <h4 class="text-danger ks-error-heading f-w-400">There was a problem</h4>
+                                        <div class="position-absolute alert-img">
+                                            <img src="../../../assets/images/icons/alert.svg" alt="alert-icon"
+                                                width="35" height="37">
+                                        </div>
+                                        <div class="alert-content">
+                                            <span>Your provided Email {{this.signupForm.value.email}} has already been
+                                                used. Please use another Email address.</span>
+                                        </div>
+                                    </div>
+                                    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                                        <div class="form-group mb-3">
+                                            <label for="" class="f-w-600 font-18">Your Email ID</label>
+
+                                            <input (keyup)="onclick()" formControlName="email" type="email" class="form-control mb-4"
+                                                placeholder="Enter email" required>
+                                            <ng-container *ngFor="let error of error_messages.email">
+                                                <div class="error-message"
+                                                    *ngIf="signupForm.get('email').hasError(error.type) &&
+                                                                      (signupForm.get('email').dirty || signupForm.get('email').touched)">{{
+                                                    error.message }}</div>
+                                            </ng-container>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <button [disabled]="!signupForm.valid"
+                                                class="btn btn-primary btn-block font-18 f-w-600 oe_login_buttons">
+                                                Sign up
+                                            </button>
+                                        </div>
+                                        <div class="form-group">Already have an account?
+                                            <a class="f-w-500" [routerLink]="['/registration/login']"
+                                                routerLinkActive="router-link-active">Sign in</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                         
+                            <div *ngIf="isAccountCreated" class="ks-thankyou-post text-center ml-lg-n5">
+                                <h1 class="text-success text-center">
+                                    <div class="ks-tick-icon">
+                                        <div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="text-center" height="40px" viewBox="0 0 24 24" width="40px" fill="#28a745"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+                                        </div>
+                                    </div>
+                                    Thank you!</h1>
+                                <div class="ks-msg">
+                                    <span class="ks-bold d-block mt-3 mb-2">Your account is created successfully and you are now logged in.</span> 
+                                    <span>We have sent you an email with your password. Also, you can reset the password anytime in the future using Forgot Password feature on the login page.</span>
+                                </div>
+                                <button routerLink="" class="btn-success mt-4 py-2 px-3 f-w-600 font-14">Back to Home</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</main>

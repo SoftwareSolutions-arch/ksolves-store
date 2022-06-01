@@ -1,0 +1,12 @@
+@mixin center_prop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin sm-bg-white {
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 1rem;
+  box-shadow: 0px 2px 5px rgb(0 0 0 / 5%);
+}

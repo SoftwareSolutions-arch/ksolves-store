@@ -1,0 +1,590 @@
+<div *ngIf="isLoadingBool" class="loading-indicator">
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="festive-main-view">
+    <main class="main-section ks-bg-e5">
+        <div class="ks-content ks_festive_sale">
+            <!-- banner area starts  -->
+            <section class="ks-banner"
+                style="background-image: url({{this.baseUrl}}web/image/res.company/{{bannerData.company_id}}/festive_sale_background_img)">
+                <div class="container ks-banner-container">
+                    <div class="row align-items-center">
+                        <div class="col-12 col-md-5 col-lg-5 ks-banner-over-img">
+                            <img src="{{baseUrl}}web/image/res.company/{{bannerData.company_id}}/festive_sale_banner"
+                                alt="pix-over-banner" class="img-fluid" />
+                        </div>
+                        <span [innerHTML]="banner_text"> </span>
+                    </div>
+                </div>
+            </section>
+            <!-- banner area ends  -->
+
+
+            <section class="ks-offer-body">
+                <div class="container ks-body-container pb-3 pb-sm-4 pb-lg-5">
+                    <div class="ks-tabs-menu">
+                        <div class="row py-4 py-lg-5 align-items-center no-gutter">
+                            <div
+                                class="show-apps mt-sm-1 mb-3 mb-lg-0 mr-2 mr-lg-0 ml-3 ml-md-0 d-block align-items-center">
+                                <h3 class="mb-0 f-w-500 font-16">All Offers</h3>
+                                <p class="font-12 mb-0">( {{search_count}} Results)</p>
+                            </div>
+                            <div class="col-12 col-md">
+                                <ul class="nav nav-tabs ks-offer-tabs font-14 f-w-600 d-flex align-items-center justify-content-center"
+                                    id="myTab" role="tablist">
+                                    <li (click)="setCategoriesHighLight()" class="nav-item ks-odoo-item"
+                                        role="presentation">
+                                        <a class="nav-link ks-odoo-link active pl-5 pr-5 d-flex align-items-center justify-content-center"
+                                            id="odoo-tab" data-toggle="tab" href="#offerOdoo" role="tab"
+                                            aria-controls="offerOdoo" aria-selected="true">
+                                            Odoo <br class="ks-next-line" />
+                                            ({{odopAppsLength}})
+                                        </a>
+                                    </li>
+                                    <li (click)="setCategoriesHighLight()" class="nav-item ks-magento-item"
+                                        role="presentation">
+                                        <a class="nav-link ks-magento-link d-flex align-items-center justify-content-center"
+                                            id="magento-tab" data-toggle="tab" href="#offerMagento" role="tab"
+                                            aria-controls="offerMagento" aria-selected="false">
+                                            Magento <br class="ks-next-line" />
+                                            ({{magento_apps_length}})
+                                        </a>
+                                    </li>
+                                    <li (click)="setCategoriesHighLight()" class="nav-item ks-themes-item"
+                                        role="presentation">
+                                        <a class="nav-link ks-theme-link d-flex align-items-center justify-content-center"
+                                            id="themes-tab" data-toggle="tab" href="#offerTheme" role="tab"
+                                            aria-controls="offerTheme" aria-selected="false">
+                                            Themes <br class="ks-next-line" />
+                                            ({{odooThemes}})
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-md-3 offer-search mt-3 mt-md-0">
+                                <form action="" class="o_website_sale_search">
+                                    <div class="input-group">
+                                        <!-- <input type="text" class="search-query form-control oe_search_box"
+                                                placeholder="Search..."> -->
+                                        <input type="text" name="search" [(ngModel)]="globalQuery"
+                                            class="search-query form-control oe_search_box" placeholder="Search..."
+                                            (keyup.enter)="searchfilter('search')" value="" />
+                                        <div (click)="searchfilter('search')" class="input-group-append">
+                                            <button class="btn oe_search_button" type="button">
+                                                <img src="assets/images/festive-sale/search.svg" alt="search-icon"
+                                                    width="20" />
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row mb-1 mb-md-5 ks-main-content">
+                            <div class="col-12 col-md-12 px-lg-3">
+                                <div *ngIf="this.allProdcuts" class="tab-content ks-offer-tab-content" id="offerTabContent">
+                                    <div class="tab-pane fade show active" id="offerOdoo" role="tabpanel"
+                                        aria-labelledby="odoo-tab">
+                                        <div class="row">
+                                            <div class="col-12 col-md-2 h-100">
+                                                <div class="ks-filter bg-white mb-3">
+                                                    <h5 class="mb-0 py-3 pl-3 border-bottom">Categories</h5>
+                                                    <ul class="list-unstyled mb-0" *ngFor="let item of categories;">
+                                                        <li><a [ngClass]="{'class_name': item.name === currentCompany  }"
+                                                                (click)="getProductBycategories(item.href)">{{item.name}}</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="ks-filter bg-white mb-3">
+                                                    <h5 class="mb-0 py-3 pl-3 border-bottom">Versions</h5>
+                                                    <ul class="list-unstyled mb-0 ks_product_version"
+                                                        *ngFor="let item of versions;">
+                                                        <li>
+                                                            <label
+                                                                class="container-checkbox border-bottom ks_version_label">
+                                                                <p class="mb-0 version-text">Version &nbsp;{{item.name}}
+                                                                </p>
+                                                                <input type="checkbox" [value]="item.name"
+                                                                    (change)="fiterVersion($event)"
+                                                                    class="ks_input_version"
+                                                                    [attr.checked]="item.checked === 'checked' ? true : null" />
+                                                                <span class="checkmark"></span>
+                                                            </label>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-10 d-flex flex-wrap pb-3 border-bottom product-listing">
+                                                <div *ngIf="this.allProdcuts.odoo_apps.length==0"
+                                                    class="container pb-3">
+                                                    <div class="text-center text-muted oe_product">
+                                                        <h3 class="css_editable_display mt8">No product available</h3>
+                                                        <!-- <p> No results found for Website</p> -->
+                                                    </div>
+                                                </div>
+                                                <div *ngFor="let item of this.allProdcuts.odoo_apps"
+                                                    class="col-lg-4 col-xl-3 col-sm-6 mb-4 px-1 pl-lg-3 pr-lg-0">
+
+                                                    <div class="card product border-0 ks_prod_div">
+                                                        <div class="product-card-view">
+                                                            <div (click)="detailPage(item)"
+                                                                class="card-thum position-relative"
+                                                                [style.background-color]="item.background_color"
+                                                                style="cursor: pointer !important;">
+                                                                <a href="{{environment}}shop/{{item.product_href.split('/')[2]}}/{{item.product_href.split('/')[3]}}"
+                                                                    class="link-text-area d-flex align-items-center justify-content-center">
+                                                                    <img src="{{this.baseUrl}}web/image/product.product/{{item.product_var_id}}/{{item.logo}}"
+                                                                        alt="logo" />
+                                                                </a>
+
+                                                                <span *ngIf="item.original_price != null"
+                                                                    class="font-14 pr-3 pl-3 offer-tag f-w-600">
+                                                                    Up to 25% OFF
+                                                                </span>
+                                                            </div>
+                                                            <div class="px-3 px-sm-4 pt-3 w-100 ks-card-detail">
+                                                                <a>
+                                                                    
+                                                                    <a class="link-text-area" href="{{environment}}shop/{{item.product_href.split('/')[2]}}/{{item.product_href.split('/')[3]}}">
+                                                                        <div
+                                                                        class="card-title font-16 f-w-600 mb-2 text-dark">
+                                                                        <span class="ks-text">{{item.name}}</span>
+                                                                    </div>
+                                                                    </a>
+                                                                    <div
+                                                                        class="d-flex align-items-md-center align-items-start justify-content-md-between flex-column flex-md-row justify-content-center">
+                                                                        <p
+                                                                            class="review-rating mb-0 d-flex align-items-end">
+                                                                            <!-- 1 star  -->
+                                                                            <i
+                                                                                [ngClass]="(item.rating_avg == 0) ? 'far fa-star' : (item.rating_avg > 0 && item.rating_avg < 1) ? 'fas fa-star-half-alt' : 'fas fa-star'"></i>
+
+                                                                            <!-- 2 star  -->
+                                                                            <i
+                                                                                [ngClass]="(item.rating_avg > 1 && item.rating_avg < 2) ? 'fas fa-star-half-alt' : (item.rating_avg >= 2) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                                                            <!-- 3 star  -->
+                                                                            <i
+                                                                                [ngClass]="(item.rating_avg > 2 && item.rating_avg < 3) ? 'fas fa-star-half-alt' : (item.rating_avg >= 3) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                                                            <!-- 4 star  -->
+                                                                            <i
+                                                                                [ngClass]="(item.rating_avg > 3 && item.rating_avg < 4) ? 'fas fa-star-half-alt' : (item.rating_avg >= 4) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                                                            <!-- 5 star  -->
+                                                                            <i
+                                                                                [ngClass]="(item.rating_avg > 4 && item.rating_avg < 5) ? 'fas fa-star-half-alt' : (item.rating_avg >= 5) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                                            <span
+                                                                                class="pl-2 ks_rating_count">{{item.rating_count}}</span>
+                                                                        </p>
+                                                                        <div
+                                                                            class="product-download mt-1 d-flex align-items-center font-14 text-normal">
+                                                                            <img class="mr-2 ls-is-cached lazyloaded"
+                                                                                src="assets/images/festive-sale/card-img/download.svg"
+                                                                                alt="icon" />
+                                                                            <span>{{item.downloads}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="d-flex justify-content-between my-1">
+                                                                        <div
+                                                                            class="product-price font-16 f-w-600 text-normal">
+                                                                            <div>
+                                                                                <span
+                                                                                    *ngIf="!isProductFree(item.price)">{{item.price}}</span>
+                                                                                <span
+                                                                                    *ngIf="isProductFree(item.price)">Free</span>
+                                                                                <span
+                                                                                    *ngIf="item.original_price != null"
+                                                                                    class=" px-1 mx-1">
+                                                                                    &nbsp;<span
+                                                                                        class="ks_undiscounted_price">
+                                                                                        {{item.original_price}}
+                                                                                    </span>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-body pt-2 pt-lg-0">
+                                                            <div
+                                                                class="product-footer d-flex justify-content-between mt-auto">
+                                                                <button *ngIf="item.in_cart==false"  (click)="onSubmit(item)" class="order-2 order-md-1 app-cart home_cart_button btn btn-primary p-0">
+                                                                    <span class="ks-btn-text-area mb-0"> Add to Cart </span>
+                                                                </button>
+                                                                <button style="width: 100%;" *ngIf="item.in_cart==true" class="order-2 order-md-1 app-cart home_cart_button btn btn-success p-0" (click)="goToCart()">Go to Cart</button>
+                                                                <button *ngIf="item.in_cart==false"  (click)="buy_now(item)" class="order-1 order-md-2 btn btn-secondary home_cart_button product_detail_cart p-0">
+                                                                    <span class="ks-btn-text-area mb-0">
+                                                                        Buy Now
+                                                                    </span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="btn btn-secondary btn-sm o_add_wishlist d-flex align-items-center justify-content-center"
+                                                                style="cursor:pointer !important">
+                                                                <span>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        class="fav-svg" height="18px"
+                                                                        viewBox="0 0 24 24" width="18px"
+                                                                        [class.disabled]="item.in_wish === true"
+                                                                        (click)=" item.in_wish != true && addTowishlist(item)">
+                                                                        <path d="M0 0h24v24H0z" fill="none" />
+                                                                        <path class="heart-icon"
+                                                                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                                                    </svg>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="globalQuery"
+                                                    class=" col-12 mb-3 text-center ks-oe_product position-relative">
+                                                    <h3 class="css_editable_display mt8">No product defined.</h3>
+                                                    <p>
+                                                        No results found for "<strong>{{this.globalQuery}}</strong>".
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade ks-magento-item-tabs" id="offerMagento" role="tabpanel"
+                                        aria-labelledby="magento-tab">
+                                        <div class="row">
+
+                                            <div class="col-12 col-md-2 h-100">
+                                                <div class="ks-filter bg-white mb-3">
+                                                    <h5 class="mb-0 py-3 pl-3 border-bottom">Categories</h5>
+                                                    <ul class="list-unstyled mb-0" *ngFor="let item of categories;">
+                                                        <li><a href="{{this.baseUrl}}{{item.href}}"
+                                                                [ngClass]="{'class_name': item.name === currentCompany  }"
+                                                                (click)="getProductBycategories(item.href)">{{item.name}}</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="ks-filter bg-white mb-3">
+                                                    <h5 class="mb-0 py-3 pl-3 border-bottom">Versions</h5>
+                                                    <ul class="list-unstyled mb-0 ks_product_version"
+                                                        *ngFor="let item of versions;">
+                                                        <li>
+                                                            <label
+                                                                class="container-checkbox border-bottom ks_version_label">
+                                                                <p class="mb-0 version-text">Version &nbsp;{{item.name}}
+                                                                </p>
+                                                                <input type="checkbox" [value]="item.name"
+                                                                    (change)="fiterVersion($event)"
+                                                                    class="ks_input_version"
+                                                                    [attr.checked]="item.checked === 'checked' ? true : null" />
+                                                                <span class="checkmark"></span>
+                                                            </label>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+
+                                            <div *ngIf="this.allProdcuts.magento_apps"
+                                                class="col-12 col-md-10 d-flex flex-wrap pb-3 border-bottom product-listing">
+                                                <div *ngIf="this.allProdcuts.magento_apps.length==0"
+                                                    class="container pb-3">
+                                                    <div class="text-center text-muted oe_product">
+                                                        <h3 class="css_editable_display mt8">No product available</h3>
+                                                        <!-- <p> No results found for Website</p> -->
+                                                    </div>
+                                                </div>
+                                                <div *ngFor="let item of this.allProdcuts.magento_apps"
+                                                    class="col-lg-4 col-xl-3 col-sm-6 mb-4 px-1 pl-lg-3 pr-lg-0">
+                                                    <div class="card product border-0 ks_prod_div">
+                                                        <div class="product-card-view">
+                                                            <div class="card-thum position-relative"
+                                                                [style.background-color]="item.background_color"
+                                                                style="cursor: pointer !important;">
+                                                                <a (click)="detailPage(item)" style="text-decoration: none; background-color: transparent;" href="{{environment}}shop/{{item.product_href.split('/')[2]}}/{{item.product_href.split('/')[3]}}"
+                                                                    class="link-text-area d-flex align-items-center justify-content-center">
+                                                                    <img src="{{this.baseUrl}}web/image/product.product/{{item.product_var_id}}/{{item.logo}}"
+                                                                        alt="logo" />
+                                                                </a>
+                                                                <span class="font-14 pr-3 pl-3 offer-tag f-w-600">
+                                                                    Up to 25% OFF
+                                                                </span>
+                                                            </div>
+                                                            <div class="px-3 px-sm-4 pt-3 w-100 ks-card-detail">
+                                                                <a>
+                                                                    <a class="link-text-area" href="{{environment}}shop/{{item.product_href.split('/')[2]}}/{{item.product_href.split('/')[3]}}">
+                                                                        <div
+                                                                        class="card-title font-16 f-w-600 mb-2 text-dark">
+                                                                        <span class="ks-text">{{item.name}}</span>
+                                                                        </div>
+                                                                    </a>
+                                                                    <div
+                                                                        class="d-flex align-items-md-center align-items-start justify-content-md-between flex-column flex-md-row justify-content-center">
+                                                                        <p
+                                                                            class="review-rating mb-0 d-flex align-items-end">
+                                                                            <!-- 1 star  -->
+                                                                            <i
+                                                                                [ngClass]="(item.rating_avg == 0) ? 'far fa-star' : (item.rating_avg > 0 && item.rating_avg < 1) ? 'fas fa-star-half-alt' : 'fas fa-star'"></i>
+
+                                                                            <!-- 2 star  -->
+                                                                            <i
+                                                                                [ngClass]="(item.rating_avg > 1 && item.rating_avg < 2) ? 'fas fa-star-half-alt' : (item.rating_avg >= 2) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                                                            <!-- 3 star  -->
+                                                                            <i
+                                                                                [ngClass]="(item.rating_avg > 2 && item.rating_avg < 3) ? 'fas fa-star-half-alt' : (item.rating_avg >= 3) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                                                            <!-- 4 star  -->
+                                                                            <i
+                                                                                [ngClass]="(item.rating_avg > 3 && item.rating_avg < 4) ? 'fas fa-star-half-alt' : (item.rating_avg >= 4) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                                                            <!-- 5 star  -->
+                                                                            <i
+                                                                                [ngClass]="(item.rating_avg > 4 && item.rating_avg < 5) ? 'fas fa-star-half-alt' : (item.rating_avg >= 5) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                                            <span
+                                                                                class="pl-2 ks_rating_count">{{item.rating_count}}</span>
+                                                                        </p>
+                                                                        <div
+                                                                            class="product-download mt-1 d-flex align-items-center font-14 text-normal">
+                                                                            <img class="mr-2 ls-is-cached lazyloaded"
+                                                                                src="assets/images/festive-sale/card-img/download.svg"
+                                                                                alt="icon" />
+                                                                            <span>{{item.downloads}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="d-flex justify-content-between my-1">
+                                                                        <div
+                                                                            class="product-price font-16 f-w-600 text-normal">
+                                                                            <div>
+                                                                                <span
+                                                                                    *ngIf="!isProductFree(item.price)">{{item.price}}</span>
+                                                                                <span
+                                                                                    *ngIf="isProductFree(item.price)">Free</span>
+                                                                                <span class=" px-1 mx-1">
+                                                                                    &nbsp;<span
+                                                                                        class="ks_undiscounted_price">{{item.original_price}}</span>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-body pt-2 pt-lg-0">
+                                                            <div
+                                                                class="product-footer d-flex justify-content-between mt-auto">
+                                                                <button *ngIf="item.in_cart==false"  (click)="onSubmit(item)" class="order-2 order-md-1 app-cart home_cart_button btn btn-primary p-0">
+                                                                    <span class="ks-btn-text-area mb-0"> Add to Cart </span>
+                                                                </button>
+                                                                <button style="width: 100%;" *ngIf="item.in_cart==true" class="order-2 order-md-1 app-cart home_cart_button btn btn-success p-0" (click)="goToCart()">Go to Cart</button>
+                                                                <button *ngIf="item.in_cart==false"  (click)="buy_now(item)" class="order-1 order-md-2 btn btn-secondary home_cart_button product_detail_cart p-0">
+                                                                    <span class="ks-btn-text-area mb-0">
+                                                                        Buy Now
+                                                                    </span>
+                                                                </button>
+                                                            </div>
+
+                                                            <div class="btn btn-secondary btn-sm o_add_wishlist d-flex align-items-center justify-content-center"
+                                                                style="cursor:pointer !important">
+                                                                <span>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        class="fav-svg" height="18px"
+                                                                        viewBox="0 0 24 24" width="18px"
+                                                                        [class.disabled]="item.in_wish === true"
+                                                                        (click)=" item.in_wish != true && addTowishlist(item)">
+                                                                        <path d="M0 0h24v24H0z" fill="none" />
+                                                                        <path class="heart-icon"
+                                                                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                                                    </svg>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade ks-theme-items-tabs" id="offerTheme" role="tabpanel"
+                                        aria-labelledby="themes-tab">
+                                        <div class="row">
+                                            <div class="col-12 col-md-2 h-100">
+                                                <div class="ks-filter bg-white mb-3">
+                                                    <h5 class="mb-0 py-3 pl-3 border-bottom">Categories</h5>
+                                                    <ul class="list-unstyled mb-0" *ngFor="let item of categories;">
+                                                        <li><a href="{{this.baseUrl}}{{item.href}}"
+                                                                [ngClass]="{'class_name': item.name === currentCompany  }"
+                                                                (click)="getProductBycategories(item.href)">{{item.name}}</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="ks-filter bg-white mb-3">
+                                                    <h5 class="mb-0 py-3 pl-3 border-bottom">Versions</h5>
+                                                    <ul class="list-unstyled mb-0 ks_product_version"
+                                                        *ngFor="let item of versions;">
+                                                        <li>
+                                                            <label
+                                                                class="container-checkbox border-bottom ks_version_label">
+                                                                <p class="mb-0 version-text">Version &nbsp;{{item.name}}
+                                                                </p>
+                                                                <input type="checkbox" [value]="item.name"
+                                                                    (change)="fiterVersion($event)"
+                                                                    class="ks_input_version"
+                                                                    [attr.checked]="item.checked === 'checked' ? true : null" />
+                                                                <span class="checkmark"></span>
+                                                            </label>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div
+                                                class="col-12 col-md-10 d-flex flex-wrap pb-3 border-bottom product-listing">
+                                                <div *ngIf="this.allProdcuts.odoo_themes.length==0"
+                                                    class="container pb-3">
+                                                    <div class="text-center text-muted oe_product">
+                                                        <h3 class="css_editable_display mt8">No product available</h3>
+                                                        <!-- <p> No results found for Website</p> -->
+                                                    </div>
+                                                </div>
+                                                <div *ngFor="let item of this.allProdcuts.odoo_themes"
+                                                    class="col-lg-4 col-xl-3 col-sm-6 mb-4 px-1 pl-lg-3 pr-lg-0">
+                                                    <div class="card product border-0 ks_prod_div">
+                                                        <div class="product-card-view">
+                                                            <div class="card-thum position-relative"
+                                                                [style.background-color]="item.background_color"
+                                                                style="cursor: pointer !important;">
+                                                                <a (click)="detailPage(item)" style="text-decoration: none; background-color: transparent;" href="{{environment}}shop/{{item.product_href.split('/')[2]}}/{{item.product_href.split('/')[3]}}"
+                                                                    class="link-text-area d-flex align-items-center justify-content-center">
+                                                                    <img src="{{this.baseUrl}}web/image/product.product/{{item.product_var_id}}/{{item.logo}}"
+                                                                        alt="logo" />
+                                                                </a>
+                                                                <span class="font-14 pr-3 pl-3 offer-tag f-w-600">
+                                                                    Up to 25% OFF
+                                                                </span>
+                                                            </div>
+                                                            <div class="px-3 px-sm-4 pt-3 w-100 ks-card-detail">
+                                                                <a>
+                                                                    <a class="link-text-area" href="{{environment}}shop/{{item.product_href.split('/')[2]}}/{{item.product_href.split('/')[3]}}">
+                                                                        <div
+                                                                        class="card-title font-16 f-w-600 mb-2 text-dark">
+                                                                        <span class="ks-text">{{item.name}}</span>
+                                                                        </div>
+                                                                    </a>
+                                                                    <div
+                                                                        class="d-flex align-items-md-center align-items-start justify-content-md-between flex-column flex-md-row justify-content-center">
+                                                                        <p
+                                                                            class="review-rating mb-0 d-flex align-items-end">
+                                                                            <!-- 1 star  -->
+                                                                            <i
+                                                                                [ngClass]="(item.rating_avg == 0) ? 'far fa-star' : (item.rating_avg > 0 && item.rating_avg < 1) ? 'fas fa-star-half-alt' : 'fas fa-star'"></i>
+
+                                                                            <!-- 2 star  -->
+                                                                            <i
+                                                                                [ngClass]="(item.rating_avg > 1 && item.rating_avg < 2) ? 'fas fa-star-half-alt' : (item.rating_avg >= 2) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                                                            <!-- 3 star  -->
+                                                                            <i
+                                                                                [ngClass]="(item.rating_avg > 2 && item.rating_avg < 3) ? 'fas fa-star-half-alt' : (item.rating_avg >= 3) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                                                            <!-- 4 star  -->
+                                                                            <i
+                                                                                [ngClass]="(item.rating_avg > 3 && item.rating_avg < 4) ? 'fas fa-star-half-alt' : (item.rating_avg >= 4) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                                                            <!-- 5 star  -->
+                                                                            <i
+                                                                                [ngClass]="(item.rating_avg > 4 && item.rating_avg < 5) ? 'fas fa-star-half-alt' : (item.rating_avg >= 5) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                                            <span
+                                                                                class="pl-2 ks_rating_count">{{item.rating_count}}</span>
+                                                                        </p>
+                                                                        <div
+                                                                            class="product-download mt-1 d-flex align-items-center font-14 text-normal">
+                                                                            <img class="mr-2 ls-is-cached lazyloaded"
+                                                                                src="assets/images/festive-sale/card-img/download.svg"
+                                                                                alt="icon" />
+                                                                            <span>{{item.downloads}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="d-flex justify-content-between my-1">
+                                                                        <div
+                                                                            class="product-price font-16 f-w-600 text-normal">
+                                                                            <div>
+                                                                                <span
+                                                                                    *ngIf="!isProductFree(item.price)">{{item.price}}</span>
+                                                                                <span
+                                                                                    *ngIf="isProductFree(item.price)">Free</span>
+                                                                                <span class="px-1 mx-1">
+                                                                                    &nbsp;
+                                                                                    <span class="ks_undiscounted_price">
+                                                                                        {{item.original_price}}</span>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-body pt-2 pt-lg-0">
+                                                            <div class="product-footer d-flex justify-content-between mt-auto">
+
+                                                                <button *ngIf="item.in_cart==false"  (click)="onSubmit(item)" class="order-2 order-md-1 app-cart home_cart_button btn btn-primary p-0">
+                                                                    <span class="ks-btn-text-area mb-0"> Add to Cart </span>
+                                                                </button>
+                                                                <button style="width: 100%;" *ngIf="item.in_cart==true" class="order-2 order-md-1 app-cart home_cart_button btn btn-success p-0" (click)="goToCart()">Go to Cart</button>
+                                                                <button *ngIf="item.in_cart==false"  (click)="buy_now(item)" class="order-1 order-md-2 btn btn-secondary home_cart_button product_detail_cart p-0">
+                                                                    <span class="ks-btn-text-area mb-0">
+                                                                        Buy Now
+                                                                    </span>
+                                                                </button>
+                                                            </div>
+
+                                                            <div class="btn btn-secondary btn-sm o_add_wishlist d-flex align-items-center justify-content-center"
+                                                                style="cursor:pointer !important">
+                                                                <span>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        class="fav-svg" height="18px"
+                                                                        viewBox="0 0 24 24" width="18px"
+                                                                        [class.disabled]="item.in_wish === true"
+                                                                        (click)=" item.in_wish != true && addTowishlist(item)">
+                                                                        <path d="M0 0h24v24H0z" fill="none" />
+                                                                        <path class="heart-icon"
+                                                                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                                                    </svg>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ks-txt-section mt-1 mt-md-3 mt-lg-5">
+                        <span [innerHTML]="terms_condition"> </span>
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+    </main>
+</div>

@@ -1,0 +1,235 @@
+<main class="main-section ks-bg-ec">
+    <div class="ks-content">
+        <section class="ks-invoice-details">
+            <div *ngIf="isLoadingBool" class="loading-indicator">
+                <div class="loader">
+                    <div class="loader-inner">
+                        <div class="loader-line-wrap">
+                            <div class="loader-line"></div>
+                        </div>
+                        <div class="loader-line-wrap">
+                            <div class="loader-line"></div>
+                        </div>
+                        <div class="loader-line-wrap">
+                            <div class="loader-line"></div>
+                        </div>
+                        <div class="loader-line-wrap">
+                            <div class="loader-line"></div>
+                        </div>
+                        <div class="loader-line-wrap">
+                            <div class="loader-line"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="this.quotesFormDeatails" class="o_portal">
+                <div class="container mt-3">
+                    <div class="row align-items-center bg-white no-gutters border rounded">
+                        <div class="col ">
+                            <div class="d-lg-block d-none">
+                                <ol class="o_portal_submenu breadcrumb mb-0 py-2 flex-grow-1 ">
+                                    <li class="breadcrumb-item">
+                                        <a [routerLink]="['/my/my-account']" class="cursor-point">
+                                            <img src="/assets/images/sales_order/home.svg" alt="home-icon" width="16">
+                                        </a>
+                                    </li>
+                                    <li [routerLink]="['/my/quotations-list']" class="breadcrumb-item">
+                                        <a class="cursor-point">
+                                            Quotations
+                                        </a>
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        <span>
+                                            {{this.quotes_number}}
+                                        </span>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="col flex-grow-0">
+                            <div class="record_pager btn-group">
+                                <a *ngIf="this.quotesFormDeatails.breadcrumb.previous!=false "
+                                    href="{{this.quotesFormDeatails.breadcrumb.previous}}" class="mr-4">
+                                    <img src="assets/images/invoice-detail/left.svg" alt="icon-btn" width="20">
+                                </a>
+                                <a *ngIf="this.quotesFormDeatails.breadcrumb.next!=false "
+                                    href="{{this.quotesFormDeatails.breadcrumb.next}}" class="mr-4">
+                                    <img src="assets/images/invoice-detail/right.svg" alt="icon-btn" width="20">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="this.quotesFormDeatails" class="o_portal_wrap">
+                <div class="container pb64">
+                    <div class="row mt16 o_portal_invoice_sidebar">
+                        <div class="col-lg-auto d-print-none pb-4">
+                            <div class="card bg-white">
+                                <div class="card-body ks-bottom-line text-center pb-2 pt-3">
+                                    <h2 class="mb-0 f-w-600">
+                                        <span>{{this.quotesFormDeatails.left_side_bar?.amount}}</span>&nbsp;
+                                    </h2>
+                                </div>
+                            </div>
+                            <ul class="list-group list-group-flush flex-wrap flex-row flex-lg-column ">
+                                <li class="list-group-item flex-grow-1 ks-payment-area">
+                                    <div *ngIf="this.quotesFormDeatails.left_side_bar?.message!='Accept & Pay' ">
+
+                                    </div>
+                                    <div data-toggle="modal" data-target="#exampleModal"
+                                        *ngIf="this.quotesFormDeatails.left_side_bar?.message=='Accept & Pay'">
+                                        <button class="btn btn-primary" style="width: 100%;margin-bottom: 10px;">
+                                            <img src="/assets/images/sales_order/tick2.svg" alt="tick" width="16">
+                                            {{this.quotesFormDeatails.left_side_bar.message}}
+                                        </button>
+                                    </div>
+
+                                    <div class="o_download_pdf btn-toolbar flex-sm-nowrap">
+                                        <div class="btn-group  flex-grow-1 mr-1 mb-1">
+                                            <a href="{{this.url}}" class="btn btn-secondary btn-block o_download_btn">
+                                                <img src="/assets/images/invoice-detail/download.svg" alt="icon"
+                                                    width="18">
+                                                <span class="font-14"> Download</span>
+                                            </a>
+                                        </div>
+                                        <div class="btn-group flex-grow-1 mb-1">
+                                            <a href="{{this.print_url}}"
+                                                class="btn btn-secondary btn-block o_print_btn o_portal_invoice_print">
+                                                <img src="/assets/images/invoice-detail/print.svg" alt="icon"
+                                                    width="18">
+                                                <span class="font-14">Print</span>
+                                            </a>
+
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="navspy list-group-item pl-0 flex-grow-1">
+                                    <ul class="nav flex-column bs-sidenav">
+                                        <li class="nav-item">
+                                            <a
+                                                class="nav-link w-100 pt-0 pb-0 ks-links">{{this.quotes_number}}</a>
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link w-100 pt-0 pb-0 ks-links">Details</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link pt-0 pb-0 ks-links">Communication</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="list-group-item flex-grow-1">
+                                    <div class="small mb-1">
+                                        <div class="text-muted">
+                                            <strong>Your Contact</strong>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col flex-grow-0 pr-2">
+                                            <img src="{{baseUrl}}web/image/res.users/{{this.quotesFormDeatails.left_side_bar.user.id}}/image"
+                                                alt="logo-icon" width="40">
+                                        </div>
+                                        <div class="col pl-0 ks-address-left">
+                                            <span>
+                                                <address class="mb-0">
+                                                    <div>
+                                                        <span class="f-w-600 ks-address-1"
+                                                            itemprop="name">{{this.quotesFormDeatails.left_side_bar.user.name}}</span>
+                                                    </div>
+                                                    <div>
+                                                        <span>{{this.quotesFormDeatails.left_side_bar?.user.phone}}</span>
+                                                    </div>
+                                                </address>
+                                            </span>
+                                            <a class="d-flex align-items-center ks-chat-area">
+                                                <img src="/assets/images/invoice-detail/chat.svg" alt="chat-icon"
+                                                    width="14" class="pr-1">
+                                                    <a href="mailto:sales@ksolves.com">Send message</a>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="o_portal_page_content col-12 col-lg justify-content-end">
+                            <div class="o_account_payment_tx_status2">
+                                <div [innerHTML]="this.dataMsg">
+                                    <!-- alert box area  -->
+                                </div>
+                                <div class="o_portal_html_view shadow card w-100 p-4">
+                                    <!-- pdf page area  -->
+                                    <div [innerHTML]="this.main_content"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div *ngIf="this.quotesFormDeatails.left_side_bar.modal_content==true"
+                            class="modal fade ks-pay-modal-box-area" id="exampleModal" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title" id="exampleModalLabel">Validate Order</h3>
+                                        <button type="button" class="close-modal" data-dismiss="modal"
+                                            aria-label="Close">
+                                            <span aria-hidden="true" class="font-28">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="text-left col-md-13">
+                                            <form action="#" class="mt-3">
+                                                <div class="ks-form-text">
+                                                    <p class="ks-modal-para">By paying this proposal, I agree to the
+                                                        following terms:</p>
+                                                    <ul class="ks-modal-pointer">
+                                                        <li>Accepted on the behalf of <span class="f-w-600">Kriti
+                                                                Sharma</span></li>
+                                                        <li>For an amount of: <span class="f-w-600">20.00$</span></li>
+                                                    </ul>
+                                                    <h3 class="ks-modal-subtitle mt-3 mb-3">Pay with</h3>
+                                                </div>
+                                                <div class="card w-100">
+                                                    <div class="card-body" *ngFor="let item of this.payment_acquirers">
+                                                        <div class="ks-main-content-for-payment">
+                                                            <label for="#"
+                                                                class="ks-label-area d-flex align-items-center">
+                                                                <input (click)="userInputData(item)" name="paypal"
+                                                                    type="radio"> <span
+                                                                    class="payment_option_name">{{item.name}}</span>
+                                                            </label>
+                                                            <ul class="list-inline">
+                                                                <li *ngFor="let paymentList of item.payment_icons"
+                                                                    class="list-inline-item">
+                                                                    <span>
+                                                                        <img src="{{this.baseUrl}}web/image/payment.icon/{{paymentList}}/image_payment_form"
+                                                                            alt="img" width="30">
+                                                                    </span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="mt-2 ks-modal-button-area">
+                                                    <button (click)="onSubmit()"
+                                                        class="btn btn-primary d-flex align-items-center justify-content-center f-w-600">
+                                                        <img src="./../../../assets/images/paymen-modal/lock2.PNG"
+                                                            alt="locak-icon" width="21">
+                                                        <span> Pay & Confirm</span>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>

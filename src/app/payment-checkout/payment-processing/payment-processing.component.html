@@ -1,0 +1,23 @@
+<div class="loader-inner">
+    <div class="loader-line-wrap">
+        <div class="loader-line"></div>
+    </div>
+    <div class="loader-line-wrap">
+        <div class="loader-line"></div>
+    </div>
+    <div class="loader-line-wrap">
+        <div class="loader-line"></div>
+    </div>
+    <div class="loader-line-wrap">
+        <div class="loader-line"></div>
+    </div>
+    <div class="loader-line-wrap">
+        <div class="loader-line"></div>
+    </div>
+</div>
+<div>Please wait,we are processing your payment</div>
+<form ngNoForm #myFormPost name="myFormPost" method="post" provider="paypal"
+    action="{{this.action_url}}">
+    <span [innerHTML]="this.innerHTML">
+    </span>
+</form>

@@ -1,0 +1,154 @@
+<div *ngIf="isLoadingBool" class="loading-indicator">
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ks-quotaions-list-main-view">
+    <main class="main-section ks-bg-ec">
+        <div class="ks-content">
+            <section class="ks-sales-order">
+                <div class="container pb64 pt-3">
+                    <nav class="navbar navbar-light navbar-expand-lg border py-0 mb-2 o_portal_navbar  mt-3 rounded">
+                        <ol class="o_portal_submenu breadcrumb mb-0 py-2 flex-grow-1">
+                            <li [routerLink]="['/my/my-account']" routerLinkActive="router-link-active"
+                                class="breadcrumb-item">
+                                <a class="ks-icons cursor-point">
+                                    <img src="assets/images/sales_order/home.svg" alt="home-icon" width="16">
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                <span>
+                                    Quotations
+                                </span>
+                            </li>
+                        </ol>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#o_portal_navbar_content" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle filters">
+                            <span class="navbar-toggler-icon small"></span>
+                        </button>
+                        <div class="collapse navbar-collapse nav-content-area" id="o_portal_navbar_content">
+                            <div class="nav flex-column flex-lg-row ml-auto p-0 mb-3 mb-lg-0 mt-1 mt-lg-0">
+                                <div class="form-inline">
+                                    <span class="small mr-1 navbar-text">Sort By:</span>
+                                    <div class="btn-sort position-relative">
+                                        <div class="select-box position-relative">
+                                            <div class="options-container">
+                                                <div class="py-1">
+                                                    <div class="option area " (click)="sortBy('date')">
+                                                        <input type="radio" class="radio" name="category" />
+                                                        <label for="13" class="d-flex align-items-center mb-0">Order
+                                                            Date</label>
+                                                    </div>
+
+                                                    <div class="option area" (click)="sortBy('name')">
+                                                        <input type="radio" class="radio" name="category" />
+                                                        <label for="14" class="mb-0">Reference</label>
+                                                    </div>
+
+                                                    <div class="option area" (click)="sortBy('stage')">
+                                                        <input type="radio" class="radio" name="category" />
+                                                        <label for="12" class="mb-0">Stage</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="selected text-center">
+                                                Order Date
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="table-responsive border rounded border-top-0 ">
+                        <table class="table rounded mb-0 bg-white o_portal_my_doc_table">
+                            <thead>
+                                <tr class="active">
+                                    <th>
+                                        <span class="d-none d-md-inline">Quotation #</span>
+                                        <span class="d-block d-md-none">Ref.</span>
+                                    </th>
+                                    <th class="text-right">
+                                        Order Date
+                                    </th>
+                                    <th class="text-right">Valid Until</th>
+                                    <th class="text-right">State</th>
+                                    <th class="text-right">
+                                        Total
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let items of this.quatationsList.quotations">
+                                    <td class="align-items-center" (click)="quotationFormView(items)">
+                                        <span class="cursor-point">{{items.name}}</span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>{{items.order_date}}</span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span *ngIf="items.validity"> {{items.validity}}</span>
+                                        <span *ngIf="!items.validity">-</span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span class="badge badge-pill badge-purple pr-md-2">
+                                            <img *ngIf="!items.state " src="assets/images/sales_order/cross.svg"
+                                                alt="cross-icon" width="15">
+                                            <span class="d-none d-md-inline">{{items.state}}</span>
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span>{{items.total}}</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="col-12" *ngIf="quatationsList">
+                            <div *ngIf="quatationsList.quotations.length>0" class="ks-pagination d-flex flex-wrap justify-content-end mt-4">
+                                <nav>
+                                    <ul class="pagination mb-0">
+                                        <li class="page-item" [hidden]="selectedIndex=='0'">
+                                            <a (click)="previousPage()" class="page-link cursor-point" rel="noindex,nofollow">
+                                                <img src="../../assets/images/shop-imgs/arrow-right.svg"
+                                                    class="pagination-arrow pagination-prev" alt="Right Arrow"  width="10" height="10">Previous
+                                            </a>
+                                        </li>
+                                        <li (click)="filterDataPage(item)"
+                                            *ngFor="let item of pagination.pages;" [class.active]="selectedIndex === item.num-1" class="page-item">
+                                            <a rel="noindex,nofollow" class="page-link cursor-point">{{item.num}}</a>
+                                        </li>
+
+                                        <li [hidden]="selectedIndex==pagination.page_count-1" (click)="nextPage()" class="page-item">
+                                            <a class="page-link cursor-point" rel="noindex,nofollow">Next
+                                                <img src="../../assets/images/shop-imgs/arrow-right.svg"
+                                                    class="pagination-arrow pagination-next" alt="Right Arrow"  width="10" height="10">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>

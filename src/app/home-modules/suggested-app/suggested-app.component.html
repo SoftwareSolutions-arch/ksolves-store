@@ -1,0 +1,818 @@
+<section *ngIf="!isLoadingBool" class="suggested-section light-bg">
+    <div class="container pb-4 pb-md-5 py-2 pb-2">
+        <div class="row w-100" *ngIf="isMobile !== true">
+            <div class="col-md-12 px-md-0">
+                <h2 class="font-36 f-w-300 section-title light mt-4 mb-4 mt-lg-5 mb-lg-5">
+                    Suggested Apps and Themes
+                </h2>
+            </div>
+            <div class="ks-scroll-view ml-lg-3  ">
+                <div class="row ks-scroll">
+                    <div class="col-lg-6 pl-lg-0 ks-md-900">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div data-aos="fade-right" data-aos-duration="1400"
+                                    class="orange-gradient pt-4 pb-4 pl-4 pt-md-5 pl-md-5 pr-3 mb-3">
+                                    <h2 class="white-text f-w-700">
+                                        Best Themes from the Top Odoo Company
+                                    </h2>
+                                    <p class="font-16 white-text">
+                                        Explore Odoo themes that are super attractive and useful at the same time
+                                    </p>
+                                    <div class="d-flex justify-content-end">
+                                        <a [routerLink]="['/shop/odoo-themes']"
+                                            class="btn btn-white font-16 f-w-600 mt-2 mt-lg-5">
+                                            Explore More
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-sm-12 pr-lg-0">
+                                        <div class="p-3 small-card mb-3 card-bg-pink">
+                                            <div class="d-flex justify-content-between h-100">
+                                                <div class="thumb d-flex flex-column justify-content-between">
+                                                    <a href={{this.themeAndProducts[0].product_href}}>
+                                                        <img src="{{this.baseUrl}}web/image/product.product/{{this.themeAndProducts[0].product_var_id}}/{{this.themeAndProducts[0].logo}}"
+                                                            alt="card-img" class="img-fluid"  width="120" height="120" loading="lazy">
+                                                    </a>
+                                                    <div class="product-download d-flex align-items-center font-14">
+                                                        <a href={{this.themeAndProducts[0].product_href}}> 
+                                                            <svg class="icon mr-2"  width="18" height="18">
+                                                                <use xlink:href="/assets/sprite.svg#download"></use>
+                                                            </svg>
+                                                            <span class="white-text">{{this.themeAndProducts[0].downloads}}</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="desc text-right d-flex flex-column justify-content-between">
+                                                    <div class="small-section-title white-text font-14">
+                                                        <a href={{this.themeAndProducts[0].product_href}} class="white-text">{{this.themeAndProducts[0].name}}</a>
+                                                        <div class="mt-2">
+                                                            <div class="o_website_rating_static d-flex align-items-center justify-content-end">
+                                                                <p class="review-rating"
+                                                                    *ngIf="this.themeAndProducts[0].rating_avg">
+                                                                    <!-- 1 star  -->
+                                                                    <i
+                                                                        [class]="(this.themeAndProducts[0].rating_avg == 0) ? 'far fa-star' : (this.themeAndProducts[0].rating_avg > 0 && this.themeAndProducts[0].rating_avg < 1) ? 'fas fa-star-half-alt' : 'fas fa-star'"></i>
+                                                                    <!-- 2 star  -->
+                                                                    <i
+                                                                        [class]="(this.themeAndProducts[0].rating_avg > 1 && this.themeAndProducts[0].rating_avg < 2) ? 'fas fa-star-half-alt' : (this.themeAndProducts[0].rating_avg >= 2) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                                    <!-- 3 star  -->
+                                                                    <i
+                                                                        [class]="(this.themeAndProducts[0].rating_avg > 2 && this.themeAndProducts[0].rating_avg < 3) ? 'fas fa-star-half-alt' : (this.themeAndProducts[0].rating_avg >= 3) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                                    <!-- 4 star  -->
+                                                                    <i
+                                                                        [class]="(this.themeAndProducts[0].rating_avg > 3 && this.themeAndProducts[0].rating_avg < 4) ? 'fas fa-star-half-alt' : (this.themeAndProducts[0].rating_avg >= 4) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                                    <!-- 5 star  -->
+                                                                    <i
+                                                                        [class]="(this.themeAndProducts[0].rating_avg > 4 && this.themeAndProducts[0].rating_avg < 5) ? 'fas fa-star-half-alt' : (this.themeAndProducts[0].rating_avg >= 5) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                                    <span
+                                                                        class="ks_rating_count font-12 mt-1">{{this.themeAndProducts[0].rating_count}}</span>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="font-16 d-flex f-w-600 white-text">
+                                                        <p><span>{{this.themeAndProducts[0].price}}</span></p>
+                                                    </div>
+                                                    <button
+                                                        class="app-cart btn btn-white f-w-600 border font-14 ml-auto"
+                                                        (click)="addto_card(product_var_id)">
+                                                        Add To Cart
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-aos="fade-left" class="col-sm-12 pr-lg-0">
+                                        <div class="p-3 small-card card-bg-purple">
+                                            <div class="d-flex justify-content-between h-100">
+                                                <div class="thumb d-flex flex-column justify-content-between">
+                                                    <a href={{this.themeAndProducts[1].product_href}}>
+                                                        <img src="{{this.baseUrl}}web/image/product.product/{{this.themeAndProducts[1].product_var_id}}/{{this.themeAndProducts[1].logo}}"
+                                                            alt="card-img" class="img-fluid" width="120" height="120" loading="lazy">
+                                                    </a>
+                                                    <div class="product-download d-flex align-items-center font-14">
+                                                        <a href={{this.themeAndProducts[1].product_href}}>
+                                                            <svg class="icon mr-2"  width="18" height="18">
+                                                                <use xlink:href="/assets/sprite.svg#download"></use>
+                                                            </svg>
+                                                            <span
+                                                                class="white-text">{{this.themeAndProducts[1].downloads}}</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="desc text-right d-flex flex-column justify-content-between">
+                                                    <div class="small-section-title white-text font-14">
+                                                        <a href={{this.themeAndProducts[1].product_href}}
+                                                            class="white-text">{{this.themeAndProducts[1].name}}</a>
+                                                        <div class="mt-2">
+                                                            <div
+                                                                class="o_website_rating_static d-flex align-items-center justify-content-end">
+                                                                <p class="review-rating"
+                                                                    *ngIf="this.themeAndProducts[1].rating_avg">
+                                                                    <!-- 1 star  -->
+                                                                    <i
+                                                                        [class]="(this.themeAndProducts[1].rating_avg == 0) ? 'far fa-star' : (this.themeAndProducts[1].rating_avg > 0 && this.themeAndProducts[1].rating_avg < 1) ? 'fas fa-star-half-alt' : 'fas fa-star'"></i>
+                                                                    <!-- 2 star  -->
+                                                                    <i
+                                                                        [class]="(this.themeAndProducts[1].rating_avg > 1 && this.themeAndProducts[1].rating_avg < 2) ? 'fas fa-star-half-alt' : (this.themeAndProducts[1].rating_avg >= 2) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                                    <!-- 3 star  -->
+                                                                    <i
+                                                                        [class]="(this.themeAndProducts[1].rating_avg > 2 && this.themeAndProducts[1].rating_avg < 3) ? 'fas fa-star-half-alt' : (this.themeAndProducts[1].rating_avg >= 3) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                                    <!-- 4 star  -->
+                                                                    <i
+                                                                        [class]="(this.themeAndProducts[1].rating_avg > 3 && this.themeAndProducts[1].rating_avg < 4) ? 'fas fa-star-half-alt' : (this.themeAndProducts[1].rating_avg >= 4) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                                    <!-- 5 star  -->
+                                                                    <i
+                                                                        [class]="(this.themeAndProducts[1].rating_avg > 4 && this.themeAndProducts[1].rating_avg < 5) ? 'fas fa-star-half-alt' : (this.themeAndProducts[1].rating_avg >= 5) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                                    <span
+                                                                        class="ks_rating_count font-12 mt-1">{{this.themeAndProducts[1].rating_count}}</span>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="font-16 d-flex f-w-600 white-text">
+                                                        <p><span>{{this.themeAndProducts[1].price}}</span></p>
+                                                    </div>
+                                                    <button
+                                                        class="app-cart btn btn-white f-w-600 border font-14 ml-auto"
+                                                        (click)="addto_card(product_var_id1)">
+                                                        Add To Cart
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="large-card card p-0 border-0 h-100 aos-init aos-animate">
+                                    <a href={{this.themeAndProducts[2].product_href}}
+                                        class="card-thumn bg-white-card d-flex align-items-center justify-content-center">
+
+                                        <img src="{{this.baseUrl}}web/image/product.product/{{this.themeAndProducts[2].product_var_id}}/{{this.themeAndProducts[2].logo}}"
+                                            alt="product-logo" class="img-fluid" width="120" height="120" loading="lazy">
+
+                                    </a>
+                                    <div class="card-body d-flex flex-column justify-content-between p-3">
+                                        <a href={{this.themeAndProducts[2].product_href}}>
+                                            <div class="card-title font-16 f-w-600 mb-0 text-dark">
+                                                <span>{{this.themeAndProducts[2].name}}</span>
+                                            </div>
+                                            <div class="rating d-flex">
+                                                <div
+                                                    class="o_website_rating_static d-flex align-items-center justify-content-end">
+                                                    <p class="review-rating"
+                                                        *ngIf="this.themeAndProducts[2].rating_avg">
+                                                        <!-- 1 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[2].rating_avg == 0) ? 'far fa-star' : (this.themeAndProducts[2].rating_avg > 0 && this.themeAndProducts[2].rating_avg < 1) ? 'fas fa-star-half-alt' : 'fas fa-star'"></i>
+                                                        <!-- 2 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[2].rating_avg > 1 && this.themeAndProducts[2].rating_avg < 2) ? 'fas fa-star-half-alt' : (this.themeAndProducts[2].rating_avg >= 2) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                        <!-- 3 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[2].rating_avg > 2 && this.themeAndProducts[2].rating_avg < 3) ? 'fas fa-star-half-alt' : (this.themeAndProducts[2].rating_avg >= 3) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                        <!-- 4 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[2].rating_avg > 3 && this.themeAndProducts[2].rating_avg < 4) ? 'fas fa-star-half-alt' : (this.themeAndProducts[2].rating_avg >= 4) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                        <!-- 5 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[0].rating_avg > 4 && this.themeAndProducts[0].rating_avg < 5) ? 'fas fa-star-half-alt' : (this.themeAndProducts[0].rating_avg >= 5) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                        <span
+                                                            class="ks_rating_count font-12 mt-1">{{this.themeAndProducts[2].rating_count}}</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="product-price font-16 f-w-600 mt-4 mb-3">
+                                                <p><span>{{this.themeAndProducts[2].price}}</span></p>
+                                            </div>
+                                        </a>
+                                        <div
+                                            class="d-flex justify-content-between align-items-center ks-card-footer w-100">
+                                            <button
+                                                class="app-cart btn border btn-white semi-bold font-16 px-4 py-2 white-text"
+                                                (click)="addto_card(product_var_id2)">
+                                                Add To Cart
+                                            </button>
+                                            <div class="product-download d-flex align-items-center font-14">
+                                                <a>
+                                                    <svg class="icon mr-2"  width="18" height="18">
+                                                        <use xlink:href="/assets/sprite.svg#download_black"></use>
+                                                    </svg>
+                                                    <span>{{this.themeAndProducts[2].downloads}}</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 pl-lg-0 ks-md-900">
+                        <div class="row">
+                            <div class="col-6 pr-lg-0">
+                                <div class="large-card card p-0 border-0 h-100 aos-init aos-animate">
+                                    <div
+                                        class="card-thumn bg-grey-card d-flex align-items-center justify-content-center">
+                                        <a href="{{this.themeAndProducts[3].product_href}}">
+                                            <img src="{{this.baseUrl}}web/image/product.product/{{this.themeAndProducts[3].product_var_id}}/{{this.themeAndProducts[3].logo}}"
+                                                alt="product-logo" class="img-fluid" width="120" height="120" loading="lazy">
+                                        </a>
+                                    </div>
+                                    <div class="card-body d-flex flex-column justify-content-between p-3">
+                                        <a href="{{this.themeAndProducts[3].product_href}}">
+                                            <div class="card-title font-16 f-w-600 mb-0 text-dark">
+                                                <span>{{this.themeAndProducts[3].name}}</span>
+                                            </div>
+                                            <div class="rating d-flex">
+                                                <div
+                                                    class="o_website_rating_static d-flex align-items-center justify-content-end">
+                                                    <p class="review-rating">
+                                                        <!-- 1 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[3].rating_avg == 0) ? 'far fa-star' : (this.themeAndProducts[3].rating_avg > 0 && this.themeAndProducts[3].rating_avg < 1) ? 'fas fa-star-half-alt' : 'fas fa-star'"></i>
+                                                        <!-- 2 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[3].rating_avg > 1 && this.themeAndProducts[3].rating_avg < 2) ? 'fas fa-star-half-alt' : (this.themeAndProducts[3].rating_avg >= 2) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                        <!-- 3 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[3].rating_avg > 2 && this.themeAndProducts[3].rating_avg < 3) ? 'fas fa-star-half-alt' : (this.themeAndProducts[3].rating_avg >= 3) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                        <!-- 4 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[3].rating_avg > 3 && this.themeAndProducts[3].rating_avg < 4) ? 'fas fa-star-half-alt' : (this.themeAndProducts[3].rating_avg >= 4) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                        <!-- 5 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[3].rating_avg > 4 && this.themeAndProducts[3].rating_avg < 5) ? 'fas fa-star-half-alt' : (this.themeAndProducts[3].rating_avg >= 5) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                        <span
+                                                            class="ks_rating_count font-12 mt-1">{{this.themeAndProducts[3].rating_count}}</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="product-price font-16 f-w-600 mt-4 mb-3">
+                                                <p><span>{{this.themeAndProducts[3].price}}</span></p>
+                                            </div>
+                                        </a>
+                                        <div
+                                            class="d-flex justify-content-between align-items-center ks-card-footer w-100">
+                                            <button
+                                                class="app-cart btn border btn-white semi-bold font-16 px-4 py-2 white-text"
+                                                (click)="addto_card(product_var_id3)">
+                                                Add To Cart
+                                            </button>
+                                            <div class="product-download d-flex align-items-center font-14">
+                                                <a>
+                                                    <svg class="icon mr-2"  width="18" height="18">
+                                                        <use xlink:href="/assets/sprite.svg#download_black"></use>
+                                                    </svg>
+                                                    <span>{{this.themeAndProducts[3].downloads}}</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 pr-lg-0">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="p-3 small-card mb-3 card-bg-pink">
+                                            <div class="d-flex justify-content-between h-100">
+                                                <div class="thumb d-flex flex-column justify-content-between">
+                                                    <a href={{this.themeAndProducts[4].product_href}}
+                                                        routerLinkActive="router-link-active">
+                                                        <img src="{{this.baseUrl}}web/image/product.product/{{this.themeAndProducts[4].product_var_id}}/{{this.themeAndProducts[4].logo}}"
+                                                            alt="card-img" class="img-fluid" width="120" height="120" loading="lazy">
+                                                    </a>
+                                                    <div class="product-download d-flex align-items-center font-14">
+                                                        <a routerLinkActive="router-link-active">
+                                                            <svg class="icon mr-2"  width="18" height="18">
+                                                                <use xlink:href="/assets/sprite.svg#download"></use>
+                                                            </svg>
+                                                            <span
+                                                                class="white-text">{{this.themeAndProducts[4].downloads}}</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="desc text-right d-flex flex-column justify-content-between">
+                                                    <div class="small-section-title white-text font-14">
+                                                        <a href={{this.themeAndProducts[4].product_href}}
+                                                            routerLinkActive="router-link-active"
+                                                            class="white-text">{{this.themeAndProducts[4].name}}</a>
+                                                        <div class="mt-2">
+                                                            <div
+                                                                class="o_website_rating_static d-flex align-items-center justify-content-end">
+                                                                <p class="review-rating"
+                                                                    *ngIf="this.themeAndProducts[4].rating_avg">
+                                                                    <!-- 1 star  -->
+                                                                    <i
+                                                                        [class]="(this.themeAndProducts[4].rating_avg == 0) ? 'far fa-star' : (this.themeAndProducts[4].rating_avg > 0 && this.themeAndProducts[4].rating_avg < 1) ? 'fas fa-star-half-alt' : 'fas fa-star'"></i>
+                                                                    <!-- 2 star  -->
+                                                                    <i
+                                                                        [class]="(this.themeAndProducts[4].rating_avg > 1 && this.themeAndProducts[4].rating_avg < 2) ? 'fas fa-star-half-alt' : (this.themeAndProducts[4].rating_avg >= 2) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                                    <!-- 3 star  -->
+                                                                    <i
+                                                                        [class]="(this.themeAndProducts[4].rating_avg > 2 && this.themeAndProducts[4].rating_avg < 3) ? 'fas fa-star-half-alt' : (this.themeAndProducts[4].rating_avg >= 3) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                                    <!-- 4 star  -->
+                                                                    <i
+                                                                        [class]="(this.themeAndProducts[4].rating_avg > 3 && this.themeAndProducts[4].rating_avg < 4) ? 'fas fa-star-half-alt' : (this.themeAndProducts[4].rating_avg >= 4) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                                    <!-- 5 star  -->
+                                                                    <i
+                                                                        [class]="(this.themeAndProducts[4].rating_avg > 4 && this.themeAndProducts[4].rating_avg < 5) ? 'fas fa-star-half-alt' : (this.themeAndProducts[4].rating_avg >= 5) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                                    <span
+                                                                        class="ks_rating_count font-12 mt-1">{{this.themeAndProducts[4].rating_count}}</span>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="font-16 d-flex f-w-600 white-text">
+                                                        <p><span>{{this.themeAndProducts[4].price}}</span></p>
+                                                    </div>
+                                                    <button
+                                                        class="app-cart btn btn-white f-w-600 border font-14 ml-auto"
+                                                        (click)="addto_card(product_var_id4)">
+                                                        Add To Cart
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="p-3 small-card card-bg-white bg-green-sug ">
+                                            <div class="d-flex justify-content-between h-100 ks-whitish-style">
+                                                <div class="thumb d-flex flex-column justify-content-between">
+                                                    <a href={{this.themeAndProducts[5].product_href}}>
+                                                        <img src="{{this.baseUrl}}web/image/product.product/{{this.themeAndProducts[5].product_var_id}}/{{this.themeAndProducts[5].logo}}"
+                                                            alt="card-img" class="img-fluid" width="120" height="120" loading="lazy">
+                                                    </a>
+                                                    <div class="product-download d-flex align-items-center font-14">
+                                                        <a>
+                                                            <svg class="icon mr-2"  width="18" height="18">
+                                                                <use xlink:href="/assets/sprite.svg#download_black"></use>
+                                                            </svg>
+                                                            <span
+                                                                class="black-text">{{this.themeAndProducts[5].downloads}}</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="desc text-right d-flex flex-column justify-content-between">
+                                                    <div class="small-section-title font-14">
+                                                        <a href={{this.themeAndProducts[5].product_href}}
+                                                            class="black-text ml-2">{{this.themeAndProducts[5].name}}</a>
+                                                        <div class="mt-2">
+                                                            <div
+                                                                class="o_website_rating_static d-flex align-items-center justify-content-end">
+                                                                <p class="review-rating"
+                                                                    *ngIf="this.themeAndProducts[5].rating_avg">
+                                                                    <!-- 1 star  -->
+                                                                    <i
+                                                                        [class]="(this.themeAndProducts[5].rating_avg == 0) ? 'far fa-star' : (this.themeAndProducts[5].rating_avg > 0 && this.themeAndProducts[5].rating_avg < 1) ? 'fas fa-star-half-alt' : 'fas fa-star'"></i>
+                                                                    <!-- 2 star  -->
+                                                                    <i
+                                                                        [class]="(this.themeAndProducts[5].rating_avg > 1 && this.themeAndProducts[5].rating_avg < 2) ? 'fas fa-star-half-alt' : (this.themeAndProducts[5].rating_avg >= 2) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                                    <!-- 3 star  -->
+                                                                    <i
+                                                                        [class]="(this.themeAndProducts[5].rating_avg > 2 && this.themeAndProducts[5].rating_avg < 3) ? 'fas fa-star-half-alt' : (this.themeAndProducts[5].rating_avg >= 3) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                                    <!-- 4 star  -->
+                                                                    <i
+                                                                        [class]="(this.themeAndProducts[5].rating_avg > 3 && this.themeAndProducts[5].rating_avg < 4) ? 'fas fa-star-half-alt' : (this.themeAndProducts[5].rating_avg >= 4) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                                    <!-- 5 star  -->
+                                                                    <i
+                                                                        [class]="(this.themeAndProducts[5].rating_avg > 4 && this.themeAndProducts[5].rating_avg < 5) ? 'fas fa-star-half-alt' : (this.themeAndProducts[5].rating_avg >= 5) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                                    <span
+                                                                        class="ks_rating_count font-12 mt-1">{{this.themeAndProducts[4].rating_count}}</span>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="font-16 d-flex f-w-600 black-text">
+                                                        <p><span class="ml-4">{{this.themeAndProducts[4].price}}</span>
+                                                        </p>
+                                                    </div>
+                                                    <button
+                                                        class="app-cart btn btn-white f-w-600 border font-14 ml-auto"
+                                                        (click)="addto_card(product_var_id5)">
+                                                        Add To Cart
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 pr-lg-0">
+                                <div class="orange-gradient pt-4 pb-4 pl-4 pt-md-5 pl-md-5 pr-3 mt-3">
+                                    <h2 class="white-text f-w-700">
+                                        Best Apps from the Top Odoo Company
+                                    </h2>
+                                    <p class="font-16 white-text">
+                                        Apps that address your pain points and enhance your Odoo experience to another
+                                        level altogether
+                                    </p>
+                                    <div class="d-flex justify-content-end">
+                                        <a [routerLink]="['/shop/odoo-apps']" routerLinkActive="router-link-active"
+                                            class="btn btn-white font-16 f-w-600 mt-2 mt-lg-4">
+                                            Explore More
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row w-100" *ngIf="isMobile === true">
+            <div class="col-md-12 px-md-0">
+                <h2 class="font-36 f-w-300 section-title light mt-4 mb-4 mt-lg-5 mb-lg-5">
+                    Suggested Apps and Themes
+                </h2>
+            </div>
+            <div class="col-md-12">
+                <owl-carousel-o [options]="customOptions">
+                    <ng-template carouselSlide>
+                        <div class="slide py-2">
+                            <div class="pr-lg-0">
+                                <div class="p-3 small-card card-bg-pink">
+                                    <div class="d-flex justify-content-between h-100">
+                                        <div class="thumb d-flex flex-column justify-content-between">
+                                            <a href={{this.themeAndProducts[0].product_href}}>
+                                                <img src="{{this.baseUrl}}web/image/product.product/{{this.themeAndProducts[0].product_var_id}}/{{this.themeAndProducts[0].logo}}"
+                                                    alt="card-img" class="img-fluid" width="120" height="120">
+                                            </a>
+                                            <div class="product-download d-flex align-items-center font-14">
+                                                <a>
+                                                    <svg class="icon mr-2"  width="18" height="18">
+                                                        <use xlink:href="/assets/sprite.svg#download"></use>
+                                                    </svg>
+                                                    <span
+                                                        class="white-text">{{this.themeAndProducts[0].downloads}}</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="desc text-right d-flex flex-column justify-content-between">
+                                            <div class="small-section-title white-text font-14">
+                                                <a href={{this.themeAndProducts[0].product_href}}
+                                                    class="white-text">{{this.themeAndProducts[0].name}}</a>
+                                                <div class="mt-2">
+                                                    <div
+                                                        class="o_website_rating_static d-flex align-items-center justify-content-end">
+                                                        <p class="review-rating"
+                                                            *ngIf="this.themeAndProducts[0].rating_avg">
+                                                            <!-- 1 star  -->
+                                                            <i
+                                                                [class]="(this.themeAndProducts[0].rating_avg == 0) ? 'far fa-star' : (this.themeAndProducts[0].rating_avg > 0 && this.themeAndProducts[0].rating_avg < 1) ? 'fas fa-star-half-alt' : 'fas fa-star'"></i>
+                                                            <!-- 2 star  -->
+                                                            <i
+                                                                [class]="(this.themeAndProducts[0].rating_avg > 1 && this.themeAndProducts[0].rating_avg < 2) ? 'fas fa-star-half-alt' : (this.themeAndProducts[0].rating_avg >= 2) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                            <!-- 3 star  -->
+                                                            <i
+                                                                [class]="(this.themeAndProducts[0].rating_avg > 2 && this.themeAndProducts[0].rating_avg < 3) ? 'fas fa-star-half-alt' : (this.themeAndProducts[0].rating_avg >= 3) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                            <!-- 4 star  -->
+                                                            <i
+                                                                [class]="(this.themeAndProducts[0].rating_avg > 3 && this.themeAndProducts[0].rating_avg < 4) ? 'fas fa-star-half-alt' : (this.themeAndProducts[0].rating_avg >= 4) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                            <!-- 5 star  -->
+                                                            <i
+                                                                [class]="(this.themeAndProducts[0].rating_avg > 4 && this.themeAndProducts[0].rating_avg < 5) ? 'fas fa-star-half-alt' : (this.themeAndProducts[0].rating_avg >= 5) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                            <span
+                                                                class="ks_rating_count font-12 mt-1">{{this.themeAndProducts[0].rating_count}}</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="font-16 d-flex f-w-600 white-text">
+                                                <p><span>{{this.themeAndProducts[0].price}}</span></p>
+                                            </div>
+                                            <button class="app-cart btn btn-white f-w-600 border font-14 ml-auto"
+                                                (click)="addto_card(product_var_id)">
+                                                Add To Cart
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template carouselSlide>
+                        <div class="slide py-2">
+                            <div class="p-3 small-card card-bg-purple">
+                                <div class="d-flex justify-content-between h-100">
+                                    <div class="thumb d-flex flex-column justify-content-between">
+                                        <a href={{this.themeAndProducts[1].product_href}}>
+                                            <img src="{{this.baseUrl}}web/image/product.product/{{this.themeAndProducts[1].product_var_id}}/{{this.themeAndProducts[1].logo}}"
+                                                alt="card-img" class="img-fluid" width="120" height="120">
+                                        </a>
+                                        <div class="product-download d-flex align-items-center font-14">
+                                            <a>
+                                                <svg class="icon mr-2"  width="18" height="18">
+                                                    <use xlink:href="/assets/sprite.svg#download"></use>
+                                                </svg>
+                                                <span
+                                                    class="white-text">{{this.themeAndProducts[1].downloads}}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="desc text-right d-flex flex-column justify-content-between">
+                                        <div class="small-section-title white-text font-14">
+                                            <a href={{this.themeAndProducts[1].product_href}}
+                                                class="white-text">{{this.themeAndProducts[1].name}}</a>
+                                            <div class="mt-2">
+                                                <div
+                                                    class="o_website_rating_static d-flex align-items-center justify-content-end">
+                                                    <p class="review-rating"
+                                                        *ngIf="this.themeAndProducts[1].rating_avg">
+                                                        <!-- 1 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[1].rating_avg == 0) ? 'far fa-star' : (this.themeAndProducts[1].rating_avg > 0 && this.themeAndProducts[1].rating_avg < 1) ? 'fas fa-star-half-alt' : 'fas fa-star'"></i>
+                                                        <!-- 2 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[1].rating_avg > 1 && this.themeAndProducts[1].rating_avg < 2) ? 'fas fa-star-half-alt' : (this.themeAndProducts[1].rating_avg >= 2) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                        <!-- 3 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[1].rating_avg > 2 && this.themeAndProducts[1].rating_avg < 3) ? 'fas fa-star-half-alt' : (this.themeAndProducts[1].rating_avg >= 3) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                        <!-- 4 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[1].rating_avg > 3 && this.themeAndProducts[1].rating_avg < 4) ? 'fas fa-star-half-alt' : (this.themeAndProducts[1].rating_avg >= 4) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                        <!-- 5 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[1].rating_avg > 4 && this.themeAndProducts[1].rating_avg < 5) ? 'fas fa-star-half-alt' : (this.themeAndProducts[1].rating_avg >= 5) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                        <span
+                                                            class="ks_rating_count font-12 mt-1">{{this.themeAndProducts[1].rating_count}}</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="font-16 d-flex f-w-600 white-text">
+                                            <p><span>{{this.themeAndProducts[1].price}}</span></p>
+                                        </div>
+                                        <button class="app-cart btn btn-white f-w-600 border font-14 ml-auto"
+                                            (click)="addto_card(product_var_id1)">
+                                            Add To Cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template carouselSlide>
+                        <div class="slide py-2">
+                            <div class="p-3 small-card bg-blue-suggest">
+                                <div class="d-flex justify-content-between h-100">
+                                    <div class="thumb d-flex flex-column justify-content-between">
+                                        <a [routerLink]="['/shop/odoo-themes/ajax-shop-filter-96']"
+                                            class="card-thumn bg-white-card bg-blue-suggest d-flex align-items-center justify-content-center">
+                                            <a [routerLink]="['/shop/odoo-themes/ajax-shop-filter-96']">
+                                                <img src="{{this.baseUrl}}web/image/product.product/{{this.themeAndProducts[2].product_var_id}}/{{this.themeAndProducts[2].logo}}"
+                                                    alt="product-logo" class="img-fluid" width="120" height="120">
+                                            </a>
+                                        </a>
+                                        <div class="product-download d-flex align-items-center font-14">
+                                            <a>
+                                                <svg class="icon mr-2"  width="18" height="18">
+                                                    <use xlink:href="/assets/sprite.svg#download"></use>
+                                                </svg>
+                                                <span
+                                                    class="white-text">{{this.themeAndProducts[1].downloads}}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="desc text-right d-flex flex-column justify-content-between">
+                                        <div class="small-section-title white-text font-14">
+                                            <a [routerLink]="['/shop/odoo-themes/ajax-shop-filter-96']"
+                                                class="white-text">{{this.themeAndProducts[2].name}}</a>
+                                            <div class="mt-2">
+                                                <div
+                                                    class="o_website_rating_static d-flex align-items-center justify-content-end">
+                                                    <p class="review-rating"
+                                                        *ngIf="this.themeAndProducts[1].rating_avg">
+                                                        <!-- 1 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[1].rating_avg == 0) ? 'far fa-star' : (this.themeAndProducts[1].rating_avg > 0 && this.themeAndProducts[1].rating_avg < 1) ? 'fas fa-star-half-alt' : 'fas fa-star'"></i>
+                                                        <!-- 2 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[1].rating_avg > 1 && this.themeAndProducts[1].rating_avg < 2) ? 'fas fa-star-half-alt' : (this.themeAndProducts[1].rating_avg >= 2) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                        <!-- 3 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[1].rating_avg > 2 && this.themeAndProducts[1].rating_avg < 3) ? 'fas fa-star-half-alt' : (this.themeAndProducts[1].rating_avg >= 3) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                        <!-- 4 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[1].rating_avg > 3 && this.themeAndProducts[1].rating_avg < 4) ? 'fas fa-star-half-alt' : (this.themeAndProducts[1].rating_avg >= 4) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                        <!-- 5 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[1].rating_avg > 4 && this.themeAndProducts[1].rating_avg < 5) ? 'fas fa-star-half-alt' : (this.themeAndProducts[1].rating_avg >= 5) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                        <span
+                                                            class="ks_rating_count font-12 mt-1">{{this.themeAndProducts[1].rating_count}}</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="font-16 d-flex f-w-600 white-text">
+                                            <p><span>{{this.themeAndProducts[2].price}}</span></p>
+                                        </div>
+                                        <button class="app-cart btn btn-white f-w-600 border font-14 ml-auto"
+                                            (click)="addto_card(product_var_id1)">
+                                            Add To Cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template carouselSlide>
+                        <div class="slide py-2">
+                            <div class="p-3 small-card bg-grey-card">
+                                <div class="d-flex justify-content-between h-100">
+                                    <div class="thumb d-flex flex-column justify-content-between">
+                                        <a [routerLink]="['/shop/odoo-apps/odoo-office365-calendar-29']"
+                                            class="card-thumn bg-white-card bg-blue-suggest d-flex align-items-center justify-content-center">
+                                            <a [routerLink]="['/shop/odoo-apps/odoo-office365-calendar-29']">
+                                                <img src="{{this.baseUrl}}web/image/product.product/{{this.themeAndProducts[3].product_var_id}}/{{this.themeAndProducts[3].logo}}"
+                                                    alt="product-logo" class="img-fluid" width="120" height="120">
+                                            </a>
+                                        </a>
+                                        <div class="product-download d-flex align-items-center font-14">
+                                            <a [routerLink]="['/shop/odoo-apps/odoo-office365-calendar-29']">
+                                                <svg class="icon mr-2"  width="18" height="18">
+                                                    <use xlink:href="/assets/sprite.svg#download"></use>
+                                                </svg>
+                                                <span
+                                                    class="white-text">{{this.themeAndProducts[3].downloads}}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="desc text-right d-flex flex-column justify-content-between">
+                                        <div class="small-section-title white-text font-14">
+                                            <a [routerLink]="['/shop/odoo-apps/odoo-office365-calendar-29']"
+                                                class="white-text">{{this.themeAndProducts[3].name}}</a>
+                                            <div class="mt-2">
+                                                <div
+                                                    class="o_website_rating_static d-flex align-items-center justify-content-end">
+                                                    <p class="review-rating"
+                                                        *ngIf="this.themeAndProducts[1].rating_avg">
+                                                        <!-- 1 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[1].rating_avg == 0) ? 'far fa-star' : (this.themeAndProducts[1].rating_avg > 0 && this.themeAndProducts[1].rating_avg < 1) ? 'fas fa-star-half-alt' : 'fas fa-star'"></i>
+                                                        <!-- 2 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[1].rating_avg > 1 && this.themeAndProducts[1].rating_avg < 2) ? 'fas fa-star-half-alt' : (this.themeAndProducts[1].rating_avg >= 2) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                        <!-- 3 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[1].rating_avg > 2 && this.themeAndProducts[1].rating_avg < 3) ? 'fas fa-star-half-alt' : (this.themeAndProducts[1].rating_avg >= 3) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                        <!-- 4 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[1].rating_avg > 3 && this.themeAndProducts[1].rating_avg < 4) ? 'fas fa-star-half-alt' : (this.themeAndProducts[1].rating_avg >= 4) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                        <!-- 5 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[1].rating_avg > 4 && this.themeAndProducts[1].rating_avg < 5) ? 'fas fa-star-half-alt' : (this.themeAndProducts[1].rating_avg >= 5) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                        <span
+                                                            class="ks_rating_count font-12 mt-1">{{this.themeAndProducts[1].rating_count}}</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="font-16 d-flex f-w-600 white-text">
+                                            <p><span>{{this.themeAndProducts[3].price}}</span></p>
+                                        </div>
+                                        <button class="app-cart btn btn-white f-w-600 border font-14 ml-auto"
+                                            (click)="addto_card(product_var_id3)">
+                                            Add To Cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template carouselSlide>
+                        <div class="slide py-2">
+                            <div class="pr-lg-0">
+                                <div class="p-3 small-card card-bg-pink">
+                                    <div class="d-flex justify-content-between h-100">
+                                        <div class="thumb d-flex flex-column justify-content-between">
+                                            <a [routerLink]="['/shop/odoo-themes/theme-kinetik-54']">
+                                                <img src="{{this.baseUrl}}web/image/product.product/{{this.themeAndProducts[4].product_var_id}}/{{this.themeAndProducts[4].logo}}"
+                                                    alt="card-img" class="img-fluid" width="120" height="120">
+                                            </a>
+                                            <div class="product-download d-flex align-items-center font-14">
+                                                <a href="{{this.themeAndProducts[4].product_href}}">
+                                                    <svg class="icon mr-2"  width="18" height="18">
+                                                        <use xlink:href="/assets/sprite.svg#download"></use>
+                                                    </svg>
+                                                    <span
+                                                        class="white-text">{{this.themeAndProducts[4].downloads}}</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="desc text-right d-flex flex-column justify-content-between">
+                                            <div class="small-section-title white-text font-14">
+                                                <a [routerLink]="['/shop/odoo-themes/theme-kinetik-54']"
+                                                    class="white-text">{{this.themeAndProducts[4].name}}</a>
+                                                <div class="mt-2">
+                                                    <div
+                                                        class="o_website_rating_static d-flex align-items-center justify-content-end">
+                                                        <p class="review-rating"
+                                                            *ngIf="this.themeAndProducts[4].rating_avg">
+                                                            <!-- 1 star  -->
+                                                            <i
+                                                                [class]="(this.themeAndProducts[4].rating_avg == 0) ? 'far fa-star' : (this.themeAndProducts[4].rating_avg > 0 && this.themeAndProducts[4].rating_avg < 1) ? 'fas fa-star-half-alt' : 'fas fa-star'"></i>
+                                                            <!-- 2 star  -->
+                                                            <i
+                                                                [class]="(this.themeAndProducts[4].rating_avg > 1 && this.themeAndProducts[4].rating_avg < 2) ? 'fas fa-star-half-alt' : (this.themeAndProducts[4].rating_avg >= 2) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                            <!-- 3 star  -->
+                                                            <i
+                                                                [class]="(this.themeAndProducts[4].rating_avg > 2 && this.themeAndProducts[4].rating_avg < 3) ? 'fas fa-star-half-alt' : (this.themeAndProducts[4].rating_avg >= 3) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                            <!-- 4 star  -->
+                                                            <i
+                                                                [class]="(this.themeAndProducts[4].rating_avg > 3 && this.themeAndProducts[4].rating_avg < 4) ? 'fas fa-star-half-alt' : (this.themeAndProducts[4].rating_avg >= 4) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                            <!-- 5 star  -->
+                                                            <i
+                                                                [class]="(this.themeAndProducts[4].rating_avg > 4 && this.themeAndProducts[4].rating_avg < 5) ? 'fas fa-star-half-alt' : (this.themeAndProducts[4].rating_avg >= 5) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                            <span
+                                                                class="ks_rating_count font-12 mt-1">{{this.themeAndProducts[4].rating_count}}</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="font-16 d-flex f-w-600 white-text">
+                                                <p><span>{{this.themeAndProducts[4].price}}</span></p>
+                                            </div>
+                                            <button class="app-cart btn btn-white f-w-600 border font-14 ml-auto"
+                                                (click)="addto_card(product_var_id4)">
+                                                Add To Cart
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template carouselSlide>
+                        <div class="slide py-2">
+                            <div class="p-3 small-card card-bg-white bg-green-sug ">
+                                <div class="d-flex justify-content-between h-100 ks-whitish-style">
+                                    <div class="thumb d-flex flex-column justify-content-between">
+                                        <a [routerLink]="['/shop/odoo-apps/list-view-sticky-header-10']"
+                                            routerLinkActive="router-link-active">
+                                            <img src="{{this.baseUrl}}web/image/product.product/{{this.themeAndProducts[5].product_var_id}}/{{this.themeAndProducts[5].logo}}"
+                                                alt="card-img" class="img-fluid" width="120" height="120">
+                                        </a>
+                                        <div class="product-download d-flex align-items-center font-14">
+                                            <a>
+                                                <svg class="icon mr-2"  width="18" height="18">
+                                                    <use xlink:href="/assets/sprite.svg#download"></use>
+                                                </svg>
+                                                <span
+                                                    class="black-text">{{this.themeAndProducts[5].downloads}}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="desc text-right d-flex flex-column justify-content-between">
+                                        <div class="small-section-title font-14">
+                                            <a [routerLink]="['/shop/odoo-apps/list-view-sticky-header-10']"
+                                                routerLinkActive="router-link-active"
+                                                class="black-text ml-2">{{this.themeAndProducts[5].name}}</a>
+                                            <div class="mt-2">
+                                                <div
+                                                    class="o_website_rating_static d-flex align-items-center justify-content-end">
+                                                    <p class="review-rating"
+                                                        *ngIf="this.themeAndProducts[5].rating_avg">
+                                                        <!-- 1 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[5].rating_avg == 0) ? 'far fa-star' : (this.themeAndProducts[5].rating_avg > 0 && this.themeAndProducts[5].rating_avg < 1) ? 'fas fa-star-half-alt' : 'fas fa-star'"></i>
+                                                        <!-- 2 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[5].rating_avg > 1 && this.themeAndProducts[5].rating_avg < 2) ? 'fas fa-star-half-alt' : (this.themeAndProducts[5].rating_avg >= 2) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                        <!-- 3 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[5].rating_avg > 2 && this.themeAndProducts[5].rating_avg < 3) ? 'fas fa-star-half-alt' : (this.themeAndProducts[5].rating_avg >= 3) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                        <!-- 4 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[5].rating_avg > 3 && this.themeAndProducts[5].rating_avg < 4) ? 'fas fa-star-half-alt' : (this.themeAndProducts[5].rating_avg >= 4) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                        <!-- 5 star  -->
+                                                        <i
+                                                            [class]="(this.themeAndProducts[5].rating_avg > 4 && this.themeAndProducts[5].rating_avg < 5) ? 'fas fa-star-half-alt' : (this.themeAndProducts[5].rating_avg >= 5) ? 'fas fa-star' : 'far fa-star'"></i>
+                                                        <span
+                                                            class="ks_rating_count font-12 mt-1">{{this.themeAndProducts[4].rating_count}}</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="font-16 d-flex f-w-600 black-text">
+                                            <p><span class="ml-4">{{this.themeAndProducts[4].price}}</span>
+                                            </p>
+                                        </div>
+                                        <button class="app-cart btn btn-white f-w-600 border font-14 ml-auto"
+                                            (click)="addto_card(product_var_id5)">
+                                            Add To Cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </owl-carousel-o>
+            </div>
+        </div>
+    </div>
+</section>

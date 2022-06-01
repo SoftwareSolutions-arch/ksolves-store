@@ -1,0 +1,20 @@
+.ks-support{
+    background: #e5e5e5;
+    overflow: auto;
+    .ks-support-list{
+        width: 235px;
+        min-width: 220px;
+        @media(min-width: 768px){
+         height: 100px;
+        }
+        @media(max-width: 767px){
+            height: 65px; 
+        }
+        text-align: center;
+        border-radius: 10px;
+        background: #FFFFFF;
+        box-shadow: 15px 15px 20px rgb(0 0 0 / 10%);
+        color: #585959;
+        transition: all 0.3s ease-in-out 0s;
+    }
+}

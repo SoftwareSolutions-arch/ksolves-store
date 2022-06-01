@@ -1,0 +1,32 @@
+.main-section {
+    .container {
+      @media screen and (min-width: 1200px) {
+        max-width: 1250px;
+      }
+      .bg-blue {
+        background-color: #423ace;
+      }
+      .rounded-20 {
+        border-radius: 20px;
+      }
+      .close {
+        float: right;
+        font-size: 32px;
+        font-weight: normal;
+        line-height: 1;
+        color: #000;
+        z-index: 9;
+        opacity: 1;
+        margin-top: -29px;
+      }
+      h4 {
+        font-size: 3rem;
+        font-weight: 800;
+        color: #e6e9ed;
+        @media screen and (max-width: 767px) {
+          font-size: 2.5rem;
+          margin-top: 30px;
+        }
+      }
+    }
+  }

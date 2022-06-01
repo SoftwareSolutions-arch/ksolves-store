@@ -1,0 +1,432 @@
+<html>
+
+
+<section class="theme-apps pt-md-5 pt-3 pb-4 px-md-3 px-3">
+    <div *ngIf="isLoadingBool" class="loading-indicator">
+        <div class="loader">
+            <div class="loader-inner">
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="section-title text-white mt-3 ">Top 10 Apps and Themes</div>
+    </div>
+    <owl-carousel-o [options]="customOptions">
+        <ng-template carouselSlide *ngFor="let item of topTenProducts;let i =index;">
+            <div class="slide py-md-5 py-5">
+                <div class="product-cound" data-num="1">{{i+1}}</div>
+                <div class="card ks-card pb-3">
+                    <a class="no-color">
+                        <div class="ks-thum-img text-center py-4" [style.background-color]="item.background_color">
+                            <span class="fav-sec" (click)="addTowishlist(item)"  [class.disabled]="item.in_wish === true">
+                              
+                                <svg class="icon"  width="20px" height="20px" style="transform: scale(1.1); position: absolute; z-index: 2;">
+                                    <use xlink:href="/assets/sprite.svg#favorite_black_24dp"></use>
+                                </svg>
+                                <svg class="icon"  width="20px" height="20px" style="position: absolute; z-index: 0; ">
+                                    <use xlink:href="/assets/sprite.svg#favorite_border"></use>
+                                </svg>        
+                            </span>
+                            <a class="link-img-area w-100 d-flex align-items-center justify-content-center" href="{{environment}}shop/{{item.product_href.split('/')[2]}}/{{item.product_href.split('/')[3]}}">
+                                <img (click)="goToProduct(item)"
+                                src="{{this.baseUrl}}web/image/product.product/{{item.product_var_id}}/{{item.logo}}"
+                                alt="" width="120" height="120" loading="lazy" />
+                            </a>
+                            
+                        </div>
+                    </a>
+                    <div (click)="goToProduct(item)" class="ks-card-body no-color px-3 pt-3">
+                        <a class="link-text-area" href="{{environment}}shop/{{item.product_href.split('/')[2]}}/{{item.product_href.split('/')[3]}}">
+                            <div class="ks-card-title mb-2">{{item.name}}</div>
+                        </a>
+
+                        <div class="d-flex align-items-center justify-content-between mt-n2">
+                            <div class="ks-reating">
+                                <!-- *ngIf="item.rating_avg" -->
+                                <p class="review-rating mb-0 d-flex align-items-end">
+                                    <!-- 1 star  -->
+                                    <i
+                                        [ngClass]="(item.rating_avg == 0) ? 'far fa-star' : (item.rating_avg > 0 && item.rating_avg < 1) ? 'fas fa-star-half-alt' : 'fas fa-star'"></i>
+    
+                                    <!-- 2 star  -->
+                                    <i
+                                        [ngClass]="(item.rating_avg > 1 && item.rating_avg < 2) ? 'fas fa-star-half-alt' : (item.rating_avg >= 2) ? 'fas fa-star' : 'far fa-star'"></i>
+    
+                                    <!-- 3 star  -->
+                                    <i
+                                        [ngClass]="(item.rating_avg > 2 && item.rating_avg < 3) ? 'fas fa-star-half-alt' : (item.rating_avg >= 3) ? 'fas fa-star' : 'far fa-star'"></i>
+    
+                                    <!-- 4 star  -->
+                                    <i
+                                        [ngClass]="(item.rating_avg > 3 && item.rating_avg < 4) ? 'fas fa-star-half-alt' : (item.rating_avg >= 4) ? 'fas fa-star' : 'far fa-star'"></i>
+    
+                                    <!-- 5 star  -->
+                                    <i
+                                        [ngClass]="(item.rating_avg > 4 && item.rating_avg < 5) ? 'fas fa-star-half-alt' : (item.rating_avg >= 5) ? 'fas fa-star' : 'far fa-star'"></i>
+                                    <span class="pl-2 ks_rating_count font-15">{{item.rating_count}}</span>
+                                </p>
+                            </div>
+    
+                            <div class="ks-download-info py-2 d-flex align-items-center">
+                                <!-- <img src="./assets/images/icons/download-icon.svg" alt="" width="14" height="14"
+                                    class="mr-1" loading="lazy"/> -->
+                                <svg class="icon mr-1" width="16px" height="16px" >
+                                    <use xlink:href="/assets/sprite.svg#download_black"></use>
+                                </svg>
+                                <span>{{item.downloads}}</span>
+                            </div>
+                        </div>
+                        <div *ngIf="!isProductFree(item.price)" class="ks-price"><span>{{item.price}}</span></div>
+                        <div *ngIf="isProductFree(item.price)" class="ks-price"><span>Free</span></div>
+
+                    </div>
+                    <div class="ks-card-footer px-3 pt-1">
+                        <button *ngIf="item.in_cart==false" class="btn btn-danger" (click)="onSubmit(item)">Add to Cart</button>
+                        <button style="width: 100%;" *ngIf="item.in_cart==true" class="order-2 order-md-1 app-cart home_cart_button btn btn-success p-0"
+                        (click)="goToCart()">Go to Cart</button>
+                        <button *ngIf="item.in_cart==false" class="btn btn-outline-secondary ml-2" (click)="buy_now(item)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </owl-carousel-o>
+</section>
+<section class="py-5 ks-theme-sec" *ngIf="this.themeAndProducts.length>0">
+    <div class="container pb-md-4">
+        <div class="ks-theme-heading pb-4">
+            <div class="d-flex justify-content-end align-items-center">
+                <h2 class="font-36 mb-0">Themes</h2>
+                <a href="shop/odoo-themes" class="font-20 ml-auto ml-lg-5 ks-text-primary ks-btn-viewall">View All
+                    <span>›</span></a>
+            </div>
+        </div>
+        <div id="carouselTheme" class="carousel slide" data-ride="carousel">
+            
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-2">
+                            <a class="text-decoration-none ks-cursor" (click)="goToProduct(this.themeAndProducts[0])">  
+                                 <img src="{{this.baseUrl}}web/image/product.product/{{this.themeAndProducts[0].product_var_id}}/{{this.themeAndProducts[0].logo}}/130x130"
+                                        alt="" width="130" height="130"  loading="lazy" /> 
+                                <h2 class="slider-title font-weight-bold mt-4 mb-4">
+                                    <span>{{this.themeAndProducts[0].name}}</span>
+                                </h2>
+                                <p class="font-16 mb-0 mb-lg-2 text-normal pr-md-5 mr-md-5">
+                                    {{this.themeAndProducts[0].theme_description}}
+                                </p>
+
+                                <p class="review-rating">
+                                    <!-- 1 star  -->
+                                    <i
+                                        [ngClass]="(this.themeAndProducts[0].rating_avg == 0) ? 'far fa-star' : (this.themeAndProducts[0].rating_avg > 0 && this.themeAndProducts[0].rating_avg < 1) ? 'fas fa-star-half-alt' : 'fas fa-star'"></i>
+
+                                    <!-- 2 star  -->
+                                    <i
+                                        [ngClass]="(this.themeAndProducts[0].rating_avg > 1 && this.themeAndProducts[0].rating_avg < 2) ? 'fas fa-star-half-alt' : (this.themeAndProducts[0].rating_avg >= 2) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                    <!-- 3 star  -->
+                                    <i
+                                        [ngClass]="(this.themeAndProducts[0].rating_avg > 2 && this.themeAndProducts[0].rating_avg < 3) ? 'fas fa-star-half-alt' : (this.themeAndProducts[0].rating_avg >= 3) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                    <!-- 4 star  -->
+                                    <i
+                                        [ngClass]="(this.themeAndProducts[0].rating_avg > 3 && this.themeAndProducts[0].rating_avg < 4) ? 'fas fa-star-half-alt' : (this.themeAndProducts[0].rating_avg >= 4) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                    <!-- 5 star  -->
+                                    <i
+                                        [ngClass]="(this.themeAndProducts[0].rating_avg > 4 && this.themeAndProducts[0].rating_avg < 5) ? 'fas fa-star-half-alt' : (this.themeAndProducts[0].rating_avg >= 5) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                    <span class="pl-2 ks_rating_count">{{this.themeAndProducts[0].rating_count}}</span>
+
+                                </p>
+
+                                <div class="font-weight-bold font-22 text-black mb-4">
+                                    <span>{{this.themeAndProducts[0].price}}</span>
+                                </div>
+                            </a>
+                            <button (click)="buy_now(this.themeAndProducts[0])"
+                                class="btn btn-danger py-3 font-16 px-4">
+                                Buy Now
+                            </button>
+                        </div>
+                        <div  *ngIf="isMobile !== true" class="col-12 col-md-6 order-md-1 order-1"> 
+                             <img class="img-fluid" src="{{this.baseUrl}}web/image/product.template/{{this.themeAndProducts[0].id}}/ks_product_theme_image"
+                                alt="" width="600" height="322"  loading="lazy" /> 
+                        </div>
+                        <!-- <div *ngIf="isMobile === true"></div> -->
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-2">
+                            <a class="text-decoration-none ks-cursor " (click)="goToProduct(my_theme_products_1)">
+
+                                <a>
+                                    <img src="{{this.baseUrl}}web/image/product.product/{{my_theme_products_1.product_var_id}}/{{my_theme_products_1.logo}}/130x130"
+                                        alt="" width="130" height="130"  loading="lazy" />
+                                </a>
+                                <h2 class="slider-title font-weight-bold mt-4 mb-4">
+                                    <span>{{my_theme_products_1.name}}</span>
+                                </h2>
+                                <p class="font-16 mb-0 mb-lg-2 text-normal pr-md-5 mr-md-5">
+                                    {{my_theme_products_1.theme_description}}
+                                </p>
+                                <p class="review-rating">
+                                    <!-- 1 star  -->
+                                    <i
+                                        [ngClass]="(my_theme_products_1.rating_avg == 0) ? 'far fa-star' : (my_theme_products_1.rating_avg > 0 && my_theme_products_1.rating_avg < 1) ? 'fas fa-star-half-alt' : 'fas fa-star'"></i>
+
+                                    <!-- 2 star  -->
+                                    <i
+                                        [ngClass]="(my_theme_products_1.rating_avg > 1 && my_theme_products_1.rating_avg < 2) ? 'fas fa-star-half-alt' : (my_theme_products_1.rating_avg >= 2) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                    <!-- 3 star  -->
+                                    <i
+                                        [ngClass]="(my_theme_products_1.rating_avg > 2 && my_theme_products_1.rating_avg < 3) ? 'fas fa-star-half-alt' : (my_theme_products_1.rating_avg >= 3) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                    <!-- 4 star  -->
+                                    <i
+                                        [ngClass]="(my_theme_products_1.rating_avg > 3 && my_theme_products_1.rating_avg < 4) ? 'fas fa-star-half-alt' : (my_theme_products_1.rating_avg >= 4) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                    <!-- 5 star  -->
+                                    <i
+                                        [ngClass]="(my_theme_products_1.rating_avg > 4 && my_theme_products_1.rating_avg < 5) ? 'fas fa-star-half-alt' : (my_theme_products_1.rating_avg >= 5) ? 'fas fa-star' : 'far fa-star'"></i>
+                                    <span class="pl-2 ks_rating_count">{{my_theme_products_1.rating_count}}</span>
+
+                                </p>
+
+                                <div class="font-weight-bold font-22 text-black mb-4">
+                                    <span>{{my_theme_products_1.price}}</span>
+                                </div>
+                            </a>
+                            <button (click)="buy_now(my_theme_products_1)" class="btn btn-danger py-3 font-16 px-4">
+                                Buy Now
+                            </button>
+                        </div>
+                        <div *ngIf="isMobile !== true" class="col-12 col-md-6 order-md-1 order-1">
+                            <img class="img-fluid" src="{{this.baseUrl}}web/image/product.template/{{my_theme_products_1.id}}/ks_product_theme_image"
+                                alt="" width="600" height="322"  loading="lazy"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-2">
+                            <a class="text-decoration-none ks-cursor " (click)="goToProduct(my_theme_products_2)">
+
+                                <a>
+                                    <img src="{{this.baseUrl}}web/image/product.product/{{my_theme_products_2.product_var_id}}/{{my_theme_products_2.logo}}/130x130"
+                                        alt="" width="130" height="130"  loading="lazy"/>
+                                </a>
+                                <h2 class="slider-title font-weight-bold mt-4 mb-4">
+                                    <span>{{my_theme_products_2.name}}</span>
+                                </h2>
+                                <p class="font-16 mb-0 mb-lg-2 text-normal pr-md-5 mr-md-5">
+                                    {{my_theme_products_2.theme_description}}
+                                </p>
+                                <p class="review-rating">
+                                    <!-- 1 star  -->
+                                    <i
+                                        [ngClass]="(my_theme_products_2.rating_avg == 0) ? 'far fa-star' : (my_theme_products_2.rating_avg > 0 && my_theme_products_2.rating_avg < 1) ? 'fas fa-star-half-alt' : 'fas fa-star'"></i>
+
+                                    <!-- 2 star  -->
+                                    <i
+                                        [ngClass]="(my_theme_products_2.rating_avg > 1 && my_theme_products_2.rating_avg < 2) ? 'fas fa-star-half-alt' : (my_theme_products_2.rating_avg >= 2) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                    <!-- 3 star  -->
+                                    <i
+                                        [ngClass]="(my_theme_products_2.rating_avg > 2 && my_theme_products_2.rating_avg < 3) ? 'fas fa-star-half-alt' : (my_theme_products_2.rating_avg >= 3) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                    <!-- 4 star  -->
+                                    <i
+                                        [ngClass]="(my_theme_products_2.rating_avg > 3 && my_theme_products_2.rating_avg < 4) ? 'fas fa-star-half-alt' : (my_theme_products_2.rating_avg >= 4) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                    <!-- 5 star  -->
+                                    <i
+                                        [ngClass]="(my_theme_products_2.rating_avg > 4 && my_theme_products_2.rating_avg < 5) ? 'fas fa-star-half-alt' : (my_theme_products_2.rating_avg >= 5) ? 'fas fa-star' : 'far fa-star'"></i>
+                                    <span class="pl-2 ks_rating_count">{{my_theme_products_2.rating_count}}</span>
+
+                                </p>
+
+                                <div class="font-weight-bold font-22 text-black mb-4">
+                                    <span>{{my_theme_products_2.price}}</span>
+                                </div>
+                            </a>
+                            <button (click)="buy_now(my_theme_products_2)" class="btn btn-danger py-3 font-16 px-4">
+                                Buy Now
+                            </button>
+                        </div>
+                        <div *ngIf="isMobile !== true" class="col-12 col-md-6 order-md-1 order-1">
+                            <img class="img-fluid" src="{{this.baseUrl}}web/image/product.template/{{my_theme_products_2.id}}/ks_product_theme_image"
+                                alt="" width="600" height="322"  loading="lazy"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item" *ngIf="my_theme_products_3">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-2">
+                            <a class="text-decoration-none ks-cursor " (click)="goToProduct(my_theme_products_3)">
+
+                                <a>
+                                    <img src="{{this.baseUrl}}web/image/product.product/{{my_theme_products_3.product_var_id}}/{{my_theme_products_3.logo}}/130x130"
+                                        alt="" width="130" height="130"  loading="lazy"/>
+                                </a>
+                                <h2 class="slider-title font-weight-bold mt-4 mb-4">
+                                    <span>{{my_theme_products_3.name}}</span>
+                                </h2>
+                                <p class="font-16 mb-0 mb-lg-2 text-normal pr-md-5 mr-md-5">
+                                    {{my_theme_products_3.theme_description}}
+                                </p>
+                                <p class="review-rating">
+                                    <!-- 1 star  -->
+                                    <i
+                                        [ngClass]="(my_theme_products_3.rating_avg == 0) ? 'far fa-star' : (my_theme_products_3.rating_avg > 0 && my_theme_products_3.rating_avg < 1) ? 'fas fa-star-half-alt' : 'fas fa-star'"></i>
+
+                                    <!-- 2 star  -->
+                                    <i
+                                        [ngClass]="(my_theme_products_3.rating_avg > 1 && my_theme_products_3.rating_avg < 2) ? 'fas fa-star-half-alt' : (my_theme_products_3.rating_avg >= 2) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                    <!-- 3 star  -->
+                                    <i
+                                        [ngClass]="(my_theme_products_3.rating_avg > 2 && my_theme_products_3.rating_avg < 3) ? 'fas fa-star-half-alt' : (my_theme_products_3.rating_avg >= 3) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                    <!-- 4 star  -->
+                                    <i
+                                        [ngClass]="(my_theme_products_3.rating_avg > 3 && my_theme_products_3.rating_avg < 4) ? 'fas fa-star-half-alt' : (my_theme_products_3.rating_avg >= 4) ? 'fas fa-star' : 'far fa-star'"></i>
+
+                                    <!-- 5 star  -->
+                                    <i
+                                        [ngClass]="(my_theme_products_3.rating_avg > 4 && my_theme_products_3.rating_avg < 5) ? 'fas fa-star-half-alt' : (my_theme_products_3.rating_avg >= 5) ? 'fas fa-star' : 'far fa-star'"></i>
+                                    <span class="pl-2 ks_rating_count">{{my_theme_products_3.rating_count}}</span>
+
+                                </p>
+
+                                <div class="font-weight-bold font-22 text-black mb-4">
+                                    <span>{{my_theme_products_3.price}}</span>
+                                </div>
+                            </a>
+                            <button (click)="buy_now(my_theme_products_3)" class="btn btn-danger py-3 font-16 px-4">
+                                Buy Now
+                            </button>
+                        </div>
+                        <div *ngIf="isMobile !== true" class="col-12 col-md-6 order-md-1 order-1">
+                            <img class="img-fluid" src="{{this.baseUrl}}web/image/product.template/{{my_theme_products_3.id}}/ks_product_theme_image"
+                                alt="" width="600" height="322"  loading="lazy"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ks-slider-button">
+                <div class="py-4 ks-sliders-btn-ol">
+                    <div class="col-md-6 offset-md-6">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            <li *ngIf="themeAndProducts.length>3" data-target="#carouselExampleIndicators"
+                                data-slide-to="3"></li>
+    
+                        </ol>
+                        <a class="carousel-control-prev" href="#carouselTheme" role="button" data-slide="prev">
+                            <span class="carousel-control-icontext" aria-hidden="true">‹</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselTheme" role="button" data-slide="next">
+                            <span class="carousel-control-icontext" aria-hidden="true">›</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ks-app-section bg-dark">
+    <div class="ks-app-heading py-2 mb-1">
+        <div class="container" data-aos="fade-left" data-aos-duration="3000">
+            <div class="d-flex justify-content-end align-items-center">
+                <h2 class="font-36 mb-0 text-white">Apps</h2>
+                <a data-aos="fade-left" [routerLink]="['/shop/odoo-apps']" routerLinkActive="router-link-active"
+                    class="font-20 ml-auto ml-lg-5 ks-text-primary ks-btn-viewall">View All Apps
+                    <span>›</span></a>
+            </div>
+        </div>
+    </div>
+    <hr class="light-bg m-0">
+    <div class="container text-center">
+        <div class="ks-section-title-lg f-w-700">Dashboard Ninja</div>
+        <div class="slider-desc col-md-5 mx-auto text-white  f-w-500">
+            Create beautiful, customized and robust dashboards for your different departments
+        </div>
+        <button class="btn btn-danger py-3 font-16 px-4" (click)="buy_now_ninja()"> Buy Now </button>
+    </div>
+    <div class="d-lg-flex justify-content-lg-between justify-content-center align-items-center">
+        <div class="col-12 col-lg-4 d-none d-md-inline">
+            <div class="text-center my-5 ">
+                <img class="img-fluid pl-lg-1" alt="Dashboard Ninja Bar Chart"
+                    src="./assets/images/index-page/bar-char.webp" width="420" height="202">
+            </div>
+        </div>
+        <div data-aos="flip-left" class="col-12 col-lg-4 mx-auto">
+            <div class="text-center mt-5 mb-md-5">
+                <img class="img-fluid" src="./assets/images/index-page/pie-chart.webp" alt="Dashboard Ninja Pie Chart"
+                    width="281" height="278">
+            </div>
+        </div>
+        <div data-aos="fade-left" class="col-12 col-lg-4 d-none d-md-inline">
+            <div class="text-center my-5">
+                <img class="img-fluid" alt="Dashboard Ninja Line Chart" src="./assets/images/index-page/line-chart.png"
+                    width="390" height="124">
+            </div>
+        </div>
+    </div>
+</section>
+<section *ngIf="isMobile !== true" class="app-mobile-section position-relative d-none d-lg-block">
+    <div class="row no-gutters mt-n1">
+        <div [routerLink]="['/shop/odoo-apps']" routerLinkActive="router-link-active"
+            class="col-12 col-lg no-gutters position-relative app-mobile d-flex align-items-lg-center align-items-lg-end justify-content-start pl-lg-5 pt-5 pt-lg-0">
+            <a class="text-white font-18 mr-auto txtLeft">View All the Feature-rich<br> Apps from Number<br>
+                One Odoo Company</a>
+        </div>
+        <div class="d-lg-flex justify-content-center align-items-end position-absolute mobiles">
+            <!-- <img class="d-lg-none d-block m-auto d-md-block" alt="Ksolves Theme Mobile view"> -->
+            <img data-aos="fade-down" alt="Dashboard Ninja Mobile view" class="d-none d-lg-block img-fluid"
+                src="assets/images/index-page/left.webp" width="161" height="299"  loading="lazy">
+            <img data-aos="fade-left" alt="Ksolves Theme Mobile view" class="d-none d-lg-block img-fluid"
+                src="assets/images/index-page/new-center.webp" width="178" height="300"  loading="lazy">
+            <img data-aos="fade-left" alt="ksolves Theme Kinetik Mobile view" class="d-none d-lg-block img-fluid"
+                src="assets/images/index-page/right.webp" width="161" height="299"  loading="lazy">
+        </div>
+        <div [routerLink]="['/shop/odoo-themes']"
+            class="col-12 col-lg no-gutters position-relative theme-mobile d-flex align-items-lg-center align-items-end justify-content-end pr-lg-5 pb-5 pb-lg-0">
+            <a class="text-white font-18 ml-auto txtRight">View All the Attractive,<br> Fully-customizable
+                Themes <br>from Number One<br> Odoo Company</a>
+        </div>
+    </div>
+</section>
+
+<head>
+    <meta property="og:title" content="Odoo Apps | Odoo ERP Module | Magento 2 Extension - Ksolves Store">
+    <meta property="og:site_name" content="Ksolves Store">
+    <meta property="og:url" content="https://store.ksolves.com/">
+    <meta property="og:description"
+        content="Ksolves Store–Growth-Minded Businesses’ Marketplace for Powerful Odoo Apps, Innovative Magento 2 Extensions, & Industry Leading Themes.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://store.ksolves.com/assets/images/index-page/background_img3.webp">
+</head>
+
+</html>

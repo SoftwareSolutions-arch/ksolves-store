@@ -1,0 +1,315 @@
+
+ 
+.ks-bg-ec {
+  background-color: #ececec;
+  .ks-invoice-details {
+    .o_account_payment_tx_status2 .card-body{
+      background: #ffffff !important;
+    }
+    .payment_box{
+      width: 100%;
+    max-width: 210mm;
+    }
+    .rounded-0 {
+      border-radius: 0 !important;
+    }
+    .alert-info {
+      color: #0c5460;
+      background-color: #d1ecf1;
+      border-color: #bee5eb;
+    }
+    .alert-dismissible {
+      padding-right: 3.8125rem;
+    }
+    .alert {
+      position: relative;
+      padding: 0.75rem 1.25rem;
+      margin-bottom: 1rem;
+      border: 1px solid transparent;
+      border-radius: 0.25rem;
+    }
+    .fade {
+      transition: opacity 0.15s linear;
+    }
+    .ks-upper-link {
+      text-decoration: none;
+      color: #000000;
+    }
+    .close {
+      position: absolute;
+      top: -6px;
+      right: 0;
+      padding: 0.75rem 1.25rem;
+      color: inherit;
+    }
+    .o_portal {
+      .container {
+        @media screen and (min-width: 1200px) {
+          max-width: 1250px;
+        }
+        @media screen and (max-width: 1500px) {
+          max-width: 1250px;
+        }
+        .bg-white {
+          background-color: #ffffff !important;
+          color: #212529;
+          .o_portal_submenu {
+            background-color: inherit;
+          }
+        }
+        .btn-group {
+          position: relative;
+          display: inline-flex;
+          vertical-align: middle;
+        }
+      }
+    }
+    .o_portal_wrap {
+      .pb64 {
+        padding-bottom: 64px !important;
+      }
+      .navspy {
+        .ks-links {
+          color: #000000;
+          text-decoration: none;
+        }
+      }
+      .container {
+        @media screen and (min-width: 1200px) {
+          max-width: 1250px;
+        }
+        @media screen and (max-width: 1500px) {
+          max-width: 1250px;
+        }
+        .mt16 {
+          margin-top: 16px !important;
+        }
+        .bg-white {
+          background-color: #ffffff !important;
+          color: #212529;
+        }
+        .card {
+          border-left: 0;
+          border-bottom: 0;
+          @media screen and (min-width: 991px) {
+            width: 300px;
+          }
+          .card-body {
+            border-left: 1px solid #dee2e6;
+          }
+          .card-body.ks-bottom-line {
+            border-bottom: 1px solid #dee2e6;
+          }
+
+          .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+          }
+        }
+        .list-group {
+          .btn.btn-secondary {
+            border: solid 1px #c3c5c7;
+            color: #5a5b5c;
+            line-height: normal;
+            background-color: #ffffff;
+          }
+          .btn.btn-secondary:hover {
+            background-color: #5a5b5c;
+            border-color: #5a5b5c;
+            color: #fff;
+          }
+          .ks-address-left {
+            .ks-address-1 {
+              color: black;
+            }
+          }
+          .ks-chat-area {
+            font-size: 80%;
+            font-weight: 400;
+            color: #000000;
+            text-decoration: none;
+            background-color: transparent;
+          }
+        }
+        .card-footer {
+          border-left: 1px solid #dee2e6;
+          border-bottom: 1px solid #dee2e6;
+        }
+        .text-muted {
+          color: rgba(33, 37, 41, 0.4) !important;
+        }
+        .o_portal_page_content {
+          .o_account_payment_tx_status {
+            @media screen and (min-width: 1199px) {
+              width: 765px;
+            }
+            .alert {
+              position: relative;
+              padding: 0.75rem 1.25rem;
+              margin-bottom: 1rem;
+              border: 1px solid transparent;
+              border-radius: 0.25rem;
+            }
+            .alert-success {
+              color: #155724;
+              background-color: #d4edda;
+              border-color: #c3e6cb;
+            }
+            .close {
+              background-color: transparent;
+              border: 0;
+              appearance: none;
+            }
+            .shadow {
+              box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;
+            }
+            .o_portal_html_view {
+              overflow: hidden;
+              background: white;
+              position: relative;
+              .ks-detail-part {
+                margin-bottom: 8px !important;
+                margin-top: 8px !important;
+                min-height: 1183px;
+                .container {
+                  width: 100%;
+                  padding-right: 15px;
+                  padding-left: 15px;
+                  margin-right: auto;
+                  margin-left: auto;
+                  @media screen and (min-width: 768px) {
+                    max-width: 720px;
+                  }
+                  .header {
+                    .o_background_header {
+                      min-width: 0;
+                      border-bottom: 1px solid #e9ecef;
+                      color: #495057;
+                    }
+                  }
+                  .o_report_layout_background {
+                    // background-image: url("../image/invoice-detail/bg_background_template.jpg");
+                    background-size: cover;
+                    background-position: bottom center;
+                    background-repeat: no-repeat;
+                    color: #495057;
+                    min-height: 620px;
+                    .mt16 {
+                      margin-top: 16px !important;
+                      .ks-word-break {
+                        word-break: break-all;
+                      }
+                    }
+                    .page {
+                      h2 {
+                        color: #7c7bad;
+                      }
+                      .mb32 {
+                        margin-bottom: 32px !important;
+                      }
+                      .mt32 {
+                        margin-top: 32px !important;
+                      }
+                      .mw-100 {
+                        max-width: 100% !important;
+                        strong {
+                          color: #495057;
+                        }
+                      }
+                      .invoice-detail-big-table {
+                        display: block;
+                        width: 100%;
+                        overflow-y: auto;
+                        .table {
+                          min-width: 600px;
+                          border-top: 1px solid #dee2e6;
+                          // width: 100%;
+                          margin-bottom: 1rem;
+                          background-color: transparent;
+                          thead tr th {
+                            color: #7c7bad;
+                            border-top: none;
+                          }
+                          tbody tr:nth-child(odd) {
+                            background-color: rgba(220, 205, 216, 0.2);
+                          }
+                          .invoice_tbody {
+                            tr {
+                              td {
+                                border-top: none;
+                                vertical-align: top;
+                              }
+                            }
+                          }
+                        }
+                      }
+                      .ks-total-list {
+                        margin-top: 10px;
+                        .row {
+                          .invoice-detail-small-table {
+                            display: block;
+                            width: 100%;
+                            font-size: 16px;
+                            table {
+                              border-top: 1px solid #dee2e6;
+                              margin-bottom: 1rem;
+                              background-color: transparent;
+                              td {
+                                padding: 0.75rem;
+                                vertical-align: top;
+                                border-top: none;
+                              }
+                              .o_subtotal {
+                                color: #7c7bad;
+                                border-top: 1px solid #ced4da !important;
+                              }
+                              .o_total {
+                                color: #7c7bad;
+                                border-top: 1px solid #ced4da !important;
+                              }
+                              .border-black {
+                                color: #7c7bad;
+                                border-top: 1px solid #ced4da !important;
+                              }
+                            }
+                          }
+                        }
+                      }
+                      .mb16 {
+                        margin-bottom: 16px !important;
+                      }
+                      .font-15 {
+                        font-size: 15px;
+                      }
+                    }
+                  }
+                  .o_background_footer {
+                    color: #495057;
+                    ul {
+                      border-top: 1px solid #7c7bad;
+                      border-bottom: 1px solid #7c7bad;
+                      padding: 4px 0;
+                      margin: 0 0 4px 0;
+                      list-style: none;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+    .holds-the-iframe {
+      background:url('../../../assets/Spinner.svg') center center no-repeat;
+    }
+  }
+
+  .close-modal{
+    background: transparent;
+    border: none;
+  }
+}

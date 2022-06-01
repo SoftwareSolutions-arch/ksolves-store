@@ -1,0 +1,20 @@
+.wishlist-section {
+    .container {
+      @media screen and (min-width: 1200px) {
+        max-width: 1250px;
+      }
+      .ks_section_box {
+        background: #fff;
+        border-radius: 20px;
+        padding: 20px;
+        @media screen and (max-width: 767px) {
+          .font-35 {
+            font-size: 25px;
+          }
+        }
+        .btn {
+          padding: 8px 30px;
+        }
+      }
+    }
+  }

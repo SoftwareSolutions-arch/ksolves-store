@@ -1,0 +1,141 @@
+<div *ngIf="isLoadingBool" class="loading-indicator">
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ks-portal-main-view">
+    <main class="main-section ks-bg-ec" *ngIf="this.myAccountData!='' ">
+        <div class="ks-content">
+            <section class="ks-my-account">
+                <div class="container pb64">
+                    <div class="row justify-content-between pt-4">
+                        <div class="col-12 col-md col-lg-6">
+                            <div class="o_portal_my_home">
+                                <h3>Your Documents</h3>
+                                <div class="o_portal_docs list-group  d-flex flex-column pl-0 mb-0">
+                                    <a href="my/quotations-list" routerLinkActive="router-link-active"
+                                        class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+                                        <span>Quotations</span>
+                                        <span
+                                            class="badge badge-secondary badge-pill">{{this.myAccountData.quotation_count}}</span>
+                                    </a>
+                                    <a href="my/sale-order-list"
+                                        class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+                                        <span>Sales Orders</span>
+                                        <span
+                                            class="badge badge-secondary badge-pill">{{this.myAccountData.order_count}}</span>
+                                    </a>
+                                    <a href="my/invoice-list" routerLinkActive="router-link-active"
+                                        class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+                                        <span>Invoices</span>
+                                        <span
+                                            class="badge badge-secondary badge-pill">{{this.myAccountData.invoice_count}}</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md col-lg-4 col-xl-3 o_my_sidebar mt-md-0 mt-3">
+                            <div class="o_portal_my_details mb-md-5 mb-3">
+                                <h4 class="f-w-500">Your contact
+                                </h4>
+                                <hr class="mt-1 mb-0">
+                                <div>
+                                    <address class="mb-0" itemscope="itemscope">
+                                        <div>
+                                            <span itemprop="name" class="f-w-600">
+                                                Ksolves Ltd.
+                                            </span>
+                                        </div>
+    
+                                        <div class="ks-address" itemprop="address" itemscope="itemscope">
+                                            <div class="ks-mt-sm d-flex ">
+                                                <img class="" src="assets/images/my_account/email.svg" alt="email"
+                                                    height="18">
+                                                <span class="ks-addres-p">
+                                                    {{this.myAccountData.your_details.email}}
+                                                </span>
+                                            </div>
+                                            <div class="ks-mt-sm d-flex">
+                                                <img class="" src="assets/images/my_account/call.svg" alt="call"
+                                                    height="18">
+                                                <span class="ks-addres-p"
+                                                    *ngIf="this.myAccountData.your_details.phone!=false">
+                                                    {{this.myAccountData.your_details.phone}}
+                                                </span>
+                                            </div>
+                                            <div class="ks-mt-sm d-flex">
+                                                <img class="" src="assets/images/my_account/location_on.svg" alt="location"
+                                                    height="18">
+                                                <span class="ks-addres-p">
+                                                    {{this.myAccountData.your_details.address}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </address>
+                                </div>
+                            </div>
+                            <div class="o_portal_my_details">
+                                <h4 class="f-w-500">Your Details
+                                    <a href="/my/edit-address" class="btn btn-sm btn-link" role="button">
+                                        <img src="assets/images/my_account/edit.svg" alt="edit-icon" width="16">
+                                        <span>Edit</span>
+                                    </a>
+                                </h4>
+                                <hr class="mt-1 mb-0">
+                                <div>
+                                    <address class="mb-0" itemscope="itemscope">
+                                        <div>
+                                            <span itemprop="name" class="f-w-600">
+                                                {{this.myAccountData.your_details.name}}
+                                            </span>
+                                        </div>
+                                        <div class="ks-address" itemprop="address" itemscope="itemscope">
+                                            <div class="ks-mt-sm d-flex ">
+                                                <img class="" src="assets/images/my_account/location_on.svg" alt="location"
+                                                    height="18">
+                                                <span class="ks-addres-p">
+                                                    {{this.myAccountData.your_details.address}}
+                                                </span>
+                                            </div>
+                                            <div class="ks-mt-sm d-flex">
+                                                <img class="" src="assets/images/my_account/call.svg" alt="call"
+                                                    height="18">
+                                                <span *ngIf="this.myAccountData.your_details.phone!=false"
+                                                    class="ks-addres-p">
+                                                    {{this.myAccountData.your_details.phone}}
+                                                </span>
+                                            </div>
+                                            <div class="ks-mt-sm d-flex">
+                                                <img class="" src="assets/images/my_account/email.svg" alt="email"
+                                                    height="18">
+                                                <span class="ks-addres-p">
+                                                    {{this.myAccountData.your_details.email}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </address>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>

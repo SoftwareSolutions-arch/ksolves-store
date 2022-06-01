@@ -1,0 +1,158 @@
+.ks_latest_blogs {
+    background-color: white;
+    .mt32 {
+      margin-top: 32px;
+    }
+    .mb32 {
+      margin-bottom: 32px;
+    }
+    .mr8 {
+      margin-right: 8px;
+    }
+    .container {
+      @media screen and (max-width: 1500px) {
+        max-width: 1250px;
+      }
+      //cards area starts
+      .ks-card-content {
+        .ks-head {
+          h1 {
+            font-size: 2.1875rem;
+          }
+        }
+        .blog_card {
+          border-radius: 8px 8px 0 0 !important;
+          box-shadow: 0 5px 10px rgb(0 0 0 / 19%), 0 3px 3px rgb(0 0 0 / 23%);
+          .ks-banner-left-text {
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: left;
+            display: flex;
+            align-items: center;
+            img {
+              border-radius: 8px 8px 0 0;
+            }
+          }
+          .card-body {
+            padding: 10px;
+            .ks_post_title {
+              color: #000000;
+              text-decoration: none;
+            }
+            .text-muted {
+              img {
+                filter: invert(0.55);
+                width: 17px;
+              }
+              .ks-link {
+                a {
+                  color: #000000;
+                  text-decoration: none;
+                }
+              }
+            }
+          }
+        }
+      }
+      //card area ends
+      // pagination starts
+      .ks-page-count {
+        .pagination {
+          margin-bottom: 30px;
+          margin-top: 20px;
+          .page-item:last-child .page-link {
+            border-top-right-radius: 0.25rem;
+            border-bottom-right-radius: 0.25rem;
+          }
+          .page-link {
+            position: relative;
+            display: block;
+            padding: 0.5rem 0.75rem;
+            margin-left: -1px;
+            line-height: 1.25;
+            color: #000000;
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            text-decoration: none;
+            @media screen and (max-width: 575px) {
+              padding: 0.4rem 0.5rem;
+            }
+            .pagination-next {
+              width: 10px;
+              margin-top: -1px;
+            }
+          }
+          .page-link:hover {
+            z-index: 2;
+            color: black;
+            text-decoration: none;
+            background-color: #e9ecef;
+            border-color: #dee2e6;
+            cursor: pointer;
+          }
+          .page-item.disabled .page-link {
+            color: #6c757d;
+            pointer-events: none;
+            cursor: auto;
+            background-color: #ffffff;
+            border-color: #dee2e6;
+            .pagination-prev {
+              transform: rotate(180deg) !important;
+              width: 10px;
+              margin-top: -1px;
+            }
+          }
+          .page-item.active .page-link {
+            z-index: 1;
+            color: #ffffff;
+            background-color: #000000;
+            border-color: #000000;
+          }
+        }
+      }
+      // pagination ends
+      //right column content starts
+      .blog_right_column {
+        .ks-head {
+          padding: 8px 8px;
+          background-color: #e9ecef;
+        }
+        .ks-para1 {
+          text-align: justify;
+        }
+        .ks_contact_us_btn {
+          padding: 6px 30px;
+          font-size: 0.9rem;
+        }
+        .our_blogs {
+          ul {
+            flex-wrap: wrap;
+            padding-left: 0;
+            margin-bottom: 0;
+            list-style: none;
+            .nav-link {
+              border-radius: 0.25rem;
+              padding: 2px 15px;
+              text-decoration: none;
+              color: #000000;
+            }
+            .nav-link:hover {
+              color: #e32235;
+            }
+          }
+        }
+        .blog_products {
+          .ks_products_blog {
+            padding-left: 15px;
+            padding-right: 15px;
+            .card {
+              border: 1px solid rgba(0, 0, 0, 0.125);
+              border-radius: 0.25rem;
+            }
+          }
+        }
+      }
+      // right column content ends
+    }
+  }
+  
